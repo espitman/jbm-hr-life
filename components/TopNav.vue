@@ -3,8 +3,8 @@
     <!-- Left side navigation items (appears on right in RTL) -->
     <div class="flex items-center space-x-reverse space-x-8">
       <a href="#" class="text-gray-600 hover:text-gray-900">ارتباط با جاباما</a>
-      <a href="#" class="text-gray-600 hover:text-gray-900">آلبوم</a>
-      <a href="#" class="text-amber-500 font-medium">صفحه اصلی</a>
+      <NuxtLink to="/album" class="text-gray-600 hover:text-gray-900">آلبوم</NuxtLink>
+      <NuxtLink to="/" class="text-amber-500 font-medium">صفحه اصلی</NuxtLink>
     </div>
     
     <!-- Right side logo (appears on left in RTL) -->
