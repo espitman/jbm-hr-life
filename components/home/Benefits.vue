@@ -3,8 +3,8 @@
     <div class="max-w-6xl mx-auto p-6" dir="rtl">
       <!-- Header -->
       <div class="mb-16 text-right">
-        <h3 class="text-lg font-medium text-amber-500 mb-2">مزایا کار جاباما</h3>
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900">هوای شما را داریم</h1>
+        <h3 class="text-lg font-medium text-amber-500 mb-2 text-right">مزایا کار جاباما</h3>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-right">هوای شما را داریم</h1>
       </div>
       
       <!-- Benefits Grid - Top Row -->
