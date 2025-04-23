@@ -1,6 +1,6 @@
 <template>
   <Section>
-    <div class="max-w-6xl mx-auto p-6">
+    <div class="max-w-6xl mx-auto p-6 py-28">
       <div class="flex flex-col md:flex-row items-center">
         <!-- Left side: RTL Text Content (now first in RTL) -->
         <div class="w-full md:w-1/2 md:pl-8" dir="rtl">
