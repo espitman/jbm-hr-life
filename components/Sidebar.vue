@@ -5,8 +5,8 @@
       
       <nav class="space-y-4">
         <NuxtLink 
-          to="/travel-companions" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/travel-companions', 'text-gray-700 hover:text-gray-900': $route.path !== '/travel-companions' }"
+          to="/history" 
+          :class="{ 'text-amber-500 font-medium': $route.path === '/history', 'text-gray-700 hover:text-gray-900': $route.path !== '/history' }"
           class="block"
         >تاریخچه جاباما</NuxtLink>
         <a href="#" class="block text-gray-700 hover:text-gray-900">معرفی همکار (رفرال)</a>
