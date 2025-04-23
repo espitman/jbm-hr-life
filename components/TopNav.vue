@@ -3,8 +3,8 @@
     <div class="flex flex-row-reverse justify-between items-center p-4 rtl-container">
       <!-- Left side navigation items (appears on right in RTL) -->
       <div class="flex items-center space-x-reverse space-x-8">
-        <NuxtLink to="/" class="text-amber-500 font-medium">صفحه اصلی</NuxtLink>
-        <NuxtLink to="/album" class="text-gray-600 hover:text-gray-900">آلبوم</NuxtLink>
+        <NuxtLink to="/" :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-600 hover:text-gray-900': $route.path !== '/' }">صفحه اصلی</NuxtLink>
+        <NuxtLink to="/album" :class="{ 'text-amber-500 font-medium': $route.path === '/album', 'text-gray-600 hover:text-gray-900': $route.path !== '/album' }">آلبوم</NuxtLink>
         <a href="#" class="text-gray-600 hover:text-gray-900">ارتباط با جاباما</a>
       </div>
       
