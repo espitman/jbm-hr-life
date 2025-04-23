@@ -58,9 +58,9 @@
         <!-- Image on the right -->
         <div class="w-full md:w-1/2 mb-10 md:mb-0">
           <img 
-            src="https://life.jabama.org/wp-content/uploads/2024/04/m2-copy.jpg" 
+            src="/images/jabama-values.jpg" 
             alt="ارزش های سازمان جاباما"
-            class="w-full h-auto rounded-lg shadow-lg"
+            class="w-full h-auto"
           />
         </div>
       </div>
