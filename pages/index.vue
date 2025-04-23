@@ -5,6 +5,7 @@
     <Info />
     <Benefits />
     <Value />
+    <Features />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Timeline from '~/components/home/Timeline.vue'
 import Info from '~/components/home/Info.vue'
 import Benefits from '~/components/home/Benefits.vue'
 import Value from '~/components/home/Value.vue'
+import Features from '~/components/home/Features.vue'
 
 definePageMeta({
   layout: 'default'
