@@ -1,5 +1,5 @@
 <template>
-  <section class="w-[calc(100vw-16rem)] h-[calc(100vh-92px)] flex items-center justify-center bg-white">
+  <Section>
     <div class="max-w-6xl mx-auto p-6">
       <div class="flex flex-col md:flex-row items-center">
         <!-- Left side: RTL Text Content (now first in RTL) -->
@@ -44,5 +44,9 @@
         </div>
       </div>
     </div>
-  </section>
-</template> 
+  </Section>
+</template>
+
+<script setup>
+import Section from './Section.vue'
+</script> 
