@@ -60,9 +60,6 @@
           <circle cx="600" cy="130" r="10" fill="#4A7C59" stroke="#000" stroke-width="1" />
           <circle cx="620" cy="130" r="8" fill="#4A7C59" stroke="#000" stroke-width="1" />
           <circle cx="640" cy="130" r="6" fill="#4A7C59" stroke="#000" stroke-width="1" />
-          
-          <!-- Jabama Text -->
-          <text x="400" y="100" font-size="60" font-weight="bold" text-anchor="middle" dominant-baseline="middle">جاباما</text>
         </svg>
       </div>
     </div>
@@ -79,7 +76,7 @@
       <h2 class="text-2xl md:text-3xl font-bold text-amber-500">تاریخچه جاباما</h2>
     </div>
     
-    <div class="space-y-6 text-gray-800 leading-relaxed text-justify">
+    <div class="space-y-4 text-gray-500 leading-relaxed text-justify">
       <p>
         جاباما در سال ۱۳۹۵ در هلدینگ علی‌بابا متولد شد. در آن زمان جاباما روی محصول هتل کار می کرد. از اواخر سال ۱۳۹۶ شروع به کار روی محصول اقامتگاه کرد و در سال ۱۳۹۹ تبدیل به یک کسب‌وکار مستقل شد تا روی پای خودش وارد بازار اقامتگاه شود و رشد بیشتری را تجربه کند. جابامایی که امروز در آن هستید، بیشتر از همه بر رشد و توسعه گردشگری و اقامت‌های غیرهتلی و بومگردی تمرکز کرده است و تبدیل به پلتفرم قدرتمندی شده که در آن مخاطب می‌تواند به صورت آنلاین اقامتگاه مورد نظر خود را با تنوع در دسته‌بندی‌های مختلف اعم از ویلا، هتل، بومگردی، خانه سنتی و سوئیت در هر جای ایران که می‌خواهد، رزرو کند.
       </p>
