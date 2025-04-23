@@ -1,16 +1,16 @@
 <template>
   <section class="w-[calc(100vw-16rem)] h-[calc(100vh-92px)] flex items-center justify-center bg-white">
-    <div class="max-w-6xl mx-auto p-6 md:p-8 lg:p-10">
+    <div class="max-w-6xl mx-auto p-6">
       <div class="flex flex-col md:flex-row items-center">
         <!-- Left side: RTL Text Content (now first in RTL) -->
-        <div class="w-full md:w-1/2 md:pr-8" dir="rtl">
+        <div class="w-full md:w-1/2 md:pl-8" dir="rtl">
           <h1 class="text-3xl md:text-4xl font-bold mb-6 text-right">
             <span class="text-black">قصه </span>
             <span class="text-amber-500">جاباما</span>
             <span class="text-amber-500">...</span>
           </h1>
           
-          <div class="space-y-4 text-gray-800 leading-relaxed text-right">
+          <div class="space-y-4 text-gray-500 leading-relaxed text-justify">
             <p>
               اگر بخواهیم از یکی از مهمترین دستاوردهایی که با سفر به وجود می‌آید یاد کنیم،
               آشنایی با فرهنگ و نوع زندگی افراد در نقاط مختلف است. برخورد از نزدیک با فرهنگ،
@@ -37,7 +37,7 @@
         <!-- Right side: Image (now second in RTL) -->
         <div class="w-full md:w-1/2 mb-8 md:mb-0">
           <img 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-23%20at%203.12.36%E2%80%AFPM-uzCtuKF8BeTcqWYZGmclZlmxMw5VS6.png" 
+            src="/images/jabama-story.jpg" 
             alt="Jabama illustration" 
             class="w-full h-auto"
           />
@@ -45,34 +45,4 @@
       </div>
     </div>
   </section>
-</template>
-
-<script setup>
-// Component can be extended with props if needed
-// import { defineProps } from 'vue';
-// 
-// const props = defineProps({
-//   imageUrl: {
-//     type: String,
-//     default: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-23%20at%203.12.36%E2%80%AFPM-uzCtuKF8BeTcqWYZGmclZlmxMw5VS6.png'
-//   },
-//   title: {
-//     type: String,
-//     default: 'قصه جاباما...'
-//   },
-//   paragraphs: {
-//     type: Array,
-//     default: () => []
-//   }
-// });
-</script>
-
-<style>
-/* Add any additional custom styles here if needed */
-/* For example, you might want to add a custom font for Arabic/Persian text */
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
-
-* {
-  font-family: 'Vazirmatn', sans-serif;
-}
-</style> 
+</template> 
