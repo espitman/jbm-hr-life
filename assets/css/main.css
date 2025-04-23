@@ -33,7 +33,11 @@
   }
   
   body {
-    @apply bg-white text-gray-900 font-[Vazirmatn];
+    @apply bg-gray-50 text-gray-900 font-[Vazirmatn];
+  }
+  
+  * {
+    box-sizing: border-box;
   }
 }
 

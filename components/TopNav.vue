@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed top-0 right-64 left-0 z-50 bg-white shadow-md">
-    <div class="flex flex-row-reverse justify-between items-center p-4 rtl-container">
+  <div class="fixed top-0 right-64 left-0 z-50 bg-white shadow-md h-[92px]">
+    <div class="flex flex-row-reverse justify-between items-center p-4 h-full rtl-container">
       <!-- Left side navigation items (appears on right in RTL) -->
       <div class="flex items-center space-x-reverse space-x-8">
         <NuxtLink to="/" :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-600 hover:text-gray-900': $route.path !== '/' }">صفحه اصلی</NuxtLink>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <!-- Add a spacer to prevent content from being hidden under the fixed navbar -->
-  <div class="h-[72px]"></div>
+  <div class="h-[92px]"></div>
 </template>
 
 <script setup>
