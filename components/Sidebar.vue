@@ -1,5 +1,5 @@
 <template>
-  <div class="w-64 border-l border-[#F59D24] min-h-screen rtl-container">
+  <div class="fixed top-0 right-0 bottom-0 w-64 border-l border-[#F59D24] rtl-container z-40 overflow-y-auto">
     <div class="p-6">
       <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
       
@@ -20,6 +20,8 @@
       </nav>
     </div>
   </div>
+  <!-- Add a spacer to prevent content from being hidden under the fixed sidebar -->
+  <div class="w-64"></div>
 </template>
 
 <script setup>
