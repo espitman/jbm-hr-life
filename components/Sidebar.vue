@@ -4,7 +4,11 @@
       <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
       
       <nav class="space-y-4">
-        <a href="#" class="block text-gray-700 hover:text-gray-900">تاریخچه جاباما</a>
+        <NuxtLink 
+          to="/travel-companions" 
+          :class="{ 'text-amber-500 font-medium': $route.path === '/travel-companions', 'text-gray-700 hover:text-gray-900': $route.path !== '/travel-companions' }"
+          class="block"
+        >تاریخچه جاباما</NuxtLink>
         <a href="#" class="block text-gray-700 hover:text-gray-900">معرفی همکار (رفرال)</a>
         <a href="#" class="block text-gray-700 hover:text-gray-900">مدل سهام داری</a>
         <a href="#" class="block text-gray-700 hover:text-gray-900">ساعت کاری</a>
