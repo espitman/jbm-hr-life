@@ -1,5 +1,5 @@
 <template>
-  <div class="w-64 border-l border-gray-200 min-h-screen rtl-container">
+  <div class="w-64 border-l border-[#F59D24] min-h-screen rtl-container">
     <div class="p-6">
       <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
       

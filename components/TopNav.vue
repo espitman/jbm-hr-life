@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row-reverse justify-between items-center p-4 border-b rtl-container">
+  <div class="flex flex-row-reverse justify-between items-center p-4 rtl-container">
     <!-- Left side navigation items (appears on right in RTL) -->
     <div class="flex items-center space-x-reverse space-x-8">
       <a href="#" class="text-gray-600 hover:text-gray-900">ارتباط با جاباما</a>
