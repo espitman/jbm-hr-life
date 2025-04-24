@@ -170,7 +170,7 @@
         </div>
         
         <div>
-          <button type="submit" class="w-full bg-amber-400 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-500 transition duration-300">
+          <button type="submit" class="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300">
             ارسال
           </button>
         </div>
