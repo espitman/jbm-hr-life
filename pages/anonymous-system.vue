@@ -12,9 +12,21 @@
             <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
             <h2 class="text-2xl font-bold">اینجا با من حرف بزن!</h2>
           </div>
-          <p class="text-gray-500 leading-relaxed text-justify">
+          <p class="text-gray-500 leading-relaxed text-justify mb-6">
             این پرسشنامه تنظیم شده تا حرف‌های شمارو چه شناس و چه ناشناس بشنویم. خواهش می‌کنیم خیلی شفاف و بدون نگرانی اینجا حرفاتونو بزنید؛ ما اینجاییم تا بشنویم و قضاوتی هم در کار نیست! در ابتدای پرسشنامه ازتون نام و نام خانوادگی پرسیده خواهد شد اما این مورد اجباری نیست، ولی این تضمین رو بهتون می‌دیم که همه چی بین خودمون می‌مونه!
           </p>
+          <div class="w-full mt-16">
+            <a 
+              href="https://survey.porsline.ir/s/yoxTx4D" 
+              target="_blank" 
+              class="inline-block w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300 text-center mb-4"
+            >
+              لینک ناشناس
+            </a>
+            <p class="text-gray-500 text-sm leading-relaxed text-right">
+              این فرم فقط در دسترس لیلا سلطانی و حسین مهدی‌خواه خواهد بود.
+            </p>
+          </div>
         </div>
         
         <!-- Right Column -->
