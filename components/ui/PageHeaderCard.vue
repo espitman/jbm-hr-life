@@ -10,7 +10,7 @@
     </div>
     
     <!-- Dotted line from card to circle -->
-    <svg class="absolute -bottom-32 right-8 w-64 h-64" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg v-if="showDot" class="absolute -bottom-32 right-8 w-64 h-64" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M180,10 Q190,100 100,180" stroke="#000" stroke-width="2" stroke-dasharray="5,5" fill="none" />
     </svg>
   </div>
@@ -25,6 +25,10 @@ defineProps({
   websiteUrl: {
     type: String,
     default: 'Jabama.com'
+  },
+  showDot: {
+    type: Boolean,
+    default: true
   }
 })
 </script> 

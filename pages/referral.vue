@@ -1,10 +1,7 @@
 <template>
   <div class="container mx-auto p-6" dir="rtl">
     <!-- Header -->
-    <div class="flex items-center justify-start mb-8">
-      <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
-      <h1 class="text-3xl font-bold">موقعیت‌های شغلی و ریفرال</h1>
-    </div>
+    <PageHeaderCard title="موقعیت‌های شغلی و ریفرال" :showDot="false" />
     
     <!-- Introduction -->
     <div class="text-gray-500 leading-relaxed text-justify mb-6">
@@ -180,6 +177,8 @@
 </template>
 
 <script setup>
+import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
+
 definePageMeta({
   layout: 'default'
 })
