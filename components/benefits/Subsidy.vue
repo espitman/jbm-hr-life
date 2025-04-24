@@ -19,19 +19,19 @@
                 <div class="bg-amber-500 p-3 text-center font-bold">سوبسید اختصاصی (تومان)</div>
                 
                 <!-- Row 1 -->
-                <div class="bg-amber-100 p-3 text-center border-l border-white border-t border-amber-200">حقوق ناخالص کمتر از 18 میلیون تومان</div>
+                <div class="bg-amber-100 p-3 text-center border-l border-l-white border-t border-amber-200">حقوق ناخالص کمتر از 18 میلیون تومان</div>
                 <div class="bg-amber-100 p-3 text-center border-t border-amber-200">2.800.000</div>
                 
                 <!-- Row 2 -->
-                <div class="bg-amber-200 p-3 text-center border-l border-white border-t border-amber-200">حقوق ناخالص بین 18 تا 30 میلیون تومان</div>
+                <div class="bg-amber-200 p-3 text-center border-l border-l-white border-t border-amber-200">حقوق ناخالص بین 18 تا 30 میلیون تومان</div>
                 <div class="bg-amber-200 p-3 text-center border-t border-amber-200">2.250.000</div>
                 
                 <!-- Row 3 -->
-                <div class="bg-amber-100 p-3 text-center border-l border-white border-t border-amber-200">حقوق ناخالص بین 30 تا 50 میلیون تومان</div>
+                <div class="bg-amber-100 p-3 text-center border-l border-l-white border-t border-amber-200">حقوق ناخالص بین 30 تا 50 میلیون تومان</div>
                 <div class="bg-amber-100 p-3 text-center border-t border-amber-200">1.500.000</div>
                 
                 <!-- Row 4 -->
-                <div class="bg-amber-200 p-3 text-center border-l border-white border-t border-amber-200">حقوق ناخالص بین 50 تا 100 میلیون تومان</div>
+                <div class="bg-amber-200 p-3 text-center border-l border-l-white border-t border-amber-200">حقوق ناخالص بین 50 تا 100 میلیون تومان</div>
                 <div class="bg-amber-200 p-3 text-center border-t border-amber-200">1.000.000</div>
               </div>
             </div>
