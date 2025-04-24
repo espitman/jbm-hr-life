@@ -1,15 +1,78 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">قوانین همکاری</h1>
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <p class="text-gray-700 mb-4">
-        این صفحه در حال ساخت است. محتوای مربوط به قوانین همکاری به زودی اضافه خواهد شد.
-      </p>
+  <div class="container mx-auto p-6" dir="rtl">
+    <!-- Hero Image with Overlay -->
+    <div class="relative rounded-xl overflow-hidden mb-10">
+      <img 
+        src="/images/collaboration-rules.jpg" 
+        alt="Collaboration rules hero image" 
+        class="w-full h-auto"
+      />
+    </div>
+    
+    <!-- Divider with Dot -->
+    <div class="flex items-center justify-center mb-10">
+      <div class="h-px bg-gray-300 w-full"></div>
+      <div class="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
+    </div>
+    
+    <!-- Information Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <!-- Card 1: Online Meeting Etiquette -->
+      <div class="border border-amber-500 rounded-lg p-6 flex flex-col h-full">
+        <h2 class="text-xl font-bold text-amber-500 mb-4">آداب شرکت در جلسات آنلاین</h2>
+        
+        <p class="text-gray-500 leading-relaxed text-justify mb-6 flex-grow">
+          حالا که بازار دورکاری و جلسات آنلاین داغ است پدیده مهم است به موضوع «آداب شرکت در جلسات آنلاین» بپردازیم. نکات ساده و طلایی که می‌تواند اثربخشی جلسات آنلاین را افزایش دهد.
+        </p>
+        
+        <button class="w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition duration-300">
+          اینجا بیشتر گفتیم
+        </button>
+      </div>
+      
+      <!-- Card 2: Open Office Etiquette -->
+      <div class="border border-amber-500 rounded-lg p-6 flex flex-col h-full">
+        <h2 class="text-xl font-bold text-amber-500 mb-4">آداب کار حرفه‌ای در open office</h2>
+        
+        <p class="text-gray-500 leading-relaxed text-justify mb-6 flex-grow">
+          فضاهای کاری یکپارچه یا اصطلاحا اوپن آفیس ها مدت‌ها است که در فضای کاری کشور باب شده‌اند. این مدل فضاها در کنار همه‌ی مزایایی که دارند ممکن است یک سری چالش هم بوجود بیاورند.
+        </p>
+        
+        <button class="w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition duration-300">
+          اینجا بیشتر گفتیم
+        </button>
+      </div>
+      
+      <!-- Card 3: Behavioral Codes -->
+      <div class="border border-amber-500 rounded-lg p-6 flex flex-col h-full">
+        <h2 class="text-xl font-bold text-amber-500 mb-4">کدهای رفتاری</h2>
+        
+        <p class="text-gray-500 leading-relaxed text-justify mb-6 flex-grow">
+          در اینجا خلاصه ای از کدهای رفتاری، که از این به بعد به آن "کد" می‌گوییم. براساس سیاست‌ها و ارزش‌های جاباما گردآوری شده است.
+        </p>
+        
+        <button class="w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition duration-300">
+          اینجا بیشتر گفتیم
+        </button>
+      </div>
+      
+      <!-- Card 4: Harassment-Free Workplace -->
+      <div class="border border-amber-500 rounded-lg p-6 flex flex-col h-full">
+        <h2 class="text-xl font-bold text-amber-500 mb-4">محل کاری به دور از آزار و اذیت جنسی و قلدری</h2>
+        
+        <p class="text-gray-500 leading-relaxed text-justify mb-6 flex-grow">
+          برای اینکه بتوانیم فضای کاری ایمن و سالمی را کنار هم تجربه کنیم، بهتر است آگاهی خود را نسبت به این رفتارها و روند شکایت و بررسی افزایش دهیم.
+        </p>
+        
+        <button class="w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition duration-300">
+          اینجا بیشتر گفتیم
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   layout: 'default'
 })
