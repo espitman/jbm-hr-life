@@ -35,13 +35,7 @@
             بی زحمت در هم پشت سرتون ببندین !!
             آخه قراره همه چی بین خودمون بمونه 🙂
           </p>
-          <img 
-            src="/images/speaker.svg" 
-            alt="Speaker" 
-            class="w-3/4"
-            @error="handleImageError"
-            @load="handleImageLoad"
-          />
+          <img src="~/public/images/speaker.svg" alt="Speaker" class="w-3/4" />
         </div>
       </div>
   </div>
