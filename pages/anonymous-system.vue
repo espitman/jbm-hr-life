@@ -35,7 +35,13 @@
             بی زحمت در هم پشت سرتون ببندین !!
             آخه قراره همه چی بین خودمون بمونه 🙂
           </p>
-          <img src="/images/speaker.svg" alt="Speaker" class="w-3/4" />
+          <img 
+            src="/images/speaker.svg" 
+            alt="Speaker" 
+            class="w-3/4"
+            @error="handleImageError"
+            @load="handleImageLoad"
+          />
         </div>
       </div>
   </div>
@@ -44,6 +50,15 @@
 <script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
 import Section from '~/components/ui/Section.vue'
+
+const handleImageError = (e) => {
+  console.error('Error loading image:', e)
+  // You could set a fallback image here if needed
+}
+
+const handleImageLoad = (e) => {
+  console.log('Image loaded successfully')
+}
 
 definePageMeta({
   layout: 'default'
