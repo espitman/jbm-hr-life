@@ -1,15 +1,38 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">سامانه ناشناس</h1>
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <p class="text-gray-700 mb-4">
-        این صفحه در حال ساخت است. محتوای مربوط به سامانه ناشناس به زودی اضافه خواهد شد.
-      </p>
-    </div>
+  <div class="container p-6">
+    <PageHeaderCard 
+      title="سامانه ناشناس"
+      :showDot="false"
+    />
+    
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+        <!-- Left Column -->
+        <div class="flex flex-col justify-start">
+          <div class="flex items-center justify-start mb-6">
+            <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
+            <h2 class="text-2xl font-bold">اینجا با من حرف بزن!</h2>
+          </div>
+          <p class="text-gray-500 leading-relaxed text-justify">
+            این پرسشنامه تنظیم شده تا حرف‌های شمارو چه شناس و چه ناشناس بشنویم. خواهش می‌کنیم خیلی شفاف و بدون نگرانی اینجا حرفاتونو بزنید؛ ما اینجاییم تا بشنویم و قضاوتی هم در کار نیست! در ابتدای پرسشنامه ازتون نام و نام خانوادگی پرسیده خواهد شد اما این مورد اجباری نیست، ولی این تضمین رو بهتون می‌دیم که همه چی بین خودمون می‌مونه!
+          </p>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-gray-500 leading-relaxed text-cebter mb-6">
+            بی زحمت در هم پشت سرتون ببندین !!
+            آخه قراره همه چی بین خودمون بمونه 🙂
+          </p>
+          <img src="/images/speaker.svg" alt="Speaker" class="w-3/4" />
+        </div>
+      </div>
   </div>
 </template>
 
 <script setup>
+import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
+import Section from '~/components/ui/Section.vue'
+
 definePageMeta({
   layout: 'default'
 })
