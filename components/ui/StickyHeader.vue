@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" class="fixed top-[92px] left-0 right-64 z-400 bg-amber-500 shadow-md transition-all duration-500">
+  <div v-if="isVisible" class="fixed top-[92px] left-0 right-64 z-[9999] bg-amber-500 shadow-md transition-all duration-500">
     <div class="px-4 py-3 flex items-center justify-between">
       <div class="flex items-center">
         <!-- Page Icon -->
