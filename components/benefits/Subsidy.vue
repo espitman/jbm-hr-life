@@ -64,9 +64,11 @@
           </div>
           
           <!-- Guide Button -->
-          <button class="w-full bg-amber-500 text-center py-4 rounded-lg font-bold hover:bg-amber-400 transition duration-300">
-            راهنمای استفاده از سامانه غذا
-          </button>
+          <div class="flex justify-end mb-4">
+            <a href="https://albbcloudoutlook-my.sharepoint.com/:b:/g/personal/s_azarshab_jabama_com/ES36x234PzxJucVsjYbHbTUBX1Qlx_oOfCw68FTn4Vnb_w?e=bwpkDu" target="_blank" class="w-full text-center bg-amber-500 text-white font-bold py-2 px-4 rounded hover:bg-amber-600 transition duration-300">
+              راهنمای استفاده از سامانه غذا
+            </a>
+          </div>
         </div>
         
         <!-- Left side - Food illustration -->
