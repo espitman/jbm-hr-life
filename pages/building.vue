@@ -14,14 +14,20 @@
         </div>
 
         <div class="mb-8">
-          <h2 class="text-2xl font-bold text-amber-500 mb-4">تابلوهای راهنما</h2>
+          <div class="flex items-center justify-start mb-6">
+            <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
+            <h2 class="text-2xl font-bold">تابلوهای راهنما</h2>
+          </div>
           <p class="space-y-4 text-gray-500 leading-relaxed text-justify">ساختمان با هدف آشنایی ما با نقوش ایرانی‌اصیل (یکی از مهمترین نمادهای سرزمین‌مان)</p>
           <p class="space-y-4 text-gray-500 leading-relaxed text-justify">طراحی و از دل نقش‌فرش‌ها بیرون آمدند و در گوشه‌نشینی اینجا نقش جدیدی به عهده گرفتند.</p>
           <p class="space-y-4 text-gray-500 leading-relaxed text-justify">نقش‌ها حرف‌های زیادی برای گفتن دارند و در تاریخچه فرش هر نقش مستقل خودش را ایفا کرده‌اند.</p>
         </div>
 
         <div class="mb-12">
-          <h2 class="text-2xl font-bold text-amber-500 mb-4">اتاق جلسات</h2>
+          <div class="flex items-center justify-start mb-6">
+            <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
+            <h2 class="text-2xl font-bold">اتاق جلسات</h2>
+          </div>
           <p class="space-y-4 text-gray-500 leading-relaxed text-justify">با شیوه‌ها و هم نشین شده‌ایم و عضو دائمی‌پذیر و هم قسمتی و وفاداری به این موضوع در طبقه‌ی دوم میدان‌ها را می‌بینید. یکی از مهمترین نمادهای شبه میدان‌های آنجا هستند. همانطور که در واقعیت میدان‌ها پر می‌شوند، سرریزند، تغییر، آماده‌سازی و تصمیم‌گیری‌ها بوده، میدان‌های اینجا هم محل برگزاری جلسات و گرفتن تصمیمات تاثیرگذار هستند. میدان‌ها قرار است لقمه‌ای نهان، فکرکردن و گرفتن تصمیمات کوچک و بزرگ در راستای اهداف ما باشند.</p>
         </div>
       </div>
