@@ -4,23 +4,23 @@
     <PageHeaderCard title="موقعیت‌های شغلی و ریفرال" :showDot="false" />
     
     <!-- Components -->
-    <ReferralIntroduction />
-    <ReferralProgram />
-    <ReferralPrinciples />
-    <ReferralFeatures />
-    <ReferralRewards />
-    <ReferralForm />
+    <Introduction />
+    <Program />
+    <Principles />
+    <Features />
+    <Rewards />
+    <Form />
   </div>
 </template>
 
 <script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
-import ReferralIntroduction from '~/components/referral/ReferralIntroduction.vue'
-import ReferralProgram from '~/components/referral/ReferralProgram.vue'
-import ReferralPrinciples from '~/components/referral/ReferralPrinciples.vue'
-import ReferralFeatures from '~/components/referral/ReferralFeatures.vue'
-import ReferralRewards from '~/components/referral/ReferralRewards.vue'
-import ReferralForm from '~/components/referral/ReferralForm.vue'
+import Introduction from '~/components/referral/Introduction.vue'
+import Program from '~/components/referral/Program.vue'
+import Principles from '~/components/referral/Principles.vue'
+import Features from '~/components/referral/Features.vue'
+import Rewards from '~/components/referral/Rewards.vue'
+import Form from '~/components/referral/Form.vue'
 
 definePageMeta({
   layout: 'default'
