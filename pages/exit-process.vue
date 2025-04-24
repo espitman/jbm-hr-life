@@ -8,10 +8,6 @@
     <div class="p-8">
       <!-- Introduction Section -->
       <div class="mb-12">
-        <div class="flex items-center justify-start mb-6">
-          <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
-          <h2 class="text-2xl font-bold">فرایند خروج از شرکت</h2>
-        </div>
         <p class="text-gray-500 leading-relaxed text-justify mb-6">
           در صورتی که هر کدام از همکاران مایل به ادامه همکاری با شرکت نباشند ، بایستی درخواست خود را طبق روال زیر پیش ببرند.
         </p>
