@@ -5,6 +5,8 @@
     <Travel />
     <Gifts />
     <Education />
+    <TeamBuilding />
+    <Request />
   </div>
 </template>
 
@@ -13,6 +15,8 @@ import Travel from '~/components/benefits/Travel.vue'
 import Subsidy from '~/components/benefits/Subsidy.vue'
 import Gifts from '~/components/benefits/Gifts.vue'
 import Education from '~/components/benefits/Education.vue'
+import TeamBuilding from '~/components/benefits/TeamBuilding.vue'
+import Request from '~/components/benefits/Request.vue'
 
 definePageMeta({
   layout: 'default'
