@@ -68,6 +68,21 @@
       </div>
     </div>
 
+    <!-- Flags Section -->
+    <div class="mb-12">
+      <div class="flex items-center justify-start mb-6">
+        <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
+        <h2 class="text-2xl font-bold">پرچم‌ها</h2>
+      </div>
+      <p class="space-y-4 text-gray-500 leading-relaxed text-justify">
+        اینجا، جایی برای نقش‌هاست؛ از نقش هر کدام‌مان در جاباما گرفته تا نقش پرچم‌هایی که ما را با اصالت و تاریخ فرش ایرانی آشنا می‌کند.
+      </p>
+
+      <p class="space-y-4 text-gray-500 leading-relaxed text-justify">
+        در ساختمان اینجا، هر پرچم داستان خودش را روایت می‌کند. روایت پرچم‌ها از رنگ‌ها و نقش‌های فرش ایرانی الهام گرفته شده‌ و بر اساس نقش و عملکرد هر تیم در جاباما، به طور اختصاصی بازآفرینی شده‌است. این پرچم‌ها، راهنمای شما برای آشنایی بیشتر با محل استقرار هر تیم، طراحی و در ساختمان نصب شده‌است. پیشنهاد می‌کنیم که فرصتی را برای جستجو و شناسایی پرچم‌‌ تیمتان اختصاص دهید و پس از یافتن آن، راوی داستانش باشید.
+      </p>
+    </div>
+
     <!-- Cards Section -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <template v-for="department in departments" :key="department.title">
@@ -75,10 +90,10 @@
           <img 
             :src="department.icon" 
             :alt="department.title"
-            class="w-8 h-8 mb-4"
+            class="w-24 h-24 mb-4"
           >
           <h3 class="text-xl font-bold text-amber-500 mb-2 text-center">{{ department.title }}</h3>
-          <p class="text-gray-500 leading-relaxed text-center text-sm mb-6">{{ department.description }}</p>
+          <p class="text-gray-500 leading-relaxed text-center text-sm">{{ department.description }}</p>
         </div>
       </template>
     </div>
