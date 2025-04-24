@@ -121,5 +121,5 @@
 </template>
 
 <script setup>
-import Section from '~/components/home/Section.vue'
+import Section from '../ui/Section.vue'
 </script> 

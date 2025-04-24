@@ -48,5 +48,5 @@
 </template>
 
 <script setup>
-import Section from './Section.vue'
+import Section from '../ui/Section.vue'
 </script> 
