@@ -1,19 +1,9 @@
 <template>
   <div class="container mx-auto p-6" dir="rtl">
-    <!-- Hero Image with Overlay -->
-    <div class="relative rounded-xl overflow-hidden mb-10">
-      <img 
-        src="/images/collaboration-rules.jpg" 
-        alt="Collaboration rules hero image" 
-        class="w-full h-auto"
-      />
-    </div>
-    
-    <!-- Divider with Dot -->
-    <div class="flex items-center justify-center mb-10">
-      <div class="h-px bg-gray-300 w-full"></div>
-      <div class="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
-    </div>
+    <PageHeaderCard 
+      title="قوانین همکاری"
+      :showDot="false"
+    />
     
     <!-- Information Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -93,6 +83,8 @@
 </template>
 
 <script setup lang="ts">
+import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
+
 definePageMeta({
   layout: 'default'
 })
