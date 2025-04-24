@@ -9,9 +9,11 @@
     
     <!-- View More Jobs Button -->
     <div class="mb-10">
-      <button class="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300">
-        مشاهده فرصت‌های شغلی بیشتر
-      </button>
+      <a href="https://careers.jabama.com/" target="_blank" class="block">
+        <button class="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300">
+          مشاهده فرصت‌های شغلی بیشتر
+        </button>
+      </a>
     </div>
   </div>
 </template>
