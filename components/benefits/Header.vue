@@ -1,6 +1,6 @@
 <template>
   <Section>
-    <div class="max-w-6xl mx-auto p-6" dir="rtl">
+    <div class="w-full px-6" dir="rtl">
       <PageHeaderCard title="پکیج مزایا جاباما" />
       
       <div class="flex flex-col md:flex-row items-center gap-8">

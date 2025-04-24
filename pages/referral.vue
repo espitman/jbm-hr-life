@@ -20,7 +20,7 @@
     <!-- Referral Program Section -->
     <div class="mb-12">
       <div class="flex items-center justify-start mb-6">
-        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
         <h2 class="text-2xl font-bold">
           <span class="text-amber-500">خوش سفر</span> - برنامه‌ی ریفرال همکاران <span class="text-amber-500">جاباما</span>
         </h2>
@@ -45,7 +45,7 @@
     <!-- General Principles Section -->
     <div class="mb-12">
       <div class="flex items-center justify-start mb-6">
-        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
         <h2 class="text-2xl font-bold">
           اصول کلی معرفی (ریفرال) افراد برای موقعیت‌های شغلی <span class="text-amber-500">جاباما:</span>
         </h2>
@@ -72,7 +72,7 @@
     <!-- Features Section -->
     <div class="mb-12">
       <div class="flex items-center justify-start mb-6">
-        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
         <h2 class="text-2xl font-bold">ویژگی‌های خوش سفر:</h2>
       </div>
       
@@ -100,7 +100,7 @@
     <!-- Rewards Section -->
     <div class="mb-12">
       <div class="flex items-center justify-start mb-6">
-        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <div class="w-5 h-5 rounded-full bg-amber-500 ml-2"></div>
         <h2 class="text-2xl font-bold">جایزه‌ی معرفی کنندگان:</h2>
       </div>
       
