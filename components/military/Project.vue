@@ -40,5 +40,15 @@
         <div class="absolute top-4 right-4 w-12 h-12 border-4 border-dashed border-white/30 rounded-full"></div>
       </div>
     </div>
+
+    <!-- Additional Information -->
+    <div class="mt-8 space-y-4 text-gray-800 text-lg px-4">
+      <p class="leading-relaxed">
+        درصورتیکه زمان اعزام شما به طور مثال سال ۱۴۰۴ باشه سال قبلش تا آذر ماه ۱۴۰۳ زمان دارین که طی ایمیل درخواستتون را به HRBP و مدیرتون اعلام کنین.
+      </p>
+      <p class="leading-relaxed">
+        کمیته‌ی سربازی درخواست تمام مشمولین را با توجه به شرایط و الویت بندی تخصیص سهمیه تا بهمن همون سال به شما اعلام می‌کند که سهمیه بهتون تعلق می‌گیرد یا خیر.
+      </p>
+    </div>
   </div>
 </template> 
