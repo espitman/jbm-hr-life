@@ -5,11 +5,15 @@
       :showDot="false"
     />
     
+    
     <!-- Microsoft Teams Introduction -->
     <div class="mb-10">
-      <h2 class="text-2xl font-bold mb-4 text-right">
-        آشنایی با <span class="text-amber-500">Microsoft Teams</span>
-      </h2>
+      <div class="flex items-center justify-start mb-8">
+        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <h2 class="text-2xl font-bold text-right">
+          آشنایی با <span class="text-amber-500">Microsoft Teams</span>
+        </h2>
+      </div>
       
       <p class="text-gray-500 leading-relaxed text-justify mb-6">
         در جاباما از سرویس‌های ۳۶۵ Microsoft استفاده می‌شود. شما علاوه بر ایمیل، اوت لوک و تیمز، می‌توانید از سایر سرویس‌های تحت وب مایکروسافت هم استفاده کنید. این سرویس‌ها فقط با اکانت سازمانی شما و سایر همکاران قابل دسترسی خواهد بود و استفاده از این بسترها، به حفظ محرمیت اطلاعات شرکت هم کمک خواهد کرد. همچنین می‌توانید داکیومنت آموزش نحوه رزرو اتاق از طریق Outlook را مطالعه کنید.
@@ -74,10 +78,13 @@
     </div>
     
     <!-- Teams Channels Section -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-bold mb-6 text-right">
-        آشنایی با کانال‌های <span class="text-gray-900">جاباما و گروه علی‌بابا در</span> <span class="text-amber-500">مایکروسافت تیمز</span>
-      </h2>
+    <div class="mb-10 pt-12">
+      <div class="flex items-center justify-start mb-8">
+        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <h2 class="text-2xl font-bold text-right">
+          آشنایی با کانال‌های <span class="text-gray-900">جاباما و گروه علی‌بابا در</span> <span class="text-amber-500">مایکروسافت تیمز</span>
+        </h2>
+      </div>
       
       <div class="mb-8">
         <h3 class="text-xl font-bold mb-4">Jabama Team</h3>
