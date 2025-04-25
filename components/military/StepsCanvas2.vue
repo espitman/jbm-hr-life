@@ -3,7 +3,6 @@
       <canvas 
         ref="canvas" 
         class="w-full border border-gray-200 rounded-lg shadow-sm"
-        height="660"
       ></canvas>
     </div>
   </template>
@@ -32,15 +31,23 @@
     
     // Define box dimensions
     const boxWidth = canvasElement.width * 0.25;
-    const boxHeight = boxWidth * 0.6;
+    const boxHeight = 96; // Match StepsCanvas height
     const padding = 20;
     const arrowLength = 50;
+    
+    // Calculate total height needed
+    const totalRows = 3; // We have 3 rows
+    const totalHeight = (boxHeight * totalRows) + // Height of all boxes
+                       (arrowLength * (totalRows - 1)) + // Height of arrows between boxes
+                       (padding * 2); // Top and bottom padding
+    
+    canvasElement.height = totalHeight;
     
     // Clear canvas
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     
     // Set font for RTL text
-    ctx.font = "bold 14px 'Vazirmatn', sans-serif";
+    ctx.font = '14px "Vazirmatn"';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     
@@ -53,7 +60,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "در صورت عدم تایید فرم\nباید اصلاح و مجدد ارزیابی\nشود",
-        color: "#4CAF50"
+        color: "#8B5CF6" // purple-500
       },
       {
         x: canvasElement.width - boxWidth - padding,
@@ -61,7 +68,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "در صورت تایید فرد برای\nانجام پروژه به شرکت\nمعرفی میشود",
-        color: "#4CAF50"
+        color: "#EC4899" // pink-500
       },
       {
         x: canvasElement.width - boxWidth - padding,
@@ -69,7 +76,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "انجام پروژه\nاتمام\nدریافت کارت پایان خدمت",
-        color: "#4CAF50"
+        color: "#F97316" // orange-500
       },
       
       // Middle column (light green)
@@ -79,7 +86,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "ارسال فرم پیشنهادی به\nمرکز نخبگان",
-        color: "#66BB6A"
+        color: "#3B82F6" // blue-500
       },
       {
         x: canvasElement.width - boxWidth * 2 - padding * 2,
@@ -87,7 +94,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "ارائه فرم پیشنهادی ممهور\nتوسط فرد به مرکز",
-        color: "#66BB6A"
+        color: "#2563EB" // blue-600
       },
       {
         x: canvasElement.width - boxWidth * 2 - padding * 2,
@@ -95,7 +102,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "ارائه چک به عنوان تضمین\nبه مرکز توسط شرکت",
-        color: "#4DB6AC"
+        color: "#FBBF24" // amber-400
       },
       
       // Left column (blue)
@@ -105,7 +112,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "معرفی فرد به مرکز نخبگان",
-        color: "#5C6BC0"
+        color: "#84CC16" // lime-500
       },
       {
         x: padding,
@@ -113,7 +120,7 @@
         width: boxWidth,
         height: boxHeight,
         text: "تخصیص فرد به مرکز با\nتوجه به سوابق و امتیازات\nوی",
-        color: "#4FC3F7"
+        color: "#22C55E" // green-500
       },
       {
         x: padding,
@@ -121,14 +128,14 @@
         width: boxWidth,
         height: boxHeight,
         text: "پرداخت هزینه نظارت\nتوسط شرکت",
-        color: "#4DB6AC"
+        color: "#3B82F6" // blue-500
       }
     ];
     
     // Draw boxes and text
     boxes.forEach(box => {
-      // Draw rounded rectangle
-      drawRoundedRect(ctx, box.x, box.y, box.width, box.height, 10, box.color);
+      // Draw rounded rectangle with larger radius
+      drawRoundedRect(ctx, box.x, box.y, box.width, box.height, 12, box.color);
       
       // Draw text
       ctx.fillStyle = "white";
@@ -141,19 +148,19 @@
       });
     });
     
-    // Draw vertical arrows
-    drawVerticalArrow(ctx, boxes[0].x + boxes[0].width / 2, boxes[0].y + boxes[0].height, arrowLength, "#4CAF50");
-    drawVerticalArrow(ctx, boxes[1].x + boxes[1].width / 2, boxes[1].y + boxes[1].height, arrowLength, "#4CAF50");
+    // Draw vertical arrows with matching colors
+    drawVerticalArrow(ctx, boxes[0].x + boxes[0].width / 2, boxes[0].y + boxes[0].height, arrowLength, boxes[0].color);
+    drawVerticalArrow(ctx, boxes[1].x + boxes[1].width / 2, boxes[1].y + boxes[1].height, arrowLength, boxes[1].color);
     
-    drawVerticalArrow(ctx, boxes[3].x + boxes[3].width / 2, boxes[3].y + boxes[3].height, arrowLength, "#66BB6A");
-    drawVerticalArrow(ctx, boxes[4].x + boxes[4].width / 2, boxes[4].y + boxes[4].height, arrowLength, "#66BB6A");
+    drawVerticalArrow(ctx, boxes[3].x + boxes[3].width / 2, boxes[3].y + boxes[3].height, arrowLength, boxes[3].color);
+    drawVerticalArrow(ctx, boxes[4].x + boxes[4].width / 2, boxes[4].y + boxes[4].height, arrowLength, boxes[4].color);
     
-    drawVerticalArrow(ctx, boxes[6].x + boxes[6].width / 2, boxes[6].y + boxes[6].height, arrowLength, "#4FC3F7");
-    drawVerticalArrow(ctx, boxes[7].x + boxes[7].width / 2, boxes[7].y + boxes[7].height, arrowLength, "#4FC3F7");
+    drawVerticalArrow(ctx, boxes[6].x + boxes[6].width / 2, boxes[6].y + boxes[6].height, arrowLength, boxes[6].color);
+    drawVerticalArrow(ctx, boxes[7].x + boxes[7].width / 2, boxes[7].y + boxes[7].height, arrowLength, boxes[7].color);
     
-    // Draw horizontal arrows
-    drawHorizontalArrow(ctx, boxes[3].x + boxes[3].width, boxes[0].y + boxes[0].height / 2, boxes[0].x - (boxes[3].x + boxes[3].width), "#4CAF50");
-    drawHorizontalArrow(ctx, boxes[8].x + boxes[8].width, boxes[8].y + boxes[8].height / 2, boxes[5].x - (boxes[8].x + boxes[8].width), "#4DB6AC");
+    // Draw horizontal arrows with matching colors
+    drawHorizontalArrow(ctx, boxes[3].x + boxes[3].width, boxes[0].y + boxes[0].height / 2, boxes[0].x - (boxes[3].x + boxes[3].width), boxes[3].color);
+    drawHorizontalArrow(ctx, boxes[8].x + boxes[8].width, boxes[8].y + boxes[8].height / 2, boxes[5].x - (boxes[8].x + boxes[8].width), boxes[8].color);
   };
   
   const drawRoundedRect = (ctx, x, y, width, height, radius, color) => {
