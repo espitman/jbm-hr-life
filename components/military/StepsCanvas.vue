@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-6xl mx-auto p-2" dir="rtl">
     <!-- Header -->
-    <h1 class="text-3xl font-bold text-center mb-3">مراحل درخواست تسهیلات امریه</h1>
+    <h1 class="text-3xl font-bold text-center mb-3 font-wazir">مراحل درخواست تسهیلات امریه</h1>
     
     <!-- Process Flowchart Container -->
     <div class="border border-gray-300 rounded-3xl p-2 md:p-4 shadow-sm">
@@ -89,15 +89,29 @@ const steps = [
 const drawStep = (step, x, y, width, height) => {
   if (!ctx) return null
   
-  // Draw rectangle
+  // Draw rounded rectangle
+  const radius = 12 // Corner radius
+  ctx.beginPath()
+  ctx.moveTo(x + radius, y)
+  ctx.lineTo(x + width - radius, y)
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius)
+  ctx.lineTo(x + width, y + height - radius)
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height)
+  ctx.lineTo(x + radius, y + height)
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius)
+  ctx.lineTo(x, y + radius)
+  ctx.quadraticCurveTo(x, y, x + radius, y)
+  ctx.closePath()
+  
+  // Fill rectangle
   ctx.fillStyle = step.color
-  ctx.fillRect(x, y, width, height)
+  ctx.fill()
   
   // Draw text
   ctx.fillStyle = '#FFFFFF'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
-  ctx.font = '14px system-ui'
+  ctx.font = '14px "Vazirmatn"'
   
   // Split text into two lines if needed
   const words = step.text.split(' ')
@@ -294,7 +308,19 @@ const handleResize = () => {
   animationFrameId = requestAnimationFrame(draw)
 }
 
+// Load Vazirmatn font
+const loadFont = () => {
+  const font = new FontFace('Vazirmatn', 'url(/public/fonts/Vazirmatn-Regular.ttf)', {
+    weight: '400',
+    style: 'normal'
+  })
+  font.load().then(() => {
+    document.fonts.add(font)
+  })
+}
+
 onMounted(() => {
+  loadFont()
   // Wait for next tick to ensure canvas is mounted
   nextTick(() => {
     draw()
