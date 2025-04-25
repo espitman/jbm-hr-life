@@ -13,6 +13,9 @@
       
       <!-- Sidebar -->
       <Sidebar />
+      
+      <!-- Mobile Menu -->
+      <MobileMenu />
     </div>
   </div>
 </template>
@@ -20,4 +23,5 @@
 <script setup>
 import TopNav from '~/components/TopNav.vue'
 import Sidebar from '~/components/Sidebar.vue'
+import MobileMenu from '~/components/MobileMenu.vue'
 </script> 
