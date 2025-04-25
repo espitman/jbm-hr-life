@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6" dir="rtl">
+  <div class="max-w-6xl mx-auto p-6 mt-12" dir="rtl">
     <!-- Service Types Information -->
     <div class="mb-12 space-y-8">
       <!-- Amrieh Facilities -->
       <div class="mb-8">
-        <h2 class="text-xl font-bold text-amber-500 mb-3">تسهیلات امریه:</h2>
+        <h2 class="text-xl font-bold text-amber-500 mb-3 text-right">تسهیلات امریه:</h2>
         <p class="text-gray-800 leading-relaxed">
           افراد مشمول خدمت در صورت احراز شرایط و کسب امتیازهای لازم می توانند به عنوان انجام خدمت 
           نظام وظیفه، به عنوان مامور در طول مدت خدمت، در یکی از شرکت های دانش بنیان فعالیت کنند و 
@@ -14,7 +14,7 @@
       
       <!-- Alternative Project Facilities -->
       <div class="mb-8">
-        <h2 class="text-xl font-bold text-amber-500 mb-3">تسهیلات پروژه جایگزین:</h2>
+        <h2 class="text-xl font-bold text-amber-500 mb-3 text-right">تسهیلات پروژه جایگزین:</h2>
         <p class="text-gray-800 leading-relaxed">
           افراد مشمول خدمت در صورت احراز شرایط و کسب امتیازهای مصوب می توانند به عنوان انجام پروژه 
           جایگزین خدمت در شرکت های دانش بنیان دوره خدمت نظام وظیفه خود را (مشتمل بر دوره ی 
@@ -25,7 +25,7 @@
       
       <!-- Company Quota -->
       <div class="mb-8">
-        <h2 class="text-xl font-bold text-amber-500 mb-3">سهمیه شرکت:</h2>
+        <h2 class="text-xl font-bold text-amber-500 mb-3 text-right">سهمیه شرکت:</h2>
         <p class="text-gray-800 leading-relaxed">
           ظرفیت شرکت های دانش بنیان برای استفاده از تسهیلات امریه حداکثر سه نفر در سال، برای 
           تسهیلات پروژه جایگزین خدمت داخلی حداکثر یک نفر در سال است و برای تسهیلات پروژه جایگزین 
@@ -51,8 +51,8 @@
         
         <div class="flex-1">
           <div class="flex items-center mb-4">
-            <h2 class="text-2xl font-bold ml-2">ارسال درخواست</h2>
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
+            <h2 class="text-2xl font-bold mr-2 text-right">ارسال درخواست</h2>
           </div>
           
           <p class="text-gray-800 leading-relaxed">
@@ -79,8 +79,8 @@
         
         <div class="flex-1">
           <div class="flex items-center mb-4">
-            <h2 class="text-2xl font-bold ml-2">بررسی توسط واحد منابع انسانی</h2>
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
+            <h2 class="text-2xl font-bold mr-2 text-right">بررسی توسط واحد منابع انسانی</h2>
           </div>
           
           <p class="text-gray-800 leading-relaxed">
@@ -111,8 +111,8 @@
         
         <div class="flex-1">
           <div class="flex items-center mb-4">
-            <h2 class="text-2xl font-bold ml-2">اعلام تایید نهایی</h2>
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
+            <h2 class="text-2xl font-bold mr-2 text-right">اعلام تایید نهایی</h2>
           </div>
           
           <p class="text-gray-800 leading-relaxed">
