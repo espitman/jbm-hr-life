@@ -3,24 +3,26 @@
     <!-- Mobile Menu Button -->
     <button 
       @click="isOpen = !isOpen"
-      class="md:hidden fixed top-6 left-4 z-50 p-2 rounded-lg bg-white text-gray-900"
+      class="fixed top-6 left-4 z-[10000] bg-white text-gray-600 rounded-lg p-2"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
 
-    <!-- Overlay -->
+    <!-- Mobile Menu Overlay -->
     <div 
       v-if="isOpen"
-      class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+      class="fixed inset-0 bg-black/50 z-[9999]"
       @click="isOpen = false"
     ></div>
 
-    <!-- Sliding Menu -->
+    <!-- Mobile Menu Content -->
     <div 
-      class="fixed top-0 right-0 bottom-0 w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out md:hidden"
-      :class="isOpen ? 'translate-x-0' : 'translate-x-full'"
+      :class="[
+        'fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-[10000]',
+        isOpen ? 'translate-x-0' : 'translate-x-full'
+      ]"
     >
       <div class="p-6">
         <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
