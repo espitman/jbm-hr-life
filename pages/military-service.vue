@@ -32,6 +32,9 @@
 
     <!-- Project Component -->
     <Project />
+
+    <!-- Contact Component -->
+    <Contact />
   </div>
 </template>
 
@@ -45,4 +48,5 @@ import StepsCanvas2 from '@/components/military/StepsCanvas2.vue'
 import Regulations from '@/components/military/Regulations.vue'
 import Implementation from '@/components/military/Implementation.vue'
 import Project from '@/components/military/Project.vue'
+import Contact from '@/components/military/Contact.vue'
 </script> 
