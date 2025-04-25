@@ -3,8 +3,8 @@
     <PageHeaderCard title="خدمت سربازی" :showDot="false" />
     
     <!-- Full width image -->
-    <div class="w-full mt-8">
-      <img src="/public/images/military/1.jpg" alt="خدمت سربازی" class="w-full rounded-lg shadow-lg" />
+    <div class="w-full">
+      <img src="/images/military/1.jpg" alt="خدمت سربازی" class="w-full" />
     </div>
   </div>
 </template>
