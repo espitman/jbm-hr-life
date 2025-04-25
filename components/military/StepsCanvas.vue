@@ -1,7 +1,12 @@
 <template>
-  <div class="max-w-6xl mx-auto p-2" dir="rtl">
+  <div class="max-w-6xl mx-auto mt-12" dir="rtl">
     <!-- Header -->
-    <h1 class="text-3xl font-bold text-center mb-3 font-wazir">مراحل درخواست تسهیلات امریه</h1>
+    <div class="mb-8">
+      <div class="flex items-center justify-start mb-4">
+        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <h2 class="text-2xl font-bold">مراحل درخواست تسهیلات امریه</h2>
+      </div>
+    </div>
     
     <!-- Process Flowchart Container -->
     <div class="border border-gray-300 rounded-3xl p-2 md:p-4 shadow-sm">
