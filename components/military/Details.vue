@@ -50,12 +50,12 @@
         </div>
         
         <div class="flex-1">
-          <div class="flex items-center mb-4">
+          <div class="flex items-center mb-4 justify-center md:justify-start">
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
             <h2 class="text-2xl font-bold mr-2 text-right">ارسال درخواست</h2>
           </div>
           
-          <p class="text-gray-800 leading-relaxed">
+          <p class="text-gray-800 leading-relaxed text-center md:text-right">
             برای درخواست استفاده از این تسهیلات به مدیر مستقیم و HRBP ایمیل بزنید
           </p>
         </div>
@@ -78,12 +78,12 @@
         </div>
         
         <div class="flex-1">
-          <div class="flex items-center mb-4">
+          <div class="flex items-center mb-4 justify-center md:justify-start">
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
             <h2 class="text-2xl font-bold mr-2 text-right">بررسی توسط واحد منابع انسانی</h2>
           </div>
           
-          <p class="text-gray-800 leading-relaxed">
+          <p class="text-gray-800 leading-relaxed text-center md:text-right">
             واحد منابع انسانی شرکت، بعد از دریافت درخواست ها پروسه ی بررسی را با توجه به سابقه ی افراد، میزان امتیاز آن ها که بر اساس جدول امتیاز بندی که ستاد نیروهای مسلح مشخص کرده است محاسبه می شود و اولویت بندی های شرکت، انجام می دهد.
           </p>
         </div>
@@ -110,12 +110,12 @@
         </div>
         
         <div class="flex-1">
-          <div class="flex items-center mb-4">
+          <div class="flex items-center mb-4 justify-center md:justify-start">
             <div class="w-6 h-6 rounded-full bg-amber-500"></div>
             <h2 class="text-2xl font-bold mr-2 text-right">اعلام تایید نهایی</h2>
           </div>
           
-          <p class="text-gray-800 leading-relaxed">
+          <p class="text-gray-800 leading-relaxed text-center md:text-right">
             با توجه به محدودیت ظرفیت شرکت برای استفاده از تسهیلات سربازی، به کسانی که بالاترین امتیازها را کسب کرده باشند و درخواست آن ها تایید شده باشد، اطلاع رسانی خواهد شد.
           </p>
         </div>
