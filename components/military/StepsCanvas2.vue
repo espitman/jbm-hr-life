@@ -12,7 +12,19 @@
   
   const canvas = ref(null);
   
-  onMounted(() => {
+  // Load Vazirmatn font
+  const loadFont = async () => {
+    const font = new FontFace('Vazirmatn', 'url(/public/fonts/Vazirmatn-Regular.ttf)');
+    try {
+      const loadedFont = await font.load();
+      document.fonts.add(loadedFont);
+    } catch (error) {
+      console.error('Error loading Vazirmatn font:', error);
+    }
+  };
+  
+  onMounted(async () => {
+    await loadFont();
     nextTick(() => {
       drawFlowchart();
       
@@ -47,7 +59,7 @@
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     
     // Set font for RTL text
-    ctx.font = '14px "Vazirmatn"';
+    ctx.font = '14px Vazirmatn';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     
