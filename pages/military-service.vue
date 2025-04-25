@@ -29,6 +29,9 @@
 
     <!-- Steps Canvas 2 Component -->
     <StepsCanvas2 />
+
+    <!-- Project Component -->
+    <Project />
   </div>
 </template>
 
@@ -41,4 +44,5 @@ import StepsCanvas from '@/components/military/StepsCanvas.vue'
 import StepsCanvas2 from '@/components/military/StepsCanvas2.vue'
 import Regulations from '@/components/military/Regulations.vue'
 import Implementation from '@/components/military/Implementation.vue'
+import Project from '@/components/military/Project.vue'
 </script> 
