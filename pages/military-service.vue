@@ -15,6 +15,9 @@
 
     <!-- Steps Component -->
     <StepsCanvas />
+    
+    <!-- Regulations Component -->
+    <Regulations />
   </div>
 </template>
 
@@ -24,4 +27,5 @@ import StickyHeader from '@/components/ui/StickyHeader.vue'
 import Options from '@/components/military/Options.vue'
 import Details from '@/components/military/Details.vue'
 import StepsCanvas from '@/components/military/StepsCanvas.vue'
+import Regulations from '@/components/military/Regulations.vue'
 </script> 
