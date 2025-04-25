@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6" dir="rtl">
+  <div class="max-w-6xl mx-auto p-2" dir="rtl">
     <!-- Header -->
-    <h1 class="text-3xl font-bold text-center mb-10">مراحل درخواست تسهیلات امریه</h1>
+    <h1 class="text-3xl font-bold text-center mb-3">مراحل درخواست تسهیلات امریه</h1>
     
     <!-- Process Flowchart Container -->
-    <div class="border border-gray-300 rounded-3xl p-6 md:p-10 shadow-sm">
+    <div class="border border-gray-300 rounded-3xl p-2 md:p-4 shadow-sm">
       <canvas ref="canvas" class="w-full"></canvas>
     </div>
   </div>
@@ -143,14 +143,6 @@ const draw = () => {
   const dpr = window.devicePixelRatio || 1
   const rect = canvasElement.getBoundingClientRect()
   
-  canvasElement.width = rect.width * dpr
-  canvasElement.height = rect.height * dpr
-  ctx = canvasElement.getContext('2d')
-  ctx.scale(dpr, dpr)
-  
-  // Clear canvas
-  ctx.clearRect(0, 0, rect.width, rect.height)
-  
   // Calculate dimensions
   const padding = 20
   const stepWidth = (rect.width - padding * 5) / 4
@@ -163,11 +155,24 @@ const draw = () => {
   const column3Height = (stepHeight + stepSpacing) * 3 - stepSpacing // 3 steps
   const column4Height = (stepHeight + stepSpacing) * 3 - stepSpacing // 3 steps
   
+  // Find the maximum height among all columns
+  const maxColumnHeight = Math.max(column1Height, column2Height, column3Height, column4Height)
+  
+  // Set canvas height to match the content height plus padding
+  const canvasHeight = maxColumnHeight + padding * 2
+  canvasElement.width = rect.width * dpr
+  canvasElement.height = canvasHeight * dpr
+  ctx = canvasElement.getContext('2d')
+  ctx.scale(dpr, dpr)
+  
+  // Clear canvas
+  ctx.clearRect(0, 0, rect.width, canvasHeight)
+  
   // Calculate starting y position for each column (from bottom)
-  const column1StartY = rect.height - padding - column1Height
-  const column2StartY = rect.height - padding - column2Height
-  const column3StartY = rect.height - padding - column3Height
-  const column4StartY = rect.height - padding - column4Height
+  const column1StartY = canvasHeight - padding - column1Height
+  const column2StartY = canvasHeight - padding - column2Height
+  const column3StartY = canvasHeight - padding - column3Height
+  const column4StartY = canvasHeight - padding - column4Height
   
   // Draw steps and store their positions
   const stepPositions = []
