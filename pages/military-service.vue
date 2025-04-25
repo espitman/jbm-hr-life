@@ -18,11 +18,14 @@
     
     <!-- Regulations Component -->
     <Regulations />
-
+    
     <!-- Second Full width image -->
     <div class="w-full">
       <img src="/images/military/3.jpg" alt="خدمت سربازی" class="w-full" />
     </div>
+
+    <!-- Implementation Component -->
+    <Implementation />
   </div>
 </template>
 
@@ -33,4 +36,5 @@ import Options from '@/components/military/Options.vue'
 import Details from '@/components/military/Details.vue'
 import StepsCanvas from '@/components/military/StepsCanvas.vue'
 import Regulations from '@/components/military/Regulations.vue'
+import Implementation from '@/components/military/Implementation.vue'
 </script> 

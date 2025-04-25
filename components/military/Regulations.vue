@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="flex items-center justify-start mb-8">
       <div class="w-6 h-6 rounded-full bg-amber-500"></div>
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mr-2">قوانین تسهیلات سربازی</h1>
+      <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mr-2">قوانین تسهیلات سربازی</h1>
     </div>
     
     <!-- Main Content -->
@@ -77,7 +77,7 @@
     <div class="mb-10">
       <div class="flex items-center justify-start mb-8">
         <div class="w-6 h-6 rounded-full bg-amber-500"></div>
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mr-2">نکات تکمیلی</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mr-2">نکات تکمیلی</h2>
       </div>
       
       <div class="space-y-6 flex flex-col items-end">
