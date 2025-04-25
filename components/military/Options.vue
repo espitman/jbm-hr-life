@@ -1,9 +1,11 @@
 <template>
   <div class="max-w-6xl mx-auto p-6" dir="rtl">
     <!-- Header -->
-    <div class="flex items-center justify-end mb-8">
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 ml-2">تسهیلات سربازی کارکنان شرکت ها</h1>
-      <div class="w-8 h-8 rounded-full bg-amber-500"></div>
+    <div class="mb-8">
+      <div class="flex items-center justify-start mb-4">
+        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        <h2 class="text-2xl font-bold">تسهیلات سربازی کارکنان شرکت ها</h2>
+      </div>
     </div>
     
     <!-- Options Cards -->
