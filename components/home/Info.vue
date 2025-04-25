@@ -1,8 +1,8 @@
 <template>
   <Section>
-    <div class="max-w-6xl mx-auto p-6 py-2 md:py-28" dir="rtl">
+    <div class="max-w-6xl mx-auto p-6 py-2 md:pt-20 md:pb-12" dir="rtl">
       <!-- Header -->
-      <div class="mb-12">
+      <div class="md:mb-12">
         <h3 class="text-lg font-medium text-amber-500 mb-2 text-right">آشنایی با تیم</h3>
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-right">آشنایی بیشتر با همسفرهام</h1>
         
@@ -17,7 +17,7 @@
           </div>
           
           <!-- Stats grid on the left -->
-          <div class="w-full md:w-1/2 order-1 md:order-2 p-12">
+          <div class="w-full md:w-1/2 order-1 md:order-2 px-2 py-12 md:px-12">
             <div class="grid grid-cols-2 sm:grid-cols-2 gap-12">
               <!-- Job diversity -->
               <div class="text-right">

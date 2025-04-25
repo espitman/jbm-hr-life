@@ -1,6 +1,6 @@
 <template>
   <Section>
-    <div class="max-w-6xl mx-auto p-6 py-28" dir="rtl">
+    <div class="max-w-6xl mx-auto p-6 py-12 md:pt-22" dir="rtl">
       <!-- Header -->
       <div class="mb-12">
         <h3 class="text-lg font-medium text-amber-500 mb-2 text-right">ارزش های سازمان جاباما</h3>
@@ -56,7 +56,7 @@
         </div>
         
         <!-- Image on the right -->
-        <div class="w-full md:w-1/2 mb-10 md:mb-0">
+        <div class="w-full md:w-1/2 mb-0 md:mb-10">
           <img 
             src="/images/jabama-values.jpg" 
             alt="ارزش های سازمان جاباما"
