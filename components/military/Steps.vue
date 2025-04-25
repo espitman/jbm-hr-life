@@ -41,9 +41,15 @@
         <!-- Column 2 -->
         <div class="flex flex-col items-center justify-end">
           <!-- Step 4 -->
-          <div class="bg-blue-500 text-white rounded-lg p-4 w-full text-center shadow-md h-24 flex items-center justify-center">
+          <div ref="step4" class="bg-blue-500 text-white rounded-lg p-4 w-full text-center shadow-md h-24 flex items-center justify-center">
             <p>درخواست ترک کار و حکم امریه</p>
           </div>
+          
+          <!-- Dynamic Connector 4 to 6 - Vertical -->
+          <div ref="connector4to6Vertical" class="hidden md:block absolute w-1 bg-blue-400 z-10" :style="connector4to6VerticalStyle"></div>
+          
+          <!-- Dynamic Connector 4 to 6 - Horizontal -->
+          <div ref="connector4to6Horizontal" class="hidden md:block absolute h-1 bg-blue-400 z-10" :style="connector4to6HorizontalStyle"></div>
           
           <!-- Connector -->
           <div class="h-6 w-1 bg-blue-700"></div>
@@ -62,7 +68,7 @@
         <!-- Column 3 -->
         <div class="flex flex-col items-center">
           <!-- Step 6 -->
-          <div class="bg-amber-400 text-white rounded-lg p-4 w-full text-center shadow-md h-24 flex items-center justify-center">
+          <div ref="step6" class="bg-amber-400 text-white rounded-lg p-4 w-full text-center shadow-md h-24 flex items-center justify-center">
             <p>مراجعه به پلیس +۱۰ و دریافت برگه سبز</p>
           </div>
           
@@ -125,8 +131,12 @@
 import { ref, onMounted, computed } from 'vue'
 
 const step3 = ref(null)
+const step4 = ref(null)
 const step5 = ref(null)
+const step6 = ref(null)
 const connector = ref(null)
+const connector4to6Vertical = ref(null)
+const connector4to6Horizontal = ref(null)
 
 const connectorStyle = computed(() => {
   if (!step3.value || !step5.value) return {}
@@ -152,11 +162,53 @@ const connectorStyle = computed(() => {
   }
 })
 
+const connector4to6VerticalStyle = computed(() => {
+  if (!step4.value || !step6.value) return {}
+  
+  const step4Rect = step4.value.getBoundingClientRect()
+  const step6Rect = step6.value.getBoundingClientRect()
+  const containerRect = step4.value.parentElement.parentElement.getBoundingClientRect()
+  
+  const startX = step4Rect.left + (step4Rect.width / 2) - containerRect.left
+  const startY = step4Rect.top - containerRect.top
+  const endY = step6Rect.top + (step6Rect.height / 2) - containerRect.top
+  
+  return {
+    height: `${Math.abs(endY - startY)}px`,
+    left: `${startX}px`,
+    top: `${Math.min(startY, endY)}px`
+  }
+})
+
+const connector4to6HorizontalStyle = computed(() => {
+  if (!step4.value || !step6.value) return {}
+  
+  const step4Rect = step4.value.getBoundingClientRect()
+  const step6Rect = step6.value.getBoundingClientRect()
+  const containerRect = step4.value.parentElement.parentElement.getBoundingClientRect()
+  
+  const startX = step4Rect.left + (step4Rect.width / 2) - containerRect.left
+  const endX = step6Rect.right - containerRect.left
+  const y = step6Rect.top + (step6Rect.height / 2) - containerRect.top
+  
+  return {
+    width: `${Math.abs(endX - startX)}px`,
+    left: `${Math.min(startX, endX)}px`,
+    top: `${y}px`
+  }
+})
+
 onMounted(() => {
   window.addEventListener('resize', () => {
     // Force recomputation of connectorStyle
     if (connector.value) {
       connector.value.style = connectorStyle.value
+    }
+    if (connector4to6Vertical.value) {
+      connector4to6Vertical.value.style = connector4to6VerticalStyle.value
+    }
+    if (connector4to6Horizontal.value) {
+      connector4to6Horizontal.value.style = connector4to6HorizontalStyle.value
     }
   })
 })
