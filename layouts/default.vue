@@ -5,9 +5,10 @@
       <div class="flex-1">
         <!-- Top navigation bar -->
         <TopNav />
-        
         <!-- Main content slot -->
-        <slot />
+         <div class="w-[calc(100vw-16rem)] overflow-x-hidden">
+          <slot />
+         </div>
       </div>
       
       <!-- Sidebar -->
