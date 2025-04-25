@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6" dir="rtl">
+  <div class="max-w-6xl mx-auto mt-12" dir="rtl">
     <!-- Header -->
     <div class="mb-8">
       <div class="flex items-center justify-start mb-4">
@@ -13,19 +13,19 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Option 1: Amrieh -->
         <div class="bg-amber-500 rounded-xl p-8 flex items-center justify-center">
-          <h2 class="text-3xl font-bold text-center">امریه</h2>
+          <h2 class="text-xl font-bold text-center">امریه</h2>
         </div>
         
         <!-- Option 2: Internal Alternative Service -->
         <div class="bg-amber-500 rounded-xl p-8 flex items-center justify-center">
-          <h2 class="text-3xl font-bold text-center">
+          <h2 class="text-xl font-bold text-center">
             پروژه جایگزین خدمت در شرکت دانش بنیان (داخلی)
           </h2>
         </div>
         
         <!-- Option 3: External Alternative Service -->
         <div class="bg-amber-500 rounded-xl p-8 flex items-center justify-center">
-          <h2 class="text-3xl font-bold text-center">
+          <h2 class="text-xl font-bold text-center">
             پروژه جایگزین خدمت در صنایع دفاعی و کشوری (خارجی)
           </h2>
         </div>
