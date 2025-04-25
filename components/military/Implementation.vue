@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 mt-12" dir="rtl">
+  <div class="mt-12" dir="rtl">
     <div class="flex items-center justify-start mb-6">
         <div class="w-6 h-6 rounded-full bg-amber-500"></div>
         <h2 class="text-4xl font-bold mr-2">فرآیند اجرا</h2>

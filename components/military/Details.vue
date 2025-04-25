@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 mt-12" dir="rtl">
+  <div class="m-full mt-20" dir="rtl">
     <!-- Service Types Information -->
     <div class="mb-12 space-y-8">
       <!-- Amrieh Facilities -->

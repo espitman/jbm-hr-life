@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto p-6 mt-12">
+  <div class="mt-12">
     <div class="bg-amber-500 rounded-3xl p-8 relative overflow-hidden">
       <!-- Header -->
       <div class="flex items-center gap-2 mb-6">

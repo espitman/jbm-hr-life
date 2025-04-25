@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto mt-12" dir="rtl">
+  <div class="w-full mt-12" dir="rtl">
     <!-- Header -->
     <div class="mb-8">
       <div class="flex items-center justify-start mb-4">

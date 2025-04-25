@@ -1,6 +1,5 @@
 <template>
-  <Section>
-    <div class="w-full px-6" dir="rtl">
+    <div class="w-full" dir="rtl">
       <PageHeaderCard title="پکیج مزایا جاباما" />
       
       <div class="flex flex-col md:flex-row items-center gap-8">
@@ -30,7 +29,6 @@
         </div>
       </div>
     </div>
-  </Section>
 </template>
 
 <script setup>
