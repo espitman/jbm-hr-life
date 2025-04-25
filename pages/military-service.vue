@@ -12,6 +12,9 @@
     
     <!-- Details Component -->
     <Details />
+
+    <!-- Steps Component -->
+    <Steps />
   </div>
 </template>
 
@@ -19,4 +22,5 @@
 import PageHeaderCard from '@/components/ui/PageHeaderCard.vue'
 import Options from '@/components/military/Options.vue'
 import Details from '@/components/military/Details.vue'
+import Steps from '@/components/military/Steps.vue'
 </script> 
