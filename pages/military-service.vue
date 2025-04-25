@@ -14,13 +14,14 @@
     <Details />
 
     <!-- Steps Component -->
-    <Steps />
+    <StepsCanvas />
   </div>
 </template>
 
 <script setup>
 import PageHeaderCard from '@/components/ui/PageHeaderCard.vue'
+import StickyHeader from '@/components/ui/StickyHeader.vue'
 import Options from '@/components/military/Options.vue'
 import Details from '@/components/military/Details.vue'
-import Steps from '@/components/military/Steps.vue'
+import StepsCanvas from '@/components/military/StepsCanvas.vue'
 </script> 
