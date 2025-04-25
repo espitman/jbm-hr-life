@@ -1,16 +1,9 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">تسهیلات نظام وظیفه تخصصی</h1>
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <p class="text-gray-700 mb-4">
-        این صفحه در حال ساخت است. محتوای مربوط به تسهیلات نظام وظیفه تخصصی به زودی اضافه خواهد شد.
-      </p>
-    </div>
+  <div>
+    <PageHeaderCard title="خدمت سربازی" />
   </div>
 </template>
 
 <script setup>
-definePageMeta({
-  layout: 'default'
-})
+import PageHeaderCard from '@/components/ui/PageHeaderCard.vue'
 </script> 
