@@ -4,7 +4,7 @@
       <!-- Table Layout for Form Fields -->
       <div class="grid gap-4">
         <!-- First Row: 2 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4">
           <div>
             <input 
               type="text" 
@@ -22,7 +22,7 @@
         </div>
         
         <!-- Second Row: 3 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4">
           <div>
             <input 
               type="text" 

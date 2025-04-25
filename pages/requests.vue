@@ -17,7 +17,7 @@
 
       <form class="mt-8 border border-gray-100 rounded-2xl p-6 bg-white">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-2">
+          <div class="col-span-1 md:col-span-1 space-y-2">
             <div>
               <label class="block text-gray-700 font-medium">نام و نام خانوادگی</label>
               <span class="text-sm text-gray-500">مطابق شناسنامه باشد</span>
@@ -25,7 +25,7 @@
             <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
           </div>
 
-          <div class="space-y-2">
+          <div class="col-span-1 md:col-span-1 space-y-2">
             <div>
               <label class="block text-gray-700 font-medium">آدرس ایمیل سازمانی</label>
               <span class="text-sm text-gray-500">Example@jabama.com</span>
@@ -33,7 +33,7 @@
             <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
           </div>
 
-          <div class="col-span-2 space-y-2">
+          <div class="col-span-1 md:col-span-2 space-y-2">
             <label class="block text-gray-700 font-medium">نوع درخواست</label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent">
               <option value="">انتخاب کنید</option>
@@ -47,7 +47,7 @@
             </select>
           </div>
 
-          <div class="col-span-2 space-y-2">
+          <div class="col-span-1 md:col-span-2 space-y-2">
             <label class="block text-gray-700 font-medium">توضیحات</label>
             <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent"></textarea>
           </div>
