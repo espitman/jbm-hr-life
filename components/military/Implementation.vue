@@ -145,7 +145,7 @@
     </div>
     
     <!-- Scoring Table -->
-    <div class="mb-10 overflow-x-auto">
+    <div class="mb-10 hidden md:block">
       <table class="w-full border-collapse" dir="rtl">
         <!-- Table Header -->
         <thead>
@@ -224,6 +224,20 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Mobile Download Button -->
+    <div class="mb-10 md:hidden">
+      <a 
+        href="/pdfs/scoring-table.pdf" 
+        download
+        class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-amber-500 rounded-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        دانلود جدول امتیازبندی
+      </a>
     </div>
     
     <!-- Final Requirements -->
