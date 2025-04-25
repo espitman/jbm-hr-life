@@ -6,7 +6,7 @@
         <!-- Top navigation bar -->
         <TopNav />
         <!-- Main content slot -->
-         <div class="w-[calc(100vw-16rem)] overflow-x-hidden">
+         <div class="w-full md:w-[calc(100vw-16rem)] overflow-x-hidden">
           <slot />
          </div>
       </div>

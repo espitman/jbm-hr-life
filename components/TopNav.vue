@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 right-64 left-0 z-50 bg-white shadow-md h-[92px]">
+  <div class="fixed top-0 right-0 md:right-64 left-0 z-50 bg-white shadow-md h-[92px]">
     <div class="flex flex-row-reverse justify-between items-center p-4 h-full rtl-container">
       <!-- Left side navigation items (appears on right in RTL) -->
       <div class="flex items-center space-x-reverse space-x-8">
