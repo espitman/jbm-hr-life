@@ -146,65 +146,81 @@
     
     <!-- Scoring Table -->
     <div class="mb-10 overflow-x-auto">
-      <table class="w-full border-collapse border border-gray-300">
+      <table class="w-full border-collapse" dir="rtl">
+        <!-- Table Header -->
         <thead>
-          <tr class="bg-gray-100">
-            <th class="border border-gray-300 p-2 text-right">امتیاز فعالیت‌های یگان مادر</th>
-            <th class="border border-gray-300 p-2 text-right">کارشناسی</th>
-            <th class="border border-gray-300 p-2 text-right">کارشناسی ارشد</th>
-            <th class="border border-gray-300 p-2 text-right">دکتری تخصصی</th>
-            <th class="border border-gray-300 p-2 text-right">توضیحات</th>
+          <tr class="bg-gray-200">
+            <th class="border border-gray-300 p-3 text-right font-bold">فعالیت فناورانه</th>
+            <th class="border border-gray-300 p-3 text-center font-bold">کارشناسی</th>
+            <th class="border border-gray-300 p-3 text-center font-bold">کارشناسی ارشد</th>
+            <th class="border border-gray-300 p-3 text-center font-bold">دکتری تخصصی</th>
+            <th class="border border-gray-300 p-3 text-right font-bold">توضیحات</th>
           </tr>
         </thead>
+        
+        <!-- Table Body -->
         <tbody>
-          <tr>
-            <td class="border border-gray-300 p-2">فعالیت مرتبط با شرکت دانش بنیان</td>
-            <td class="border border-gray-300 p-2">تا ۱۲۰</td>
-            <td class="border border-gray-300 p-2">تا ۱۲۰</td>
-            <td class="border border-gray-300 p-2">تا ۱۵۰</td>
-            <td class="border border-gray-300 p-2">به ازای هر فعالیت در شرکت های دانش بنیان (هر ماه ۳.۵ امتیاز)</td>
+          <!-- Row 1: Full-time activity -->
+          <tr class="bg-white">
+            <td class="border border-gray-300 p-3 text-right">فعالیت تمام وقت در شرکت دانش بنیان</td>
+            <td class="border border-gray-300 p-3 text-center">تا ۱۳۰</td>
+            <td class="border border-gray-300 p-3 text-center">تا ۱۴۰</td>
+            <td class="border border-gray-300 p-3 text-center">تا ۱۵۰</td>
+            <td class="border border-gray-300 p-3 text-right align-top">
+              <p>به ازای هر ماه فعالیت ۷ امتیاز</p>
+              <p class="mt-2">(به ازای فعالیت در شرکت های دانش بنیان دیگر هر ماه، ۳.۵ امتیاز)</p>
+            </td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">عضویت در هیئت مدیره شرکت دانش بنیان</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">تا ۱۰۰</td>
-            <td class="border border-gray-300 p-2">در صورت عضویت یا مدیر عاملی شرکت امتیاز محسوب میشود (هیئت مدیره محاسبه می شود)</td>
+          
+          <!-- Row 2: Board membership -->
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 p-3 text-right">عضویت در هیئت مدیره شرکت دانش بنیان</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">تا ۱۰۰</td>
+            <td class="border border-gray-300 p-3 text-right align-top">
+              <p>حداقل ۹ ماه و هر ماه ۴ امتیاز</p>
+              <p class="mt-2">( در مدت زمان مدیر عاملی اعضا امتیاز عضویت هیئت مدیره برای فرد محاسبه نمی شود)</p>
+            </td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">مدیر عامل شرکت دانش بنیان</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">تا ۱۵۰</td>
-            <td class="border border-gray-300 p-2">حداقل ۶ ماه و هر ماه ۴ امتیاز (برای مدیر عاملی شرکتی که رسمی می باشد)</td>
+          
+          <!-- Row 3: CEO -->
+          <tr class="bg-white">
+            <td class="border border-gray-300 p-3 text-right">مدیر عامل شرکت دانش بنیان</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">تا ۱۵۰</td>
+            <td class="border border-gray-300 p-3 text-right align-top">
+              <p>حداقل ۹ ماه و هر ماه ۶ امتیاز</p>
+              <p class="mt-2">( مدت زمان مدیریت فرد بر اساس آگهی روزنامه رسمی می باشد)</p>
+            </td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">موضوع فعالیت مرتبط با دانش بنیان</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">تا ۲۰</td>
-            <td class="border border-gray-300 p-2">زمان مورد نیاز</td>
+          
+          <!-- Row 4: Founding member -->
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 p-3 text-right">عضو هیئت مؤسس شرکت دانش بنیان</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">تا ۲۰</td>
+            <td class="border border-gray-300 p-3 text-right">اولین دوره تشکیل شرکت عضو باشد</td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">شرکت دانش بنیان (محل کار)</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">تا ۲۰</td>
-            <td class="border border-gray-300 p-2">به مقدار ۲ امتیاز طبق آمارنامه مالیاتی (اشتراک سیاست نامه مالیاتی وزارت برگزاری سامانه پیشرفته) را با معامله در صورتی که در حال حاضر جزو شرکت های دانش بنیان نوع یک کامل شده باشد امتیاز</td>
+          
+          <!-- Row 5: Company (workplace) -->
+          <tr class="bg-white">
+            <td class="border border-gray-300 p-3 text-right">شرکت دانش بنیان ( محل کار )</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">تا ۲۰</td>
+            <td class="border border-gray-300 p-3 text-right align-top">
+              <p>هر ۳ میلیارد ریال فروش طبق اظهارنامه مالیاتی ۵ امتیاز</p>
+              <p class="mt-2">(شرکت میبایست اظهار نامه مالیاتی رسمی وزارت reg را در سامانه بارگذاری نماید)</p>
+            </td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">وضعیت تایید شرکت دانش بنیان</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
+          
+          <!-- Row 6: Company approval status -->
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 p-3 text-right">وضعیت تایید شرکت دانش بنیان</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">-</td>
+            <td class="border border-gray-300 p-3 text-right">در صورتی که فرد در حال حاضر در یکی از شرکت های دانش بنیان نوع یک فعال باشد ۱۵ امتیاز</td>
           </tr>
-          <tr>
-            <td class="border border-gray-300 p-2">وضعیت فرد و شرکت</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">-</td>
-            <td class="border border-gray-300 p-2">در صورت تعلق و تعامل و مشارکت ۵ امتیاز و به ازای هر ۱۰ امتیاز</td>
+          
+          <!-- Row 7: Marital status -->
+          <tr class="bg-white">
+            <td class="border border-gray-300 p-3 text-right">وضعیت تاهل و فرزند</td>
+            <td class="border border-gray-300 p-3 text-center" colspan="3">-</td>
+            <td class="border border-gray-300 p-3 text-right">در صورت تاهل فرد متقاضی، ۵ امتیاز و به ازای هر فرزند ۱۰ امتیاز</td>
           </tr>
         </tbody>
       </table>
