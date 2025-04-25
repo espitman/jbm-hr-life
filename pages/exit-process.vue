@@ -5,7 +5,7 @@
       :showDot="false"
     />
     
-    <div class="p-8">
+    <div class="md:pt-2">
       <!-- Introduction Section -->
       <div class="mb-12">
         <p class="text-gray-500 leading-relaxed text-justify mb-6">
