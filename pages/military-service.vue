@@ -26,6 +26,9 @@
 
     <!-- Implementation Component -->
     <Implementation />
+
+    <!-- Steps Canvas 2 Component -->
+    <StepsCanvas2 />
   </div>
 </template>
 
@@ -35,6 +38,7 @@ import StickyHeader from '@/components/ui/StickyHeader.vue'
 import Options from '@/components/military/Options.vue'
 import Details from '@/components/military/Details.vue'
 import StepsCanvas from '@/components/military/StepsCanvas.vue'
+import StepsCanvas2 from '@/components/military/StepsCanvas2.vue'
 import Regulations from '@/components/military/Regulations.vue'
 import Implementation from '@/components/military/Implementation.vue'
 </script> 
