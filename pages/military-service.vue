@@ -18,6 +18,11 @@
     
     <!-- Regulations Component -->
     <Regulations />
+
+    <!-- Second Full width image -->
+    <div class="w-full">
+      <img src="/images/military/3.jpg" alt="خدمت سربازی" class="w-full" />
+    </div>
   </div>
 </template>
 
