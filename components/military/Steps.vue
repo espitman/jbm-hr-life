@@ -133,15 +133,14 @@ const connectorStyle = computed(() => {
   
   const step3Rect = step3.value.getBoundingClientRect()
   const step5Rect = step5.value.getBoundingClientRect()
-  const containerRect = step3.value.parentElement.getBoundingClientRect()
+  const containerRect = step3.value.parentElement.parentElement.getBoundingClientRect()
   
-  const startX = step3Rect.right - containerRect.left
+  const startX = step3Rect.left - containerRect.left
   const startY = step3Rect.top + (step3Rect.height / 2) - containerRect.top
-  const endX = step5Rect.left - containerRect.left
+  const endX = step5Rect.right - containerRect.left
   const endY = step5Rect.top + (step5Rect.height / 2) - containerRect.top
   
-
-  const width = endX - startX
+  const width = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2))
   const angle = Math.atan2(endY - startY, endX - startX) * (180 / Math.PI)
   
   return {
