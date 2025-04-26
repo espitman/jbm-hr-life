@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-xl p-8">
+  <div class="bg-white rounded-xl px-0 py-8 md:px-8">
     <!-- Title Section -->
     <div class="flex items-center justify-start mb-6">
       <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>

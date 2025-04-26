@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full bg-white rounded-xl p-8 gap-8">
+  <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full bg-white rounded-xl px-0 py-8 md:px-8 gap-8">
     <!-- Left Side: Image -->
     <div class="hidden md:flex flex-shrink-0 justify-center items-center w-full md:w-1/6">
       <img src="/images/promotion/ladder2.jpg" alt="Ladder 2" class="w-full h-auto rounded-lg" />

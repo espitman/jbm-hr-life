@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-8">
-    <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full bg-white rounded-xl p-8 gap-8">
+    <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full bg-white rounded-xl px-0 py-8 md:px-8 gap-8">
       <!-- Farsi Text -->
       <div class="flex-1 text-right">
         <div class="flex items-center justify-start mb-4">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Process Description Section -->
-    <div class="bg-white rounded-xl p-8">
+    <div class="bg-white rounded-xl px-0 py-8 md:px-8">
       <div class="flex items-center justify-start mb-6">
         <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
         <h3 class="text-xl font-bold">روند اجراى فرآيند براى تمام رده ها بعد ازرده Senior Expert به شكل زير است:</h3>

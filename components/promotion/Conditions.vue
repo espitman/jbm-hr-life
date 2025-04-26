@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white p-8">
+  <div class="w-full bg-white px-0 py-8 md:px-8">
     <!-- Main Title -->
     <div class="flex items-center justify-start mb-8">
       <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>

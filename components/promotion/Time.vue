@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white rounded-xl p-8 mt-8">
+  <div class="w-full bg-white rounded-xl px-0 py-8 md:px-8 mt-8">
     <div class="flex items-center justify-start mb-4">
       <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
       <h2 class="text-2xl font-bold">زمان فرآیند ارتقا</h2>

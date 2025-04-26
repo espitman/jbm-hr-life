@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row items-center justify-between w-full bg-white rounded-xl p-8 gap-8">
+  <div class="flex flex-col md:flex-row items-center justify-between w-full bg-white rounded-xl p-0 md:p-8 gap-8">
     <!-- Farsi Text -->
     <div class="flex-1 text-right">
       <div class="flex items-center justify-start mb-4">
