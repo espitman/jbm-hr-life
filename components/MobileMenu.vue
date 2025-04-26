@@ -26,23 +26,9 @@
     >
       <div class="flex flex-col h-full">
         <div class="p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
           
-          <!-- Top Nav Items -->
-          <div class="mb-4 pb-6 border-b border-gray-200">
-            <nav class="space-y-4">
-              <NuxtLink 
-                to="/" 
-                :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-700 hover:text-gray-900': $route.path !== '/' }"
-                class="flex items-center gap-2 block"
-                @click="isOpen = false"
-              >
-                <PageIcon pageName="home" size="sm" :color="$route.path === '/' ? 'amber-500' : 'gray-700'" />
-                صفحه اصلی
-              </NuxtLink>
-            </nav>
-          </div>
-
-          <!-- Sidebar Items -->
+          <!-- Menu Items -->
           <nav class="space-y-4">
             <NuxtLink 
               v-for="item in menuItems" 
@@ -73,6 +59,7 @@ import UserProfileBox from './UserProfileBox.vue'
 const isOpen = ref(false)
 
 const menuItems = [
+  { to: '/', text: 'صفحه اصلی', pageName: 'home' },
   { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
   { to: '/referral', text: 'معرفی همکار (ریفرال)', pageName: 'referral' },
   { to: '/stock-model', text: 'مدل سهام داری', pageName: 'stock-model' },
