@@ -26,11 +26,11 @@ import PageIcon from './ui/PageIcon.vue'
 
 const menuItems = [
   { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
-  { to: '/referral', text: 'معرفی همکار (رفرال)', pageName: 'referral' },
+  { to: '/referral', text: 'معرفی همکار (ریفرال)', pageName: 'referral' },
   { to: '/stock-model', text: 'مدل سهام داری', pageName: 'stock-model' },
   { to: '/working-hours', text: 'ساعت کاری', pageName: 'working-hours' },
   { to: '/benefits', text: 'مزایا و رفاهیات', pageName: 'benefits' },
-  { to: '/military-service', text: 'تسهیلات نظام وظیفه تخصصی', pageName: 'military-service' },
+  { to: '/military-service', text: 'تسهیلات نظام وظیفه', pageName: 'military-service' },
   { to: '/collaboration-rules', text: 'قوانین همکاری', pageName: 'collaboration-rules' },
   { to: '/requirements', text: 'نیازمندی‌ها', pageName: 'requirements' },
   { to: '/hr-contact', text: 'ارتباط با اچ آر', pageName: 'hr-contact' },
