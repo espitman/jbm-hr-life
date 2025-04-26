@@ -199,6 +199,14 @@ const handleOtpInput = (event, index) => {
       }
     }, 0)
   }
+  
+  // If this is the last digit and it's filled, auto-submit the form
+  if (index === 5 && value) {
+    // Small delay to ensure the value is set before submitting
+    setTimeout(() => {
+      handleOTPSubmit()
+    }, 100)
+  }
 }
 
 // Handle OTP keydown events
