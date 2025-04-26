@@ -249,6 +249,17 @@ const handleOTPSubmit = async () => {
 }
 
 const resendOTP = async () => {
+  // Clear all OTP inputs
+  otpDigits.value = ['', '', '', '', '', '']
+  
+  // Focus the first input
+  setTimeout(() => {
+    const inputs = document.querySelectorAll('input[type="text"]')
+    if (inputs.length > 0) {
+      inputs[0].focus()
+    }
+  }, 0)
+  
   // TODO: Implement OTP resend logic
   console.log('Resending OTP to:', email.value)
 }
