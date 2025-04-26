@@ -16,6 +16,7 @@
     <Decision />
     <Table />
     <Documents />
+    <Acting />
   </div>
 </template>
 
@@ -33,6 +34,7 @@ import Conditions from '~/components/promotion/Conditions.vue'
 import Decision from '~/components/promotion/Decision.vue'
 import Table from '~/components/promotion/Table.vue'
 import Documents from '~/components/promotion/Documents.vue'
+import Acting from '~/components/promotion/Acting.vue'
 
 definePageMeta({
   layout: 'default'
