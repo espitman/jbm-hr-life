@@ -37,7 +37,7 @@
 
     <!-- ارزیابی مدیران سطح 4L95L Section -->
     <div class="mb-6">
-      <h3 class="text-lg font-semibold mb-2 text-gray-700">ارزيابى مديران سطح 4L95L</h3>
+      <h3 class="text-lg font-semibold mb-2 text-gray-700">ارزيابى مديران سطح 4L و 5L</h3>
       <div class="bg-gray-50 rounded-lg p-4 text-gray-700 leading-relaxed text-justify">
         كميته ارزيابى براى مديران كريدها شامل CTO، مدير منابع انسانى، مدير ارشد محصول، Tech HRBP، مديرعامل و تمامى اعضاى تك با كريد مديريتى 6L است. فرآيند اين كميته با كميته عمومى تفاوتى ندارد.
       </div>
