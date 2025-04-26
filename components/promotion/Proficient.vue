@@ -4,7 +4,7 @@
     <div class="flex-1 text-right">
       <div class="flex items-center justify-start mb-4">
         <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
-        <h2 class="text-2xl font-bold">IC/ Proficientمسیر</h2>
+        <h2 class="text-2xl font-bold">مسیر IC/ Proficient</h2>
       </div>
       <p class="space-y-4 text-gray-500 leading-relaxed text-justify">
         كسانى كه بدون بر عهده داشتن مسئوليت هاى مديريتى، با توجه به تخصص و عمق دانش خود، به صورت فردى در فعاليت ها وپروزه هاى سازمان تعامل مى كند. اين مسير براى افرادى است كه تمركز اصلى آنها برروى انجام وظايف تخصصى وفنى است و به جاى مسئوليت هاى مديريتى، برتوسعه مهارت هاى فنى وتخصصى تمركز دارند.
