@@ -1,20 +1,25 @@
 <template>
   <div class="fixed top-0 right-0 bottom-0 w-64 border-l border-[#F59D24] rtl-container z-40 overflow-y-auto hidden md:block">
-    <div class="p-6">
-      <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
-      
-      <nav class="space-y-4">
-        <NuxtLink 
-          v-for="item in menuItems"
-          :key="item.to"
-          :to="item.to" 
-          :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
-          class="flex items-center gap-2 block"
-        >
-          <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
-          {{ item.text }}
-        </NuxtLink>
-      </nav>
+    <div class="flex flex-col h-full">
+      <div class="p-6">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
+        
+        <nav class="space-y-4">
+          <NuxtLink
+            v-for="item in menuItems"
+            :key="item.to"
+            :to="item.to"
+            :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
+            class="flex items-center gap-2 block"
+          >
+            <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
+            {{ item.text }}
+          </NuxtLink>
+        </nav>
+      </div>
+
+      <!-- User Profile Box -->
+      <UserProfileBox />
     </div>
   </div>
   <!-- Add a spacer to prevent content from being hidden under the fixed sidebar -->
@@ -23,6 +28,7 @@
 
 <script setup>
 import PageIcon from './ui/PageIcon.vue'
+import UserProfileBox from './UserProfileBox.vue'
 
 const menuItems = [
   { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
