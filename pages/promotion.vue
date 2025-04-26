@@ -11,6 +11,7 @@
     <Definition2 />
     <Definition3 />
     <Time />
+    <Responsibilities />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import Manager from '~/components/promotion/Manager.vue'
 import Definition2 from '~/components/promotion/Definition2.vue'
 import Definition3 from '~/components/promotion/Definition3.vue'
 import Time from '~/components/promotion/Time.vue'
+import Responsibilities from '~/components/promotion/Responsibilities.vue'
 
 definePageMeta({
   layout: 'default'
