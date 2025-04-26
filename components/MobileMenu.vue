@@ -39,23 +39,6 @@
               <PageIcon pageName="home" size="sm" :color="$route.path === '/' ? 'amber-500' : 'gray-700'" />
               صفحه اصلی
             </NuxtLink>
-            <NuxtLink 
-              to="/album" 
-              :class="{ 'text-amber-500 font-medium': $route.path === '/album', 'text-gray-700 hover:text-gray-900': $route.path !== '/album' }"
-              class="flex items-center gap-2 block"
-              @click="isOpen = false"
-            >
-              <PageIcon pageName="album" size="sm" :color="$route.path === '/album' ? 'amber-500' : 'gray-700'" />
-              آلبوم
-            </NuxtLink>
-            <a 
-              href="#" 
-              class="flex items-center gap-2 block text-gray-700 hover:text-gray-900"
-              @click="isOpen = false"
-            >
-              <PageIcon pageName="contact" size="sm" color="gray-700" />
-              ارتباط با جاباما
-            </a>
           </nav>
         </div>
 
