@@ -50,6 +50,56 @@
         <p class="text-amber-800">در صورتى كه دوره اكتينگ براى فرد موفقيت آمیز نباشد، لازم است مدير جلسه اى با فرد بركَزار كرده و ضمن دادن فيدبک، فرم IDP براى توسعه فردى به او ارائه دهد.</p>
       </div>
     </div>
+
+    <!-- Timeline Table Section -->
+    <div class="mt-8">
+      <h3 class="text-xl font-bold mb-4 flex items-center">
+        <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
+        تایم لاین فرآیند ارتقا
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse bg-white" dir="rtl">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="text-center p-4 text-xl font-bold border">مراحل</th>
+              <th colspan="2" class="text-center p-4 text-xl font-bold border">زمانبندی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-right p-3 border">اعلام لیست افراد حائز شرایط توسط HRBP</td>
+              <td class="text-center p-3 border">اردیبهشت ۵-۱</td>
+              <td class="text-center p-3 border">آبان ۵-۱</td>
+            </tr>
+            <tr>
+              <td class="text-right p-3 border">تایید مدیر ارشد</td>
+              <td class="text-center p-3 border">اردیبهشت ۸-۵</td>
+              <td class="text-center p-3 border">آبان ۸-۵</td>
+            </tr>
+            <tr>
+              <td class="text-right p-3 border">معرفی کاندیدهای ارتقا به کمیته ی ارتقا</td>
+              <td class="text-center p-3 border">اردیبهشت ۱۲-۸</td>
+              <td class="text-center p-3 border">آبان ۱۲-۸</td>
+            </tr>
+            <tr>
+              <td class="text-right p-3 border">اطلاع رسانی به کاندیدای ارتقا و پیمودن فرایند ارتقا</td>
+              <td class="text-center p-3 border">اردیبهشت ۱۵-۱۲</td>
+              <td class="text-center p-3 border">آبان ۱۵-۱۲</td>
+            </tr>
+            <tr>
+              <td class="text-right p-3 border">برگزاری کمیته های ارتقا</td>
+              <td class="text-center p-3 border">اردیبهشت ۳۰-۱۵</td>
+              <td class="text-center p-3 border">آبان ۳۰-۱۵</td>
+            </tr>
+            <tr>
+              <td class="text-right p-3 border">اعلام خروجی فرایند ارتقا به کاندیدها</td>
+              <td class="text-center p-3 border">خرداد ۰۷-۱</td>
+              <td class="text-center p-3 border">آذر ۰۷-۱</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
