@@ -145,6 +145,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import { useAuth } from '~/composables/useAuth'
+import { navigateTo } from '#app'
 
 const step = ref(1)
 const email = ref('')
@@ -256,16 +257,26 @@ const handleEmailSubmit = async () => {
 const handleOTPSubmit = async () => {
   loading.value = true
   try {
-    // TODO: Implement OTP verification logic
-    // For now, just simulate a successful login
-    const mockToken = 'mock_token_' + Date.now()
-    const mockUser = {
-      email: email.value,
-      name: 'Test User'
-    }
+    // Mock OTP verification - check if code is 111111
+    await new Promise(resolve => setTimeout(resolve, 1000))
     
-    login(mockToken, mockUser)
-    navigateTo('/')
+    if (otp.value === '111111') {
+      // Mock successful login
+      const mockToken = 'mock_jwt_token_' + Date.now()
+      const mockUser = {
+        id: 1,
+        email: email.value,
+        name: 'Test User'
+      }
+      
+      // Call login function
+      login(mockToken, mockUser)
+      
+      // Force a page reload to ensure auth state is updated
+      window.location.href = '/'
+    } else {
+      alert('کد تایید نامعتبر است. لطفا از کد 111111 استفاده کنید.')
+    }
   } catch (error) {
     console.error('Error verifying OTP:', error)
   } finally {
