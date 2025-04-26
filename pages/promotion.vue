@@ -13,6 +13,7 @@
     <Time />
     <Responsibilities />
     <Conditions />
+    <Decision />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import Definition3 from '~/components/promotion/Definition3.vue'
 import Time from '~/components/promotion/Time.vue'
 import Responsibilities from '~/components/promotion/Responsibilities.vue'
 import Conditions from '~/components/promotion/Conditions.vue'
+import Decision from '~/components/promotion/Decision.vue'
 
 definePageMeta({
   layout: 'default'
