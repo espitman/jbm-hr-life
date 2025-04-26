@@ -5,75 +5,15 @@
       
       <nav class="space-y-4">
         <NuxtLink 
-          to="/history" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/history', 'text-gray-700 hover:text-gray-900': $route.path !== '/history' }"
-          class="block"
-        >تاریخچه جاباما</NuxtLink>
-        <NuxtLink 
-          to="/referral" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/referral', 'text-gray-700 hover:text-gray-900': $route.path !== '/referral' }"
-          class="block"
-        >معرفی همکار (رفرال)</NuxtLink>
-        <NuxtLink 
-          to="/stock-model" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/stock-model', 'text-gray-700 hover:text-gray-900': $route.path !== '/stock-model' }"
-          class="block"
-        >مدل سهام داری</NuxtLink>
-        <NuxtLink 
-          to="/working-hours" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/working-hours', 'text-gray-700 hover:text-gray-900': $route.path !== '/working-hours' }"
-          class="block"
-        >ساعت کاری</NuxtLink>
-        <NuxtLink 
-          to="/benefits" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/benefits', 'text-gray-700 hover:text-gray-900': $route.path !== '/benefits' }"
-          class="block"
-        >مزایا و رفاهیات</NuxtLink>
-        <NuxtLink 
-          to="/military-service" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/military-service', 'text-gray-700 hover:text-gray-900': $route.path !== '/military-service' }"
-          class="block"
-        >تسهیلات نظام وظیفه تخصصی</NuxtLink>
-        <NuxtLink 
-          to="/collaboration-rules" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/collaboration-rules', 'text-gray-700 hover:text-gray-900': $route.path !== '/collaboration-rules' }"
-          class="block"
-        >قوانین همکاری</NuxtLink>
-        <NuxtLink 
-          to="/requirements" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/requirements', 'text-gray-700 hover:text-gray-900': $route.path !== '/requirements' }"
-          class="block"
-        >نیازمندی‌ها</NuxtLink>
-        <NuxtLink 
-          to="/hr-contact" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/hr-contact', 'text-gray-700 hover:text-gray-900': $route.path !== '/hr-contact' }"
-          class="block"
-        >ارتباط با اچ آر</NuxtLink>
-        <NuxtLink 
-          to="/anonymous-system" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/anonymous-system', 'text-gray-700 hover:text-gray-900': $route.path !== '/anonymous-system' }"
-          class="block"
-        >سامانه ناشناس</NuxtLink>
-        <NuxtLink 
-          to="/promotion" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/promotion', 'text-gray-700 hover:text-gray-900': $route.path !== '/promotion' }"
-          class="block"
-        >فرآیند ارتقا</NuxtLink>
-        <NuxtLink 
-          to="/exit-process" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/exit-process', 'text-gray-700 hover:text-gray-900': $route.path !== '/exit-process' }"
-          class="block"
-        >فرایند خروج</NuxtLink>
-        <NuxtLink 
-          to="/requests" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/requests', 'text-gray-700 hover:text-gray-900': $route.path !== '/requests' }"
-          class="block"
-        >درخواست‌ها</NuxtLink>
-        <NuxtLink 
-          to="/building" 
-          :class="{ 'text-amber-500 font-medium': $route.path === '/building', 'text-gray-700 hover:text-gray-900': $route.path !== '/building' }"
-          class="block"
-        >ساختمان اینجا</NuxtLink>
+          v-for="item in menuItems"
+          :key="item.to"
+          :to="item.to" 
+          :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
+          class="flex items-center gap-2 block"
+        >
+          <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
+          {{ item.text }}
+        </NuxtLink>
       </nav>
     </div>
   </div>
@@ -82,5 +22,22 @@
 </template>
 
 <script setup>
-// Component logic can be added here if needed
+import PageIcon from './ui/PageIcon.vue'
+
+const menuItems = [
+  { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
+  { to: '/referral', text: 'معرفی همکار (رفرال)', pageName: 'referral' },
+  { to: '/stock-model', text: 'مدل سهام داری', pageName: 'stock-model' },
+  { to: '/working-hours', text: 'ساعت کاری', pageName: 'working-hours' },
+  { to: '/benefits', text: 'مزایا و رفاهیات', pageName: 'benefits' },
+  { to: '/military-service', text: 'تسهیلات نظام وظیفه تخصصی', pageName: 'military-service' },
+  { to: '/collaboration-rules', text: 'قوانین همکاری', pageName: 'collaboration-rules' },
+  { to: '/requirements', text: 'نیازمندی‌ها', pageName: 'requirements' },
+  { to: '/hr-contact', text: 'ارتباط با اچ آر', pageName: 'hr-contact' },
+  { to: '/anonymous-system', text: 'سامانه ناشناس', pageName: 'anonymous-system' },
+  { to: '/promotion', text: 'فرآیند ارتقا', pageName: 'promotion' },
+  { to: '/exit-process', text: 'فرایند خروج', pageName: 'exit-process' },
+  { to: '/requests', text: 'درخواست‌ها', pageName: 'requests' },
+  { to: '/building', text: 'ساختمان اینجا', pageName: 'building' }
+]
 </script> 

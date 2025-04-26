@@ -60,13 +60,22 @@ const props = defineProps({
   containerClass: {
     type: String,
     default: ''
+  },
+  pageName: {
+    type: String,
+    default: ''
+  },
+  color: {
+    type: String,
+    default: 'white'
   }
 })
 
 const route = useRoute()
 
-// Get pageName from URL path
+// Get pageName from props or URL path
 const pageName = computed(() => {
+  if (props.pageName) return props.pageName
   const path = route.path
   // Remove leading slash and convert to English format
   return path.replace(/^\//, '').split('/').join('-') || ''
@@ -74,14 +83,11 @@ const pageName = computed(() => {
 
 // Determine icon size based on size prop
 const iconClass = computed(() => {
-  switch (props.size) {
-    case 'sm':
-      return 'w-8 h-8 text-white'
-    case 'lg':
-      return 'w-64 h-80 text-white'
-    case 'md':
-    default:
-      return 'w-32 h-40 text-white'
+  const sizeClasses = {
+    sm: 'w-8 h-8',
+    lg: 'w-64 h-80',
+    md: 'w-32 h-40'
   }
+  return `${sizeClasses[props.size] || sizeClasses.md} text-${props.color}`
 })
 </script> 

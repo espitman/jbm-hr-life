@@ -33,20 +33,29 @@
             <NuxtLink 
               to="/" 
               :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-700 hover:text-gray-900': $route.path !== '/' }"
-              class="block"
+              class="flex items-center gap-2 block"
               @click="isOpen = false"
-            >صفحه اصلی</NuxtLink>
+            >
+              <PageIcon pageName="home" size="sm" :color="$route.path === '/' ? 'amber-500' : 'gray-700'" />
+              صفحه اصلی
+            </NuxtLink>
             <NuxtLink 
               to="/album" 
               :class="{ 'text-amber-500 font-medium': $route.path === '/album', 'text-gray-700 hover:text-gray-900': $route.path !== '/album' }"
-              class="block"
+              class="flex items-center gap-2 block"
               @click="isOpen = false"
-            >آلبوم</NuxtLink>
+            >
+              <PageIcon pageName="album" size="sm" :color="$route.path === '/album' ? 'amber-500' : 'gray-700'" />
+              آلبوم
+            </NuxtLink>
             <a 
               href="#" 
-              class="block text-gray-700 hover:text-gray-900"
+              class="flex items-center gap-2 block text-gray-700 hover:text-gray-900"
               @click="isOpen = false"
-            >ارتباط با جاباما</a>
+            >
+              <PageIcon pageName="contact" size="sm" color="gray-700" />
+              ارتباط با جاباما
+            </a>
           </nav>
         </div>
 
@@ -57,9 +66,10 @@
             :key="item.to"
             :to="item.to"
             :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
-            class="block"
+            class="flex items-center gap-2 block"
             @click="isOpen = false"
           >
+            <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
             {{ item.text }}
           </NuxtLink>
         </nav>
@@ -70,23 +80,24 @@
 
 <script setup>
 import { ref } from 'vue'
+import PageIcon from './ui/PageIcon.vue'
 
 const isOpen = ref(false)
 
 const menuItems = [
-  { to: '/history', text: 'تاریخچه جاباما' },
-  { to: '/referral', text: 'معرفی همکار (رفرال)' },
-  { to: '/stock-model', text: 'مدل سهام داری' },
-  { to: '/working-hours', text: 'ساعت کاری' },
-  { to: '/benefits', text: 'مزایا و رفاهیات' },
-  { to: '/military-service', text: 'تسهیلات نظام وظیفه تخصصی' },
-  { to: '/collaboration-rules', text: 'قوانین همکاری' },
-  { to: '/requirements', text: 'نیازمندی‌ها' },
-  { to: '/hr-contact', text: 'ارتباط با اچ آر' },
-  { to: '/anonymous-system', text: 'سامانه ناشناس' },
-  { to: '/promotion', text: 'فرآیند ارتقا' },
-  { to: '/exit-process', text: 'فرایند خروج' },
-  { to: '/requests', text: 'درخواست‌ها' },
-  { to: '/building', text: 'ساختمان اینجا' }
+  { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
+  { to: '/referral', text: 'معرفی همکار (رفرال)', pageName: 'referral' },
+  { to: '/stock-model', text: 'مدل سهام داری', pageName: 'stock-model' },
+  { to: '/working-hours', text: 'ساعت کاری', pageName: 'working-hours' },
+  { to: '/benefits', text: 'مزایا و رفاهیات', pageName: 'benefits' },
+  { to: '/military-service', text: 'تسهیلات نظام وظیفه تخصصی', pageName: 'military-service' },
+  { to: '/collaboration-rules', text: 'قوانین همکاری', pageName: 'collaboration-rules' },
+  { to: '/requirements', text: 'نیازمندی‌ها', pageName: 'requirements' },
+  { to: '/hr-contact', text: 'ارتباط با اچ آر', pageName: 'hr-contact' },
+  { to: '/anonymous-system', text: 'سامانه ناشناس', pageName: 'anonymous-system' },
+  { to: '/promotion', text: 'فرآیند ارتقا', pageName: 'promotion' },
+  { to: '/exit-process', text: 'فرایند خروج', pageName: 'exit-process' },
+  { to: '/requests', text: 'درخواست‌ها', pageName: 'requests' },
+  { to: '/building', text: 'ساختمان اینجا', pageName: 'building' }
 ]
 </script> 
