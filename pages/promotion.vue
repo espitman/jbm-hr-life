@@ -9,6 +9,7 @@
     <Proficient />
     <Manager />
     <Definition2 />
+    <Definition3 />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import Ladder from '~/components/promotion/Ladder.vue'
 import Proficient from '~/components/promotion/Proficient.vue'
 import Manager from '~/components/promotion/Manager.vue'
 import Definition2 from '~/components/promotion/Definition2.vue'
+import Definition3 from '~/components/promotion/Definition3.vue'
 
 definePageMeta({
   layout: 'default'
