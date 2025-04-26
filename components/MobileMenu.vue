@@ -25,7 +25,10 @@
       ]"
     >
       <div class="flex flex-col h-full">
-        <div class="p-6">
+        <!-- User Profile Box -->
+        <UserProfileBox />
+
+        <div class="p-6 flex-1 overflow-y-auto">
           <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
           
           <!-- Menu Items -->
@@ -43,9 +46,6 @@
             </NuxtLink>
           </nav>
         </div>
-
-        <!-- User Profile Box -->
-        <UserProfileBox />
       </div>
     </div>
   </div>
