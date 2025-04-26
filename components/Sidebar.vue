@@ -55,6 +55,11 @@
           class="block"
         >سامانه ناشناس</NuxtLink>
         <NuxtLink 
+          to="/promotion" 
+          :class="{ 'text-amber-500 font-medium': $route.path === '/promotion', 'text-gray-700 hover:text-gray-900': $route.path !== '/promotion' }"
+          class="block"
+        >فرآیند ارتقا</NuxtLink>
+        <NuxtLink 
           to="/exit-process" 
           :class="{ 'text-amber-500 font-medium': $route.path === '/exit-process', 'text-gray-700 hover:text-gray-900': $route.path !== '/exit-process' }"
           class="block"

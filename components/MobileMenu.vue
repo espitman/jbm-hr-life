@@ -84,6 +84,7 @@ const menuItems = [
   { to: '/requirements', text: 'نیازمندی‌ها' },
   { to: '/hr-contact', text: 'ارتباط با اچ آر' },
   { to: '/anonymous-system', text: 'سامانه ناشناس' },
+  { to: '/promotion', text: 'فرآیند ارتقا' },
   { to: '/exit-process', text: 'فرایند خروج' },
   { to: '/requests', text: 'درخواست‌ها' },
   { to: '/building', text: 'ساختمان اینجا' }
