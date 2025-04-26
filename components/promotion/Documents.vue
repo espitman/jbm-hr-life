@@ -4,7 +4,7 @@
     <div class="flex-1 text-right">
       <div class="flex items-center justify-start mb-4">
         <div class="w-6 h-6 rounded-full bg-amber-500 ml-2"></div>
-        <h2 class="text-2xl font-bold">در این مرحله می‌بایست کلیه مستندات مورد نیاز توسط HRBP به کمیته ارائه شود</h2>
+        <h2 class="text-xl font-bold"> کلیه مستندات مورد نیاز توسط HRBP به کمیته ارائه می‌شود</h2>
       </div>
       <ul class="space-y-4 text-gray-500 leading-relaxed text-justify list-disc list-inside">
         <li>درزومه ي فرد در صورت نياز</li>
