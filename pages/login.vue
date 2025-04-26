@@ -151,6 +151,7 @@
 import { ref, computed, watch, onMounted } from 'vue'
 import { useAuth } from '~/composables/useAuth'
 import { navigateTo } from '#app'
+import { useToast } from 'vue-toastification'
 
 const step = ref(1)
 const email = ref('')
@@ -158,6 +159,7 @@ const otp = ref('')
 const otpDigits = ref(['', '', '', '', '', ''])
 const loading = ref(false)
 const { login } = useAuth()
+const toast = useToast()
 
 // Watch for step changes to auto-focus first OTP input
 watch(step, (newStep) => {
@@ -255,19 +257,30 @@ const handleOtpKeydown = (event, index) => {
 }
 
 const handleEmailSubmit = async () => {
+  if (!email.value) {
+    toast.error('لطفا ایمیل خود را وارد کنید')
+    return
+  }
+  
   loading.value = true
   try {
     // TODO: Implement email submission logic
     // For now, just move to step 2
     step.value = 2
   } catch (error) {
-    console.error('Error submitting email:', error)
+    toast.error('خطا در ارسال کد تایید')
   } finally {
     loading.value = false
   }
 }
 
 const handleOTPSubmit = async () => {
+  const otpValue = otpDigits.value.join('')
+  if (otpValue.length !== 6) {
+    toast.error('لطفا کد تایید 6 رقمی را وارد کنید')
+    return
+  }
+
   loading.value = true
   try {
     // Mock OTP verification - check if code is 111111
@@ -284,14 +297,15 @@ const handleOTPSubmit = async () => {
       
       // Call login function
       login(mockToken, mockUser)
+      toast.success('ورود با موفقیت انجام شد')
       
       // Force a page reload to ensure auth state is updated
       window.location.href = '/'
     } else {
-      alert('کد تایید نامعتبر است. لطفا از کد 111111 استفاده کنید.')
+      toast.error('کد تایید نامعتبر است.')
     }
   } catch (error) {
-    console.error('Error verifying OTP:', error)
+    toast.error('خطا در تایید کد')
   } finally {
     loading.value = false
   }

@@ -30,6 +30,7 @@
   html {
     direction: rtl;
     @apply antialiased;
+    font-family: 'Vazirmatn', system-ui, sans-serif;
   }
   
   body {
@@ -58,4 +59,14 @@
   .rtl-flex {
     @apply rtl flex flex-row-reverse;
   }
+}
+
+/* Add font-vazirmatn class for toast notifications */
+.font-vazirmatn {
+  font-family: 'Vazirmatn', system-ui, sans-serif !important;
+}
+
+/* Apply Vazirmatn font to toast container */
+.Vue-Toastification__container {
+  font-family: 'Vazirmatn', system-ui, sans-serif !important;
 } 
