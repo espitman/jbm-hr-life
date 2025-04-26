@@ -12,6 +12,7 @@
     <Definition3 />
     <Time />
     <Responsibilities />
+    <Conditions />
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import Definition2 from '~/components/promotion/Definition2.vue'
 import Definition3 from '~/components/promotion/Definition3.vue'
 import Time from '~/components/promotion/Time.vue'
 import Responsibilities from '~/components/promotion/Responsibilities.vue'
+import Conditions from '~/components/promotion/Conditions.vue'
 
 definePageMeta({
   layout: 'default'
