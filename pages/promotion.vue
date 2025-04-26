@@ -6,6 +6,7 @@
     <!-- Content -->
     <Definition />
     <Ladder />
+    <Proficient />
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
 import Definition from '~/components/promotion/Definition.vue'
 import Ladder from '~/components/promotion/Ladder.vue'
+import Proficient from '~/components/promotion/Proficient.vue'
 
 definePageMeta({
   layout: 'default'
