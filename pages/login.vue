@@ -144,11 +144,14 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
+import { useAuth } from '~/composables/useAuth'
 
 const step = ref(1)
 const email = ref('')
 const otp = ref('')
 const otpDigits = ref(['', '', '', '', '', ''])
+const loading = ref(false)
+const { login } = useAuth()
 
 // Watch for step changes to auto-focus first OTP input
 watch(step, (newStep) => {
@@ -238,33 +241,63 @@ const handleOtpKeydown = (event, index) => {
 }
 
 const handleEmailSubmit = async () => {
-  // TODO: Implement email submission logic
-  // For now, just move to step 2
-  step.value = 2
+  loading.value = true
+  try {
+    // TODO: Implement email submission logic
+    // For now, just move to step 2
+    step.value = 2
+  } catch (error) {
+    console.error('Error submitting email:', error)
+  } finally {
+    loading.value = false
+  }
 }
 
 const handleOTPSubmit = async () => {
-  // TODO: Implement OTP verification logic
-  console.log('OTP submitted:', otp.value)
+  loading.value = true
+  try {
+    // TODO: Implement OTP verification logic
+    // For now, just simulate a successful login
+    const mockToken = 'mock_token_' + Date.now()
+    const mockUser = {
+      email: email.value,
+      name: 'Test User'
+    }
+    
+    login(mockToken, mockUser)
+    navigateTo('/')
+  } catch (error) {
+    console.error('Error verifying OTP:', error)
+  } finally {
+    loading.value = false
+  }
 }
 
 const resendOTP = async () => {
-  // Clear all OTP inputs
-  otpDigits.value = ['', '', '', '', '', '']
-  
-  // Focus the first input
-  setTimeout(() => {
-    const inputs = document.querySelectorAll('input[type="text"]')
-    if (inputs.length > 0) {
-      inputs[0].focus()
-    }
-  }, 0)
-  
-  // TODO: Implement OTP resend logic
-  console.log('Resending OTP to:', email.value)
+  loading.value = true
+  try {
+    // Clear all OTP inputs
+    otpDigits.value = ['', '', '', '', '', '']
+    
+    // Focus the first input
+    setTimeout(() => {
+      const inputs = document.querySelectorAll('input[type="text"]')
+      if (inputs.length > 0) {
+        inputs[0].focus()
+      }
+    }, 0)
+    
+    // TODO: Implement OTP resend logic
+    console.log('Resending OTP to:', email.value)
+  } catch (error) {
+    console.error('Error resending OTP:', error)
+  } finally {
+    loading.value = false
+  }
 }
 
 definePageMeta({
-  layout: 'empty'
+  layout: 'empty',
+  middleware: ['auth']
 })
 </script> 
