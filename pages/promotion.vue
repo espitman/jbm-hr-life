@@ -14,7 +14,9 @@
     <Responsibilities />
     <Conditions />
     <Decision />
-    <Table />
+    <div class="hidden md:block">
+      <Table />
+    </div>
     <Documents />
     <Acting />
     <Tech />
