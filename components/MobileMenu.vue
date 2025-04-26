@@ -24,38 +24,42 @@
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >
-      <div class="p-6">
-        <h2 class="text-xl font-bold text-gray-900 mb-6">فهرست آشنایی!</h2>
-        
-        <!-- Top Nav Items -->
-        <div class="mb-8 pb-6 border-b border-gray-200">
+      <div class="flex flex-col h-full">
+        <div class="p-6">
+          
+          <!-- Top Nav Items -->
+          <div class="mb-4 pb-6 border-b border-gray-200">
+            <nav class="space-y-4">
+              <NuxtLink 
+                to="/" 
+                :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-700 hover:text-gray-900': $route.path !== '/' }"
+                class="flex items-center gap-2 block"
+                @click="isOpen = false"
+              >
+                <PageIcon pageName="home" size="sm" :color="$route.path === '/' ? 'amber-500' : 'gray-700'" />
+                صفحه اصلی
+              </NuxtLink>
+            </nav>
+          </div>
+
+          <!-- Sidebar Items -->
           <nav class="space-y-4">
             <NuxtLink 
-              to="/" 
-              :class="{ 'text-amber-500 font-medium': $route.path === '/', 'text-gray-700 hover:text-gray-900': $route.path !== '/' }"
+              v-for="item in menuItems" 
+              :key="item.to"
+              :to="item.to"
+              :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
               class="flex items-center gap-2 block"
               @click="isOpen = false"
             >
-              <PageIcon pageName="home" size="sm" :color="$route.path === '/' ? 'amber-500' : 'gray-700'" />
-              صفحه اصلی
+              <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
+              {{ item.text }}
             </NuxtLink>
           </nav>
         </div>
 
-        <!-- Sidebar Items -->
-        <nav class="space-y-4">
-          <NuxtLink 
-            v-for="item in menuItems" 
-            :key="item.to"
-            :to="item.to"
-            :class="{ 'text-amber-500 font-medium': $route.path === item.to, 'text-gray-700 hover:text-gray-900': $route.path !== item.to }"
-            class="flex items-center gap-2 block"
-            @click="isOpen = false"
-          >
-            <PageIcon :pageName="item.pageName" size="sm" :color="$route.path === item.to ? 'amber-500' : 'gray-700'" />
-            {{ item.text }}
-          </NuxtLink>
-        </nav>
+        <!-- User Profile Box -->
+        <UserProfileBox />
       </div>
     </div>
   </div>
@@ -64,6 +68,7 @@
 <script setup>
 import { ref } from 'vue'
 import PageIcon from './ui/PageIcon.vue'
+import UserProfileBox from './UserProfileBox.vue'
 
 const isOpen = ref(false)
 
