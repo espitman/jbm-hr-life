@@ -35,34 +35,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useAuth } from '~/composables/useAuth'
-import { useNuxtApp } from '#app'
+import { useUserData } from '~/composables/useUserData'
 
-const { $api } = useNuxtApp()
 const { isAuthenticated } = useAuth()
-const userData = ref(null)
-const loading = ref(true)
-
-const fetchUserData = async () => {
-  loading.value = true
-  try {
-    const response = await $api.get('/api/v1/users/me')
-    if (response && response.data) {
-      userData.value = response.data
-    }
-  } catch (error) {
-    console.error('Error fetching user data:', error)
-  } finally {
-    loading.value = false
-  }
-}
+const { userData, loading, fetchUserData } = useUserData()
 
 onMounted(() => {
   if (isAuthenticated.value) {
     fetchUserData()
-  } else {
-    loading.value = false
   }
 })
 </script> 

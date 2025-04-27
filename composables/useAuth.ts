@@ -49,6 +49,15 @@ export const useAuth = () => {
     
     isAuthenticated.value = false
     user.value = null
+
+    // Clear user data from the global state
+    const { clearUserData } = useUserData()
+    clearUserData()
+
+    // Force a page reload to ensure auth state is cleared
+    if (process.client) {
+      window.location.href = '/login'
+    }
   }
 
   // Check auth state on initialization
