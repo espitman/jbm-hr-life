@@ -298,9 +298,9 @@ const handleOTPSubmit = async () => {
     // Check if response has the expected structure
     if (response && response.data) {
       login(response.data.data.token, {
-        id: 1,
-        email: email.value,
-        name: 'Test User'
+        id: response.data.data.user.id,
+        email: response.data.data.user.email,
+        name: response.data.data.user.firstName + ' ' + response.data.data.user.lastName
       })
 
       toast.success('ورود با موفقیت انجام شد')
