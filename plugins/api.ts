@@ -17,6 +17,19 @@ const api: AxiosInstance = axios.create({
   }
 })
 
+// Add request interceptor to include auth token
+api.interceptors.request.use((config) => {
+  // Get the auth token from cookie
+  const token = useCookie('auth_token').value
+  
+  // If token exists, add it to the Authorization header
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  
+  return config
+})
+
 // Add response interceptor for error handling
 api.interceptors.response.use(
   (response: AxiosResponse) => response,

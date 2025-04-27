@@ -297,10 +297,10 @@ const handleOTPSubmit = async () => {
     
     // Check if response has the expected structure
     if (response && response.data) {
-      login(response.data.data.token, {
-        id: response.data.data.user.id,
-        email: response.data.data.user.email,
-        name: response.data.data.user.firstName + ' ' + response.data.data.user.lastName
+      login(response.data.token, {
+        id: response.data.user.id,
+        email: response.data.user.email,
+        name: response.data.user.firstName + ' ' + response.data.user.lastName
       })
 
       toast.success('ورود با موفقیت انجام شد')

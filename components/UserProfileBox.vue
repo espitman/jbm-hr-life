@@ -4,13 +4,21 @@
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <img
+            v-if="!loading && userData"
             class="h-12 w-12 rounded-full object-cover ring-2 ring-amber-500"
-            src="https://ui-avatars.com/api/?name=Test+User&background=amber-500&color=fff"
-            alt="User avatar"
+            :src="`https://ui-avatars.com/api/?name=${userData?.first_name}+${userData?.last_name}&background=amber-500&color=fff`"
+            :alt="`${userData?.first_name} ${userData?.last_name}`"
           />
+          <div v-else class="h-12 w-12 rounded-full bg-amber-200 flex items-center justify-center">
+            <svg class="animate-spin h-6 w-6 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
         </div>
         <div class="mr-3 flex-1">
-          <p class="text-base font-medium text-gray-900">Test User</p>
+          <p v-if="!loading && userData" class="text-base font-medium text-gray-900">{{ userData?.first_name }} {{ userData?.last_name }}</p>
+          <p v-else class="text-base font-medium text-gray-500">در حال بارگذاری...</p>
           <NuxtLink
             to="/logout"
             class="text-sm text-amber-600 hover:text-amber-700 flex items-center mt-1"
@@ -27,5 +35,34 @@
 </template>
 
 <script setup>
-// No need for any imports or logic
+import { ref, onMounted } from 'vue'
+import { useAuth } from '~/composables/useAuth'
+import { useNuxtApp } from '#app'
+
+const { $api } = useNuxtApp()
+const { isAuthenticated } = useAuth()
+const userData = ref(null)
+const loading = ref(true)
+
+const fetchUserData = async () => {
+  loading.value = true
+  try {
+    const response = await $api.get('/api/v1/users/me')
+    if (response && response.data) {
+      userData.value = response.data
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error)
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  if (isAuthenticated.value) {
+    fetchUserData()
+  } else {
+    loading.value = false
+  }
+})
 </script> 
