@@ -20,6 +20,7 @@
           <p v-if="!loading && userData" class="text-base font-medium text-gray-900">{{ userData?.first_name }} {{ userData?.last_name }}</p>
           <p v-else class="text-base font-medium text-gray-500">در حال بارگذاری...</p>
           <NuxtLink
+            v-if="!loading && userData"
             to="/logout"
             class="text-sm text-amber-600 hover:text-amber-700 flex items-center mt-1"
           >
