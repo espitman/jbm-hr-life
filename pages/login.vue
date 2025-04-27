@@ -284,37 +284,35 @@ const handleEmailSubmit = async () => {
 }
 
 const handleOTPSubmit = async () => {
-  const otpValue = otpDigits.value.join('')
-  if (otpValue.length !== 6) {
-    toast.error('لطفا کد تایید 6 رقمی را وارد کنید')
+  if (otp.value.length !== 6) {
+    toast.error('کد تایید باید 6 رقم باشد')
     return
   }
 
   loading.value = true
   try {
-    // Mock OTP verification - check if code is 111111
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // Call the API to verify OTP
+    const response = await $api.auth.verifyOTP(email.value, otp.value)
+    console.log('Login response:', response)
     
-    if (otp.value === '111111') {
-      // Mock successful login
-      const mockToken = 'mock_jwt_token_' + Date.now()
-      const mockUser = {
+    // Check if response has the expected structure
+    if (response && response.data) {
+      login(response.data.data.token, {
         id: 1,
         email: email.value,
         name: 'Test User'
-      }
-      
-      // Call login function
-      login(mockToken, mockUser)
+      })
+
       toast.success('ورود با موفقیت انجام شد')
-      
-      // Force a page reload to ensure auth state is updated
+      // Navigate to home page
       window.location.href = '/'
     } else {
-      toast.error('کد تایید نامعتبر است.')
+      console.error('Invalid response structure:', response)
+      throw new Error('پاسخ نامعتبر از سرور')
     }
   } catch (error) {
-    toast.error('خطا در تایید کد')
+    console.error('OTP verification error:', error)
+    toast.error(error.message || 'خطا در تایید کد')
   } finally {
     loading.value = false
   }
