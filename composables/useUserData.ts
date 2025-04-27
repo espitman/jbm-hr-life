@@ -15,55 +15,65 @@ interface ApiResponse<T> {
   data?: T
 }
 
+// Global state that persists across component instances
+const globalUserData = ref<UserData | null>(null)
+const globalLoading = ref(false)
+const globalError = ref<Error | null>(null)
+const globalDataFetched = ref(false)
+let fetchPromise: Promise<UserData | null> | null = null
+
 export const useUserData = () => {
   const nuxtApp = useNuxtApp()
-  const userData = ref<UserData | null>(null)
-  const loading = ref(false)
-  const error = ref<Error | null>(null)
-  const dataFetched = ref(false)
 
   const fetchUserData = async (force = false) => {
     // If data is already fetched and not forcing refresh, return
-    if (dataFetched.value && !force) {
-      return userData.value
+    if (globalDataFetched.value && !force) {
+      return globalUserData.value
     }
 
-    // If already loading, don't start another request
-    if (loading.value) {
-      return null
+    // If already loading, return the existing promise
+    if (globalLoading.value && fetchPromise) {
+      return fetchPromise
     }
 
-    loading.value = true
-    error.value = null
+    // Create a new promise for this fetch
+    fetchPromise = (async () => {
+      globalLoading.value = true
+      globalError.value = null
 
-    try {
-      // @ts-ignore - We know $api exists on nuxtApp
-      const response = await nuxtApp.$api.get<ApiResponse<UserData>>('/api/v1/users/me')
-      if (response && response.data) {
-        userData.value = response.data
-        dataFetched.value = true
-        return userData.value
+      try {
+        // @ts-ignore - We know $api exists on nuxtApp
+        const response = await nuxtApp.$api.get<ApiResponse<UserData>>('/api/v1/users/me')
+        if (response && response.data) {
+          globalUserData.value = response.data
+          globalDataFetched.value = true
+          return globalUserData.value
+        }
+      } catch (err) {
+        console.error('Error fetching user data:', err)
+        globalError.value = err instanceof Error ? err : new Error('Unknown error')
+      } finally {
+        globalLoading.value = false
+        fetchPromise = null
       }
-    } catch (err) {
-      console.error('Error fetching user data:', err)
-      error.value = err instanceof Error ? err : new Error('Unknown error')
-    } finally {
-      loading.value = false
-    }
 
-    return null
+      return null
+    })()
+
+    return fetchPromise
   }
 
   const clearUserData = () => {
-    userData.value = null
-    dataFetched.value = false
-    error.value = null
+    globalUserData.value = null
+    globalDataFetched.value = false
+    globalError.value = null
+    fetchPromise = null
   }
 
   return {
-    userData,
-    loading,
-    error,
+    userData: globalUserData,
+    loading: globalLoading,
+    error: globalError,
     fetchUserData,
     clearUserData
   }

@@ -42,9 +42,9 @@ import { useUserData } from '~/composables/useUserData'
 const { isAuthenticated } = useAuth()
 const { userData, loading, fetchUserData } = useUserData()
 
-onMounted(() => {
+onMounted(async () => {
   if (isAuthenticated.value) {
-    fetchUserData()
+    await fetchUserData()
   }
 })
 </script> 
