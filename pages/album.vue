@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-3 py-6">
-    <div v-if="loading" class="text-center py-12 text-gray-500">در حال بارگذاری...</div>
+    <JabamaLoading v-if="loading" />
     <div v-else-if="error" class="text-center py-12 text-red-500">{{ error }}</div>
     <div v-else>
       <!-- Mobile Gallery (visible on small screens) -->
@@ -72,6 +72,7 @@
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useNuxtApp } from '#app'
+import JabamaLoading from '~/components/ui/JabamaLoading.vue'
 
 const images = ref([])
 const loading = ref(true)
