@@ -66,7 +66,7 @@
         class="absolute right-8 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full w-12 h-12 flex items-center justify-center p-0 z-50 hover:bg-black/80 transition"
         :disabled="lightboxIndex === images.length - 1"
         :class="{ 'opacity-50 cursor-not-allowed': lightboxIndex === images.length - 1 }"
-        @click.stop="lightboxIndex < images.length - 1 && nextImage()"
+        @click.stop="nextImage()"
         aria-label="Next image"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -141,8 +141,15 @@ function prevImage() {
 }
 
 function nextImage() {
-  if (lightboxIndex.value < images.length - 1) {
+  console.log('Next button clicked')
+  console.log('Current index:', lightboxIndex.value)
+  console.log('Images length:', images.value.length)
+  
+  if (lightboxIndex.value < images.value.length - 1) {
     lightboxIndex.value++
+    console.log('New index:', lightboxIndex.value)
+  } else {
+    console.log('Already at the last image')
   }
 }
 
