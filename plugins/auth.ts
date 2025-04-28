@@ -2,10 +2,11 @@ import { useAuth } from '~/composables/useAuth'
 import type { NavigationGuard } from 'vue-router'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, checkAuth } = useAuth()
 
   // Add global navigation guard
   nuxtApp.hook('app:created', () => {
+    checkAuth() // Ensure auth is checked on every app creation (page refresh)
     const router = useRouter()
     
     router.beforeEach((to, from, next) => {
