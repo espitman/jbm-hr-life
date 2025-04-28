@@ -10,8 +10,10 @@
         <div class="w-full h-96 overflow-hidden relative">
           <!-- Animated black box on hover -->
           <div
-            class="absolute top-0 left-0 h-full w-1/5 bg-black opacity-0 group-hover:opacity-80 group-hover:translate-x-0 -translate-x-full transition-all duration-300 z-10"
-          ></div>
+            class="absolute top-0 left-0 h-full w-16 bg-black opacity-0 group-hover:opacity-80 group-hover:translate-x-0 -translate-x-full transition-all duration-300 z-10 flex items-center justify-center"
+          >
+            <span class="text-white text-xs font-bold text-center whitespace-pre-line transform rotate-[270deg]">{{ image.title || 'عنوان عکس' }}</span>
+          </div>
           <img
             :src="image.url"
             :alt="image.title || 'Album photo'"
