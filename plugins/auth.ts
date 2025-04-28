@@ -4,39 +4,36 @@ import type { NavigationGuard } from 'vue-router'
 export default defineNuxtPlugin((nuxtApp) => {
   const { isAuthenticated, checkAuth } = useAuth()
 
-  // Add global navigation guard
+  // Add global navigation guard (for SPA navigation)
   nuxtApp.hook('app:created', () => {
-    checkAuth() // Ensure auth is checked on every app creation (page refresh)
+    checkAuth()
     const router = useRouter()
     
     router.beforeEach((to, from, next) => {
-      // Always check auth first
       if (!isAuthenticated.value && to.path !== '/login') {
         next('/login')
         return
       }
-
-      // If authenticated and trying to access login page, redirect to home
       if (isAuthenticated.value && to.path === '/login') {
         next('/')
         return
       }
-
-      // Allow navigation
       next()
     })
   })
 
-  // Add server-side middleware
-  addRouteMiddleware('auth', (to, from) => {
-    if (process.server) {
-      const token = useCookie('auth_token')
-      if (!token.value && to.path !== '/login') {
-        return navigateTo('/login')
-      }
-      if (token.value && to.path === '/login') {
-        return navigateTo('/')
-      }
+  // Add client-side auth check and redirect on app mount (for manual refresh)
+  nuxtApp.hook('app:mounted', () => {
+    checkAuth()
+    const router = useRouter()
+    const route = useRoute()
+    if (!isAuthenticated.value && route.path !== '/login') {
+      router.push('/login')
     }
-  }, { global: true })
+    if (isAuthenticated.value && route.path === '/login') {
+      router.push('/')
+    }
+  })
+
+  // Remove server-side middleware for SPA mode
 }) 
