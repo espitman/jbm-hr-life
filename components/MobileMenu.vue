@@ -3,7 +3,7 @@
     <!-- Mobile Menu Button -->
     <button 
       @click="isOpen = !isOpen"
-      class="fixed top-6 left-4 z-[10000] bg-white text-gray-600 rounded-lg p-2  md:hidden"
+      class="fixed top-6 left-4 z-[60] bg-white text-gray-600 rounded-lg p-2 md:hidden"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -13,14 +13,14 @@
     <!-- Mobile Menu Overlay -->
     <div 
       v-if="isOpen"
-      class="fixed inset-0 bg-black/50 z-[9999]"
+      class="fixed inset-0 bg-black/50 z-[70]"
       @click="isOpen = false"
     ></div>
 
     <!-- Mobile Menu Content -->
     <div 
       :class="[
-        'fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-[10000]',
+        'fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-[80]',
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >

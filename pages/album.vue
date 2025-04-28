@@ -17,7 +17,7 @@
     <!-- Lightbox Modal -->
     <div
       v-if="showLightbox"
-      class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+      class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100]"
       @click="closeLightbox"
       @keydown.left.prevent="prevImage"
       @keydown.right.prevent="nextImage"
