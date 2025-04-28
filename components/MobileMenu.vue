@@ -60,6 +60,7 @@ const isOpen = ref(false)
 
 const menuItems = [
   { to: '/', text: 'صفحه اصلی', pageName: 'home' },
+  { to: '/album', text: 'آلبوم', pageName: 'album' },
   { to: '/history', text: 'تاریخچه جاباما', pageName: 'history' },
   { to: '/referral', text: 'معرفی همکار (ریفرال)', pageName: 'referral' },
   { to: '/stock-model', text: 'مدل سهام داری', pageName: 'stock-model' },

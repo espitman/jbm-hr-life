@@ -2,9 +2,9 @@
   <div class="fixed top-0 right-0 md:right-64 left-0 z-50 bg-white shadow-md h-[92px]">
     <div class="flex flex-row items-center p-4 h-full rtl-container">
       <!-- Logo (right side in RTL) -->
-      <div class="flex items-center">
-        <img src="/images/jabama-logo.png" alt="Jabama Logo" class="h-[60px]">
-      </div>
+      <NuxtLink to="/" class="flex items-center">
+        <img src="/images/jabama.svg" alt="Jabama Logo" class="h-[32px]">
+      </NuxtLink>
 
       <!-- Navigation items (left side in RTL) -->
       <div class="hidden md:flex items-center space-x-reverse space-x-8 mr-auto">
