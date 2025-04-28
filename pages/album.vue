@@ -2,29 +2,8 @@
   <div class="container mx-auto px-3 py-6">
     <div v-if="loading" class="text-center py-12 text-gray-500">در حال بارگذاری...</div>
     <div v-else-if="error" class="text-center py-12 text-red-500">{{ error }}</div>
-    <div v-else class="grid grid-cols-12 gap-6">
-      <div
-        v-for="(image, idx) in images"
-        :key="image.id"
-        :class="getGridClass(idx)"
-        class="relative overflow-hidden group"
-      >
-        <div class="w-full h-96 overflow-hidden relative">
-          <!-- Animated black box on hover -->
-          <div
-            class="absolute top-0 left-0 h-full w-16 bg-black opacity-0 group-hover:opacity-80 group-hover:translate-x-0 -translate-x-full transition-all duration-300 z-10 flex items-center justify-center"
-          >
-            <span class="absolute text-white text-xs font-bold text-center whitespace-pre-line transform rotate-[270deg] w-96 block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">{{ image.caption || 'عنوان عکس' }}</span>
-          </div>
-          <img
-            :src="image.url"
-            :alt="image.caption || 'Album photo'"
-            class="w-full h-96 object-cover scale-110 transition-transform duration-300 group-hover:translate-x-4 cursor-pointer"
-            loading="lazy"
-            @click="openLightbox(idx)"
-          />
-        </div>
-      </div>
+    <div v-else>
+      <AlbumGallery :images="images" @open-lightbox="openLightbox" />
     </div>
 
     <!-- Lightbox Modal -->
@@ -40,7 +19,7 @@
         class="absolute left-8 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full w-12 h-12 flex items-center justify-center p-0 z-50 hover:bg-black/80 transition"
         :disabled="lightboxIndex === 0"
         :class="{ 'opacity-50 cursor-not-allowed': lightboxIndex === 0 }"
-        @click.stop="lightboxIndex > 0 && prevImage()"
+        @click.stop="prevImage()"
         aria-label="Previous image"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,31 +130,6 @@ function nextImage() {
   } else {
     console.log('Already at the last image')
   }
-}
-
-function getGridClass(idx) {
-  // 3 columns per row
-  const pos = idx % 3
-  const row = Math.floor(idx / 3) % 3
-  // Row 1: 25% | 50% | 25%
-  if (row === 0) {
-    if (pos === 0) return 'col-span-3'
-    if (pos === 1) return 'col-span-6'
-    if (pos === 2) return 'col-span-3'
-  }
-  // Row 2: 50% | 25% | 25%
-  if (row === 1) {
-    if (pos === 0) return 'col-span-6'
-    if (pos === 1) return 'col-span-3'
-    if (pos === 2) return 'col-span-3'
-  }
-  // Row 3: 25% | 25% | 50%
-  if (row === 2) {
-    if (pos === 0) return 'col-span-3'
-    if (pos === 1) return 'col-span-3'
-    if (pos === 2) return 'col-span-6'
-  }
-  return 'col-span-4'
 }
 
 // Clean up in case of unmount
