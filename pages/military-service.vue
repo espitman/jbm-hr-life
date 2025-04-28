@@ -21,7 +21,7 @@
     
     <!-- Second Full width image -->
     <div class="w-full">
-      <img src="/images/military/3.jpg" alt="خدمت سربازی" class="w-full" />
+      <MilitaryCard2 />
     </div>
 
     <!-- Implementation Component -->
@@ -50,4 +50,5 @@ import Implementation from '@/components/military/Implementation.vue'
 import Project from '@/components/military/Project.vue'
 import Contact from '@/components/military/Contact.vue'
 import MilitaryCard from '@/components/military/MilitaryCard.vue'
+import MilitaryCard2 from '@/components/military/MilitaryCard2.vue'
 </script> 
