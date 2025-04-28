@@ -18,7 +18,7 @@
             :src="image.url"
             :alt="image.title || 'Album photo'"
             class="w-full h-96 object-cover scale-110 transition-transform duration-300 group-hover:translate-x-4 cursor-pointer"
-            @click="openLightbox(image)"
+            @click="openLightbox(idx)"
           />
         </div>
       </div>
@@ -29,24 +29,48 @@
       v-if="showLightbox"
       class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
       @click="closeLightbox"
+      @keydown.left.prevent="prevImage"
+      @keydown.right.prevent="nextImage"
+      tabindex="0"
     >
-      <img
-        :src="lightboxImage.url"
-        :alt="lightboxImage.title || 'Album photo'"
-        class="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
-        @click.stop
-      />
+      <button
+        v-if="lightboxIndex > 0"
+        class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/50 rounded-full w-12 h-12 flex items-center justify-center z-50 hover:bg-black/80 transition"
+        @click.stop="prevImage"
+        aria-label="Previous image"
+      >&#8592;</button>
+      <div class="flex flex-col items-center relative">
+        <img
+          :src="images[lightboxIndex].url"
+          :alt="images[lightboxIndex].title || 'Album photo'"
+          class="max-h-[80vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+          @click.stop
+        />
+        <div
+          class="absolute bottom-0 left-0 w-full bg-black bg-opacity-70 py-3 px-4 text-white text-lg font-bold text-center rounded-b-lg"
+          style="backdrop-filter: blur(2px);"
+        >
+          {{ images[lightboxIndex].title || 'عنوان عکس' }}
+        </div>
+      </div>
+      <button
+        v-if="lightboxIndex < images.length - 1"
+        class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/50 rounded-full w-12 h-12 flex items-center justify-center z-50 hover:bg-black/80 transition"
+        @click.stop="nextImage"
+        aria-label="Next image"
+      >&#8594;</button>
       <button
         class="absolute top-8 right-8 text-white text-3xl font-bold"
         @click="closeLightbox"
+        aria-label="Close lightbox"
       >×</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-// Use your real images array here
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+
 const images = [
   { url: 'https://picsum.photos/id/0/5000/3333', title: 'عنوان عکس 1' },
   { url: 'https://picsum.photos/id/1/5000/3333', title: 'عنوان عکس 2' },
@@ -81,16 +105,40 @@ const images = [
 ]
 
 const showLightbox = ref(false)
-const lightboxImage = ref(null)
+const lightboxIndex = ref(0)
 
-function openLightbox(image) {
-  lightboxImage.value = image
+function handleKeydown(e) {
+  if (e.key === 'Escape') {
+    closeLightbox()
+  }
+}
+
+function openLightbox(idx) {
+  lightboxIndex.value = idx
   showLightbox.value = true
+  setTimeout(() => {
+    // Focus the modal for keyboard navigation
+    const modal = document.querySelector('.fixed.inset-0')
+    if (modal) modal.focus()
+  }, 0)
+  window.addEventListener('keydown', handleKeydown)
 }
 
 function closeLightbox() {
   showLightbox.value = false
-  lightboxImage.value = null
+  window.removeEventListener('keydown', handleKeydown)
+}
+
+function prevImage() {
+  if (lightboxIndex.value > 0) {
+    lightboxIndex.value--
+  }
+}
+
+function nextImage() {
+  if (lightboxIndex.value < images.length - 1) {
+    lightboxIndex.value++
+  }
 }
 
 function getGridClass(idx) {
@@ -117,4 +165,9 @@ function getGridClass(idx) {
   }
   return 'col-span-4'
 }
+
+// Clean up in case of unmount
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script> 
