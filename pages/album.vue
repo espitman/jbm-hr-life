@@ -34,11 +34,16 @@
       tabindex="0"
     >
       <button
-        v-if="lightboxIndex > 0"
-        class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/50 rounded-full w-12 h-12 flex items-center justify-center z-50 hover:bg-black/80 transition"
-        @click.stop="prevImage"
+        class="absolute left-8 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full w-12 h-12 flex items-center justify-center p-0 z-50 hover:bg-black/80 transition"
+        :disabled="lightboxIndex === 0"
+        :class="{ 'opacity-50 cursor-not-allowed': lightboxIndex === 0 }"
+        @click.stop="lightboxIndex > 0 && prevImage()"
         aria-label="Previous image"
-      >&#8592;</button>
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
       <div class="flex flex-col items-center relative">
         <img
           :src="images[lightboxIndex].url"
@@ -54,11 +59,16 @@
         </div>
       </div>
       <button
-        v-if="lightboxIndex < images.length - 1"
-        class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black/50 rounded-full w-12 h-12 flex items-center justify-center z-50 hover:bg-black/80 transition"
-        @click.stop="nextImage"
+        class="absolute right-8 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full w-12 h-12 flex items-center justify-center p-0 z-50 hover:bg-black/80 transition"
+        :disabled="lightboxIndex === images.length - 1"
+        :class="{ 'opacity-50 cursor-not-allowed': lightboxIndex === images.length - 1 }"
+        @click.stop="lightboxIndex < images.length - 1 && nextImage()"
         aria-label="Next image"
-      >&#8594;</button>
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
       <button
         class="absolute top-8 right-8 text-white text-3xl font-bold"
         @click="closeLightbox"
