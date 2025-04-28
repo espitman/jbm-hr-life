@@ -4,7 +4,7 @@
     
     <!-- Full width image -->
     <div class="w-full">
-      <img src="~/public/images/military/1.jpg" alt="خدمت سربازی" class="w-full" />
+      <MilitaryCard />
     </div>
     
     <!-- Options Component -->
@@ -49,4 +49,5 @@ import Regulations from '@/components/military/Regulations.vue'
 import Implementation from '@/components/military/Implementation.vue'
 import Project from '@/components/military/Project.vue'
 import Contact from '@/components/military/Contact.vue'
+import MilitaryCard from '@/components/military/MilitaryCard.vue'
 </script> 
