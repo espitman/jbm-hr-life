@@ -3,7 +3,15 @@
     <div v-if="loading" class="text-center py-12 text-gray-500">در حال بارگذاری...</div>
     <div v-else-if="error" class="text-center py-12 text-red-500">{{ error }}</div>
     <div v-else>
-      <AlbumGallery :images="images" @open-lightbox="openLightbox" />
+      <!-- Mobile Gallery (visible on small screens) -->
+      <div class="block sm:hidden">
+        <AlbumMobileGallery :images="images" @open-lightbox="openLightbox" />
+      </div>
+      
+      <!-- Desktop Gallery (visible on medium screens and up) -->
+      <div class="hidden sm:block">
+        <AlbumGallery :images="images" @open-lightbox="openLightbox" />
+      </div>
     </div>
 
     <!-- Lightbox Modal -->
