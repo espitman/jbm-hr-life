@@ -18,6 +18,7 @@
             :src="image.url"
             :alt="image.title || 'Album photo'"
             class="w-full h-96 object-cover scale-110 transition-transform duration-300 group-hover:translate-x-4 cursor-pointer"
+            loading="lazy"
             @click="openLightbox(idx)"
           />
         </div>
@@ -49,6 +50,7 @@
           :src="images[lightboxIndex].url"
           :alt="images[lightboxIndex].title || 'Album photo'"
           class="max-h-[80vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+          loading="lazy"
           @click.stop
         />
         <div
