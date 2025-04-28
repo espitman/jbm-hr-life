@@ -5,12 +5,19 @@
         v-for="(image, idx) in images"
         :key="idx"
         :class="getGridClass(idx)"
+        class="relative overflow-hidden group"
       >
-        <img
-          :src="image.url"
-          :alt="image.title || 'Album photo'"
-          class="w-full h-96 object-cover"
-        />
+        <div class="w-full h-96 overflow-hidden relative">
+          <!-- Animated black box on hover -->
+          <div
+            class="absolute top-0 left-0 h-full w-1/5 bg-black opacity-0 group-hover:opacity-80 group-hover:translate-x-0 -translate-x-full transition-all duration-300 z-10"
+          ></div>
+          <img
+            :src="image.url"
+            :alt="image.title || 'Album photo'"
+            class="w-full h-96 object-cover scale-110 transition-transform duration-300 group-hover:translate-x-4"
+          />
+        </div>
       </div>
     </div>
   </div>
