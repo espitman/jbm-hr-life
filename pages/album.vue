@@ -12,7 +12,7 @@
           <div
             class="absolute top-0 left-0 h-full w-16 bg-black opacity-0 group-hover:opacity-80 group-hover:translate-x-0 -translate-x-full transition-all duration-300 z-10 flex items-center justify-center"
           >
-            <span class="text-white text-xs font-bold text-center whitespace-pre-line transform rotate-[270deg]">{{ image.title || 'عنوان عکس' }}</span>
+            <span class="absolute text-white text-xs font-bold text-center whitespace-pre-line transform rotate-[270deg] w-96 block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">{{ image.title || 'عنوان عکس' }}</span>
           </div>
           <img
             :src="image.url"
