@@ -3,24 +3,6 @@
     <form class="space-y-6">
       <!-- Table Layout for Form Fields -->
       <div class="grid gap-4">
-        <!-- First Row: 2 columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <input 
-              type="text" 
-              placeholder="نام و نام خانوادگی خودت" 
-              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
-            />
-          </div>
-          <div>
-            <input 
-              type="text" 
-              placeholder="واحد سازمانی" 
-              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
-            />
-          </div>
-        </div>
-        
         <!-- Second Row: 3 columns -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
@@ -49,7 +31,6 @@
 
       <!-- Redesigned Resume Upload Section -->
       <div class="mt-6">
-        <label class="block mb-2 text-sm font-medium text-gray-700">فایل رزومه</label>
         <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-amber-400 transition-colors duration-300">
           <div class="space-y-1 text-center">
             <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
@@ -57,10 +38,10 @@
             </svg>
             <div class="flex text-sm text-gray-600">
               <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-amber-500 hover:text-amber-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-amber-400">
-                <span>آپلود فایل</span>
+                <span>آپلود فایل رزومه</span>
                 <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".pdf,.doc,.docx">
               </label>
-              <p class="pr-1">یا فایل را اینجا رها کنید</p>
+              <p class="pr-1">فایل را اینجا رها کنید</p>
             </div>
             <p class="text-xs text-gray-500">
               PDF، DOC یا DOCX تا سقف 10MB
