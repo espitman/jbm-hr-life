@@ -82,8 +82,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
+
 
 definePageMeta({
   layout: 'default'

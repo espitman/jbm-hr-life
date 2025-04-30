@@ -26,15 +26,8 @@
           </div>
 
           <div class="col-span-1 md:col-span-1 space-y-2">
-            <div>
-              <label class="block text-gray-700 font-medium">آدرس ایمیل سازمانی</label>
-              <span class="text-sm text-gray-500">Example@jabama.com</span>
-            </div>
-            <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
-          </div>
-
-          <div class="col-span-1 md:col-span-2 space-y-2">
             <label class="block text-gray-700 font-medium">نوع درخواست</label>
+            <span class="text-sm text-gray-500">انتخاب کنید</span>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent">
               <option value="">انتخاب کنید</option>
               <option value="اشتغال به کار">اشتغال به کار</option>
