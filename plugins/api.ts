@@ -1,5 +1,6 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse, AxiosError } from 'axios'
+import { navigateTo } from '#app'
 
 // Define interfaces for API responses
 interface ApiResponse<T> {
@@ -34,6 +35,20 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => {
+    // Handle 401 Unauthorized
+    if (error.response?.status === 401) {
+      // Clear auth token and user data
+      const authToken = useCookie('auth_token')
+      authToken.value = null
+      
+      if (process.client) {
+        localStorage.removeItem('user')
+        // Redirect to login page
+        window.location.href = '/login'
+      }
+      return Promise.reject(error)
+    }
+
     if (error.response?.data) {
       // If the server responded with an error message, throw it
       const errorData = error.response.data as { success: boolean; message: string }
