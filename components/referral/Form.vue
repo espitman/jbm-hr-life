@@ -11,7 +11,9 @@
               type="text" 
               placeholder="نام فرد معرفی شده" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
+              :class="{ 'border-red-500': errors.name }"
             />
+            <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
           </div>
           <div>
             <input 
@@ -19,7 +21,9 @@
               type="text" 
               placeholder="شماره موبایل فرد" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
+              :class="{ 'border-red-500': errors.phone }"
             />
+            <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
           </div>
           <div>
             <input 
@@ -27,7 +31,9 @@
               type="text" 
               placeholder="موقعیت شغلی" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
+              :class="{ 'border-red-500': errors.position }"
             />
+            <p v-if="errors.position" class="text-red-500 text-sm mt-1">{{ errors.position }}</p>
           </div>
         </div>
       </div>
@@ -36,7 +42,7 @@
       <div class="mt-6">
         <div 
           class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-amber-400 transition-colors duration-300"
-          :class="{ 'border-amber-400': isDragging }"
+          :class="{ 'border-amber-400': isDragging, 'border-red-500': errors.file }"
           @dragenter.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
           @dragover.prevent
@@ -66,6 +72,7 @@
             <p v-if="selectedFile" class="text-sm text-amber-500">
               فایل انتخاب شده: {{ selectedFile.name }}
             </p>
+            <p v-if="errors.file" class="text-red-500 text-sm mt-1">{{ errors.file }}</p>
           </div>
         </div>
       </div>
@@ -96,6 +103,44 @@ const formData = ref({
 const selectedFile = ref(null)
 const isDragging = ref(false)
 const isUploading = ref(false)
+const errors = ref({
+  name: '',
+  phone: '',
+  position: '',
+  file: ''
+})
+
+const validateForm = () => {
+  let isValid = true
+  errors.value = {
+    name: '',
+    phone: '',
+    position: '',
+    file: ''
+  }
+
+  if (!formData.value.name.trim()) {
+    errors.value.name = 'نام فرد معرفی شده الزامی است'
+    isValid = false
+  }
+
+  if (!formData.value.phone.trim()) {
+    errors.value.phone = 'شماره موبایل فرد الزامی است'
+    isValid = false
+  }
+
+  if (!formData.value.position.trim()) {
+    errors.value.position = 'موقعیت شغلی الزامی است'
+    isValid = false
+  }
+
+  if (!selectedFile.value) {
+    errors.value.file = 'فایل رزومه الزامی است'
+    isValid = false
+  }
+
+  return isValid
+}
 
 const handleFileSelect = (event) => {
   const file = event.target.files[0]
@@ -117,36 +162,56 @@ const validateAndSetFile = (file) => {
   const maxSize = 10 * 1024 * 1024 // 10MB
 
   if (!validTypes.includes(file.type)) {
-    alert('لطفا فایل با فرمت PDF، DOC یا DOCX انتخاب کنید')
+    errors.value.file = 'لطفا فایل با فرمت PDF، DOC یا DOCX انتخاب کنید'
     return
   }
 
   if (file.size > maxSize) {
-    alert('حجم فایل نباید بیشتر از 10MB باشد')
+    errors.value.file = 'حجم فایل نباید بیشتر از 10MB باشد'
     return
   }
 
   selectedFile.value = file
+  errors.value.file = ''
 }
 
 const handleSubmit = async () => {
-  if (!selectedFile.value) {
-    alert('لطفا فایل رزومه را انتخاب کنید')
+  if (!validateForm()) {
     return
   }
 
   isUploading.value = true
 
   try {
-    const res = await nuxtApp.$api.upload('/api/v1/upload/document', selectedFile.value)
-
-    if (!res) {
+    // First upload the file
+    const uploadResponse = await nuxtApp.$api.upload('/api/v1/upload/document', selectedFile.value)
+    
+    if (!uploadResponse || !uploadResponse.data) {
       throw new Error('خطا در آپلود فایل')
     }
 
-    alert('فایل با موفقیت آپلود شد')
+    // Then submit the resume data
+    const resumeData = {
+      file: uploadResponse.data.key,
+      introduced_name: formData.value.name,
+      introduced_phone: formData.value.phone,
+      position: formData.value.position
+    }
+
+    const resumeResponse = await nuxtApp.$api.post('/api/v1/resumes', resumeData)
+
+    if (!resumeResponse) {
+      throw new Error('خطا در ثبت اطلاعات رزومه')
+    }
+
+    alert('اطلاعات با موفقیت ثبت شد')
     // Reset form
     selectedFile.value = null
+    formData.value = {
+      name: '',
+      phone: '',
+      position: ''
+    }
   } catch (error) {
     alert(error.message)
   } finally {
