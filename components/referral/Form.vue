@@ -12,6 +12,7 @@
               placeholder="نام فرد معرفی شده" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
               :class="{ 'border-red-500': errors.name }"
+              :disabled="isUploading"
             />
             <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
           </div>
@@ -22,6 +23,7 @@
               placeholder="شماره موبایل فرد" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
               :class="{ 'border-red-500': errors.phone }"
+              :disabled="isUploading"
             />
             <p v-if="errors.phone" class="text-red-500 text-sm mt-1">{{ errors.phone }}</p>
           </div>
@@ -32,6 +34,7 @@
               placeholder="موقعیت شغلی" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
               :class="{ 'border-red-500': errors.position }"
+              :disabled="isUploading"
             />
             <p v-if="errors.position" class="text-red-500 text-sm mt-1">{{ errors.position }}</p>
           </div>
@@ -42,7 +45,7 @@
       <div class="mt-6">
         <div 
           class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-amber-400 transition-colors duration-300"
-          :class="{ 'border-amber-400': isDragging, 'border-red-500': errors.file }"
+          :class="{ 'border-amber-400': isDragging, 'border-red-500': errors.file, 'opacity-50': isUploading, 'pointer-events-none': isUploading }"
           @dragenter.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
           @dragover.prevent
@@ -62,6 +65,7 @@
                   class="sr-only" 
                   accept=".pdf,.doc,.docx"
                   @change="handleFileSelect"
+                  :disabled="isUploading"
                 >
               </label>
               <p class="pr-1">فایل را اینجا رها کنید</p>
@@ -80,9 +84,14 @@
       <div>
         <button 
           type="submit" 
-          class="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300"
+          class="w-full bg-amber-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-600 transition duration-300 flex items-center justify-center gap-2"
           :disabled="isUploading"
+          :class="{ 'opacity-75 cursor-not-allowed': isUploading }"
         >
+          <svg v-if="isUploading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
           {{ isUploading ? 'در حال آپلود...' : 'ارسال' }}
         </button>
       </div>
@@ -92,8 +101,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 
 const nuxtApp = useNuxtApp()
+const toast = useToast()
 const formData = ref({
   name: '',
   phone: '',
@@ -204,7 +215,7 @@ const handleSubmit = async () => {
       throw new Error('خطا در ثبت اطلاعات رزومه')
     }
 
-    alert('اطلاعات با موفقیت ثبت شد')
+    toast.success('اطلاعات با موفقیت ثبت شد')
     // Reset form
     selectedFile.value = null
     formData.value = {
@@ -213,7 +224,7 @@ const handleSubmit = async () => {
       position: ''
     }
   } catch (error) {
-    alert(error.message)
+    toast.error(error.message)
   } finally {
     isUploading.value = false
   }
