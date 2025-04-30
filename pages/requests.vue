@@ -30,13 +30,13 @@
             <span class="text-sm text-gray-500">انتخاب کنید</span>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent">
               <option value="">انتخاب کنید</option>
-              <option value="اشتغال به کار">اشتغال به کار</option>
-              <option value="فیش حقوقی مهر شده">فیش حقوقی مهر شده</option>
-              <option value="کسر از حقوق">کسر از حقوق</option>
-              <option value="معرفی نامه">معرفی نامه</option>
-              <option value="نامه حسن انجام کار">نامه حسن انجام کار</option>
-              <option value="نامه تاییدیه">نامه تاییدیه</option>
-              <option value="نامه سفارت">نامه سفارت</option>
+              <option value="employment">اشتغال به کار</option>
+              <option value="payroll_stamped">فیش حقوقی مهر شده</option>
+              <option value="salary_deduction">کسر از حقوق</option>
+              <option value="introduction_letter">معرفی نامه</option>
+              <option value="good_conduct_letter">نامه حسن انجام کار</option>
+              <option value="confirmation_letter">نامه تاییدیه</option>
+              <option value="embassy_letter">نامه سفارت</option>
             </select>
           </div>
 
