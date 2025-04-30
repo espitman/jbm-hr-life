@@ -97,6 +97,23 @@ export const apiService = {
     }
   },
   
+  // File upload method
+  upload: async <T>(url: string, file: File): Promise<ApiResponse<T>> => {
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await api.post<ApiResponse<T>>(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      return response.data
+    } catch (error) {
+      throw error
+    }
+  },
+  
   // Auth related methods
   auth: {
     requestOTP: async (email: string): Promise<ApiResponse<{ message: string }>> => {
