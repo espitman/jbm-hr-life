@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || '/'
+    }
+  },
+
   app: {
     head: {
       title: 'فهرست آشنایی - صفحه اصلی',
