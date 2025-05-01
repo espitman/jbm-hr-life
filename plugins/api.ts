@@ -12,7 +12,7 @@ interface ApiResponse<T> {
 
 // Create axios instance with default config
 const api: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: process.env.API_BASE_URL || 'http://localhost:8080/',
   headers: {
     'Content-Type': 'application/json'
   }
