@@ -1,9 +1,10 @@
 <template>
   <div class="container mx-auto p-6">
     <JabamaLoading v-if="loading" />
+    <ErrorPage v-else-if="error" :error="error" @retry="fetchDepartments" />
     <div v-else>
       <!-- Header -->
-      <PageHeaderCard title="ساختمان جاباما" :showDot="false" />
+      <PageHeaderCard v-if="!error" title="ساختمان جاباما" :showDot="false" />
 
       <!-- Main Content Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -106,6 +107,7 @@
 <script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
 import JabamaLoading from '~/components/ui/JabamaLoading.vue'
+import ErrorPage from '~/components/ErrorPage.vue'
 
 const { $api } = useNuxtApp()
 const departments = ref([])
@@ -116,15 +118,16 @@ const error = ref(null)
 const fetchDepartments = async () => {
   try {
     loading.value = true
+    error.value = null
     const response = await $api.get('/api/v1/departments')
     if (response.success) {
       departments.value = response.data.departments
     } else {
       throw new Error('خطا در دریافت اطلاعات دپارتمان‌ها')
     }
-  } catch (error) {
-    console.error('Error fetching departments:', error)
-    error.value = error.message || 'خطا در بارگذاری دپارتمان‌ها'
+  } catch (err) {
+    console.error('Error fetching departments:', err)
+    error.value = err.message || 'خطا در بارگذاری دپارتمان‌ها'
   } finally {
     loading.value = false
   }
