@@ -1,7 +1,16 @@
 <template>
   <div class="container mx-auto px-3 py-6">
     <JabamaLoading v-if="loading" />
-    <div v-else-if="error" class="text-center py-12 text-red-500">{{ error }}</div>
+    <ErrorPage
+      v-else-if="error"
+      :title="'خطا در اتصال به سرور'"
+      :message="error"
+      :show-details="false"
+      :error-code="errorCode"
+      :error-message="errorMessage"
+      @retry="handleRetry"
+      @go-home="handleGoHome"
+    />
     <div v-else>
       <!-- Mobile Gallery (visible on small screens) -->
       <div class="block sm:hidden">
@@ -73,18 +82,25 @@
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useNuxtApp } from '#app'
 import JabamaLoading from '~/components/ui/JabamaLoading.vue'
+import ErrorPage from '~/components/ErrorPage.vue'
 
 const images = ref([])
 const loading = ref(true)
 const error = ref(null)
+const errorCode = ref(null)
+const errorMessage = ref(null)
 const nuxtApp = useNuxtApp()
 
 const showLightbox = ref(false)
 const lightboxIndex = ref(0)
 
-onMounted(async () => {
+const fetchData = async () => {
   try {
     loading.value = true
+    error.value = null
+    errorCode.value = null
+    errorMessage.value = null
+    
     const res = await nuxtApp.$api.get('/api/v1/albums')
     
     // Check if the response has the expected structure
@@ -94,11 +110,23 @@ onMounted(async () => {
       throw new Error('Invalid response format')
     }
   } catch (err) {
-    error.value = err.message || 'خطا در بارگذاری آلبوم‌ها'
+    error.value = 'خطا در اتصال به سرور'
+    errorCode.value = err.response?.status || 500
+    errorMessage.value = err.message
   } finally {
     loading.value = false
   }
-})
+}
+
+onMounted(fetchData)
+
+const handleRetry = () => {
+  fetchData()
+}
+
+const handleGoHome = () => {
+  navigateTo('/')
+}
 
 function handleKeydown(e) {
   if (e.key === 'Escape') {
@@ -129,15 +157,8 @@ function prevImage() {
 }
 
 function nextImage() {
-  console.log('Next button clicked')
-  console.log('Current index:', lightboxIndex.value)
-  console.log('Images length:', images.value.length)
-  
   if (lightboxIndex.value < images.value.length - 1) {
     lightboxIndex.value++
-    console.log('New index:', lightboxIndex.value)
-  } else {
-    console.log('Already at the last image')
   }
 }
 
