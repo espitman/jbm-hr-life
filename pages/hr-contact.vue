@@ -3,11 +3,21 @@
     <JabamaLoading v-if="loading" />
     <div v-else>
       <PageHeaderCard 
+        v-if="!error"
         title="ارتباط با اچ آر"
         :showDot="false"
       />
       
-      <div v-if="error" class="text-center py-12 text-red-500">{{ error }}</div>
+      <ErrorPage
+        v-if="error"
+        :title="'خطا در اتصال به سرور'"
+        :message="error"
+        :show-details="false"
+        :error-code="errorCode"
+        :error-message="errorMessage"
+        @retry="handleRetry"
+        @go-home="handleGoHome"
+      />
       <div v-else>
         <!-- Contact Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -38,7 +48,7 @@
 <script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
 import JabamaLoading from '~/components/ui/JabamaLoading.vue'
-
+import ErrorPage from '~/components/ErrorPage.vue'
 
 definePageMeta({
   layout: 'default'
@@ -48,24 +58,38 @@ const { $api } = useNuxtApp()
 const hrTeam = ref([])
 const loading = ref(true)
 const error = ref(null)
+const errorCode = ref(null)
+const errorMessage = ref(null)
 
 // Fetch HR team data
 const fetchHRTeam = async () => {
   try {
     loading.value = true
     error.value = null
+    errorCode.value = null
+    errorMessage.value = null
+    
     const response = await $api.get('/api/v1/hr-team')
     if (response.success) {
       hrTeam.value = response.data
     } else {
-      error.value = 'خطا در دریافت اطلاعات'
+      throw new Error('خطا در دریافت اطلاعات')
     }
-  } catch (error) {
-    console.error('Error fetching HR team data:', error)
-    error.value = 'خطا در دریافت اطلاعات'
+  } catch (err) {
+    error.value = 'خطا در اتصال به سرور'
+    errorCode.value = err.response?.status || 500
+    errorMessage.value = err.message
   } finally {
     loading.value = false
   }
+}
+
+const handleRetry = () => {
+  fetchHRTeam()
+}
+
+const handleGoHome = () => {
+  navigateTo('/')
 }
 
 // Fetch data when component is mounted
