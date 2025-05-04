@@ -6,7 +6,7 @@
           <img
             v-if="!loading && userData"
             class="h-12 w-12 rounded-full object-cover ring-2 ring-amber-500"
-            :src="`https://ui-avatars.com/api/?name=${userData?.first_name}+${userData?.last_name}&background=amber-500&color=fff`"
+            :src="userData?.avatar || `https://ui-avatars.com/api/?name=${userData?.first_name}+${userData?.last_name}&background=amber-500&color=fff`"
             :alt="`${userData?.first_name} ${userData?.last_name}`"
           />
           <div v-else class="h-12 w-12 rounded-full bg-amber-200 flex items-center justify-center">
