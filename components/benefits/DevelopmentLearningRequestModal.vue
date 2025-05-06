@@ -41,17 +41,41 @@
           <div class="flex items-center mb-4">
             <h4 class="text-base font-medium text-gray-900">{{ steps[currentStep].title }}</h4>
           </div>
-          <ImageUpload 
-            :dir="steps[currentStep].dir" 
-            @uploaded="handleFileUpload(steps[currentStep].key, $event)" 
-          />
+          <template v-if="currentStep === 0">
+            <ImageUpload 
+              :dir="steps[0].dir" 
+              @uploaded="handleFileUpload(steps[0].key, $event)"
+              :initial-image="uploadedFiles[steps[0].key]"
+            />
+          </template>
+          <template v-else-if="currentStep === 1">
+            <ImageUpload 
+              :dir="steps[1].dir" 
+              @uploaded="handleFileUpload(steps[1].key, $event)"
+              :initial-image="uploadedFiles[steps[1].key]"
+            />
+          </template>
+          <template v-else-if="currentStep === 2">
+            <ImageUpload 
+              :dir="steps[2].dir" 
+              @uploaded="handleFileUpload(steps[2].key, $event)"
+              :initial-image="uploadedFiles[steps[2].key]"
+            />
+          </template>
+          <template v-else-if="currentStep === 3">
+            <ImageUpload 
+              :dir="steps[3].dir" 
+              @uploaded="handleFileUpload(steps[3].key, $event)"
+              :initial-image="uploadedFiles[steps[3].key]"
+            />
+          </template>
         </div>
 
         <!-- Action Buttons -->
         <div class="flex justify-between space-x-3">
           <button 
             v-if="currentStep > 0"
-            @click="currentStep--" 
+            @click="handlePrev" 
             class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
           >
             مرحله قبل
@@ -60,7 +84,7 @@
 
           <button 
             v-if="currentStep < steps.length - 1"
-            @click="currentStep++" 
+            @click="handleNext" 
             :disabled="!uploadedFiles[steps[currentStep].key]"
             class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
@@ -92,6 +116,7 @@ const $api = nuxtApp.$api
 const toast = useToast()
 
 const currentStep = ref(0)
+const showImage = ref(false)
 
 const steps = [
   {
@@ -131,6 +156,22 @@ const isSubmitting = ref(false)
 
 const handleFileUpload = (type, url) => {
   uploadedFiles.value[type] = url
+}
+
+const handleNext = () => {
+  showImage.value = false
+  setTimeout(() => {
+    currentStep.value++
+    showImage.value = true
+  }, 0)
+}
+
+const handlePrev = () => {
+  showImage.value = false
+  setTimeout(() => {
+    currentStep.value--
+    showImage.value = true
+  }, 0)
 }
 
 const handleSubmit = async () => {

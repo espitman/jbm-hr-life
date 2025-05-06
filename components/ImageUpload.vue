@@ -34,8 +34,8 @@
     </div>
 
     <!-- Preview -->
-    <div v-if="previewUrl" class="mt-4">
-      <img :src="previewUrl" class="max-h-48 rounded-lg mx-auto" alt="Preview" />
+    <div v-if="previewUrl || initialImage" class="mt-4">
+      <img :src="previewUrl || initialImage" class="max-h-48 rounded-lg mx-auto" alt="Preview" />
     </div>
 
     <!-- Error Message -->
@@ -62,6 +62,10 @@ const props = defineProps({
   dir: {
     type: String,
     required: true
+  },
+  initialImage: {
+    type: String,
+    default: null
   }
 })
 
