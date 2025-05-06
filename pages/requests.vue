@@ -15,20 +15,20 @@
         </p>
       </div>
 
-      <form class="mt-8 border border-gray-100 rounded-2xl p-6 bg-white">
+      <form @submit.prevent="handleSubmit" class="mt-8 border border-gray-100 rounded-2xl p-6 bg-white">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="col-span-1 md:col-span-1 space-y-2">
             <div>
               <label class="block text-gray-700 font-medium">نام و نام خانوادگی</label>
               <span class="text-sm text-gray-500">مطابق شناسنامه باشد</span>
             </div>
-            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
+            <input v-model="formData.full_name" type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent" />
           </div>
 
           <div class="col-span-1 md:col-span-1 space-y-2">
             <label class="block text-gray-700 font-medium">نوع درخواست</label>
             <span class="text-sm text-gray-500">انتخاب کنید</span>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent">
+            <select v-model="formData.kind" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent">
               <option value="">انتخاب کنید</option>
               <option value="employment">اشتغال به کار</option>
               <option value="payroll_stamped">فیش حقوقی مهر شده</option>
@@ -42,13 +42,13 @@
 
           <div class="col-span-1 md:col-span-2 space-y-2">
             <label class="block text-gray-700 font-medium">توضیحات</label>
-            <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent"></textarea>
+            <textarea v-model="formData.description" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent"></textarea>
           </div>
         </div>
 
         <div class="mt-6 flex justify-end">
-          <button type="submit" class="bg-amber-500 text-black px-8 py-3 rounded-lg font-medium hover:bg-amber-600 transition-colors">
-            ارسال درخواست
+          <button type="submit" :disabled="loading" class="bg-amber-500 text-black px-8 py-3 rounded-lg font-medium hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            {{ loading ? 'در حال ارسال...' : 'ارسال درخواست' }}
           </button>
         </div>
       </form>
@@ -58,10 +58,44 @@
 
 <script setup>
 import PageHeaderCard from '~/components/ui/PageHeaderCard.vue'
+import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
+import { useNuxtApp } from '#app'
 
 definePageMeta({
   layout: 'default'
 })
+
+const { $api } = useNuxtApp()
+const toast = useToast()
+
+const formData = ref({
+  full_name: '',
+  kind: '',
+  description: ''
+})
+
+const loading = ref(false)
+
+const handleSubmit = async () => {
+  try {
+    loading.value = true
+    await $api.post('/api/v1/requests', formData.value)
+    // Reset form after successful submission
+    formData.value = {
+      full_name: '',
+      kind: '',
+      description: ''
+    }
+    // Show success message
+    toast.success('درخواست شما با موفقیت ثبت شد')
+  } catch (error) {
+    console.error('Error submitting request:', error)
+    toast.error('خطا در ثبت درخواست. لطفا دوباره تلاش کنید')
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <style scoped>
