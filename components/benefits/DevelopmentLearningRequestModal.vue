@@ -69,9 +69,10 @@
           <button 
             v-else
             @click="handleSubmit" 
-            :disabled="!isFormComplete"
-            class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            :disabled="!isFormComplete || isSubmitting"
+            class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
+            <span v-if="isSubmitting" class="animate-spin">⌛</span>
             ثبت درخواست
           </button>
         </div>
@@ -83,6 +84,12 @@
 <script setup>
 import { ref, computed } from 'vue'
 import ImageUpload from '~/components/ImageUpload.vue'
+import { useNuxtApp } from 'nuxt/app'
+import { useToast } from 'vue-toastification'
+
+const nuxtApp = useNuxtApp()
+const $api = nuxtApp.$api
+const toast = useToast()
 
 const currentStep = ref(0)
 
@@ -120,15 +127,35 @@ const isFormComplete = computed(() => {
   return Object.values(uploadedFiles.value).every(file => file !== null)
 })
 
+const isSubmitting = ref(false)
+
 const handleFileUpload = (type, url) => {
   uploadedFiles.value[type] = url
 }
 
-const handleSubmit = () => {
-  // TODO: Implement API call when provided
-  console.log('Submitted files:', uploadedFiles.value)
-  emit('submit', uploadedFiles.value)
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  try {
+    const { data } = await $api.post('/api/v1/requests', {
+      full_name: 'full name',
+      kind: 'development_learning',
+      meta: [
+        { key: 'manager_approval', value: uploadedFiles.value.manager_approval },
+        { key: 'hrbp_approval', value: uploadedFiles.value.hrbp_approval },
+        { key: 'course_invoice', value: uploadedFiles.value.course_invoice },
+        { key: 'payment_receipt', value: uploadedFiles.value.payment_receipt }
+      ]
+    })
+
+    toast.success('درخواست شما با موفقیت ثبت شد')
+    emit('close')
+  } catch (error) {
+    console.error('Error submitting request:', error)
+    toast.error(error.message || 'خطا در ثبت درخواست')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
-const emit = defineEmits(['close', 'submit'])
+const emit = defineEmits(['close'])
 </script> 
