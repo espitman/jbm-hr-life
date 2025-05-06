@@ -17,7 +17,7 @@
       <div class="border border-amber-500 rounded-lg p-4 flex flex-col items-center">
         <h3 class="text-lg font-bold text-amber-500 mb-4 text-center">توسعه و یادگیری</h3>
         <button 
-          @click="handleBenefitClick('development')"
+          @click="handleBenefitClick('development_learning')"
           class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center"
         >
           ثبت درخواست
@@ -27,9 +27,12 @@
       <!-- Travel Facilities Request -->
       <div class="border border-amber-500 rounded-lg p-4 flex flex-col items-center">
         <h3 class="text-lg font-bold text-amber-500 mb-4 text-center">درخواست تسهیلات سفر</h3>
-        <a href="https://survey.porsline.ir/s/2O7tLvQ" target="_blank" class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center">
+        <button 
+          @click="handleBenefitClick('travel')"
+          class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center"
+        >
           ثبت درخواست
-        </a>
+        </button>
       </div>
       
       <!-- Supplementary Insurance -->
@@ -45,14 +48,18 @@
     <MarriageChildBirthRequestModal 
       v-if="showMarriageChildBirthModal"
       @close="showMarriageChildBirthModal = false"
-      @submit="handleMarriageChildBirthSubmit"
     />
 
     <!-- Development and Learning Request Modal -->
     <DevelopmentLearningRequestModal 
       v-if="showDevelopmentLearningModal"
       @close="showDevelopmentLearningModal = false"
-      @submit="handleDevelopmentLearningSubmit"
+    />
+
+    <!-- Travel Request Modal -->
+    <TravelRequestModal 
+      v-if="showTravelModal"
+      @close="showTravelModal = false"
     />
   </div>
 </template>
@@ -61,25 +68,19 @@
 import { ref } from 'vue'
 import MarriageChildBirthRequestModal from './MarriageChildBirthRequestModal.vue'
 import DevelopmentLearningRequestModal from './DevelopmentLearningRequestModal.vue'
+import TravelRequestModal from './TravelRequestModal.vue'
 
 const showMarriageChildBirthModal = ref(false)
 const showDevelopmentLearningModal = ref(false)
+const showTravelModal = ref(false)
 
 const handleBenefitClick = (benefit) => {
   if (benefit === 'marriage') {
     showMarriageChildBirthModal.value = true
-  } else if (benefit === 'development') {
+  } else if (benefit === 'development_learning') {
     showDevelopmentLearningModal.value = true
+  } else if (benefit === 'travel') {
+    showTravelModal.value = true
   }
-}
-
-const handleMarriageChildBirthSubmit = (benefit) => {
-  console.log('Benefit request submitted:', benefit)
-  showMarriageChildBirthModal.value = false
-}
-
-const handleDevelopmentLearningSubmit = (files) => {
-  console.log('Development learning request submitted:', files)
-  showDevelopmentLearningModal.value = false
 }
 </script> 
