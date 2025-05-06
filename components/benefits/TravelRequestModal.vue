@@ -98,10 +98,15 @@
             <input 
               v-model="creditAmount"
               type="number"
+              step="100000"
+              min="0"
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500"
               placeholder="میزان اعتبار به تومان"
             />
             <span class="absolute left-3 top-2 text-gray-500">تومان</span>
+          </div>
+          <div v-if="creditAmount && Number(creditAmount) > 0" class="text-amber-600 text-sm mt-2 text-center">
+            {{ persianCreditAmount }}
           </div>
         </div>
 
@@ -146,6 +151,7 @@
 import { ref, computed } from 'vue'
 import { useNuxtApp } from 'nuxt/app'
 import { useToast } from 'vue-toastification'
+import num2persian from 'num2persian'
 
 const nuxtApp = useNuxtApp()
 const $api = nuxtApp.$api
@@ -172,6 +178,12 @@ const isFormValid = computed(() => {
   return selectedProvider.value && creditAmount.value && Number(creditAmount.value) > 0
 })
 
+const persianCreditAmount = computed(() =>
+  creditAmount.value && Number(creditAmount.value) > 0
+    ? num2persian(creditAmount.value) + ' تومان'
+    : ''
+)
+
 const handleSubmit = async () => {
   isSubmitting.value = true
   try {
@@ -179,10 +191,10 @@ const handleSubmit = async () => {
     
     const { data } = await $api.post('/api/v1/requests', {
       full_name: `${userData.first_name} ${userData.last_name}`,
-      kind: 'travel',
+      kind: 'travel_credit',
       meta: [
         { key: 'provider', value: selectedProvider.value },
-        { key: 'credit_amount', value: creditAmount.value }
+        { key: 'credit_amount', value: String(creditAmount.value) }
       ]
     })
 
