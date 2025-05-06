@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[150]">
-    <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[150]" @click="emit('close')">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4" @click.stop>
       <div class="space-y-6">
         <!-- Welcome Message -->
         <div class="text-center space-y-2">
@@ -180,8 +180,10 @@ const handlePrev = () => {
 const handleSubmit = async () => {
   isSubmitting.value = true
   try {
+    const { data: userData } = await $api.get('/api/v1/users/me')
+    
     const { data } = await $api.post('/api/v1/requests', {
-      full_name: 'full name',
+      full_name: `${userData.first_name} ${userData.last_name}`,
       kind: 'development_learning',
       meta: [
         { key: 'manager_approval', value: uploadedFiles.value.manager_approval },
