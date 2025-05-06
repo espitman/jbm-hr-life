@@ -5,9 +5,12 @@
       <!-- Marriage and Child Birth Gift -->
       <div class="border border-amber-500 rounded-lg p-4 flex flex-col items-center">
         <h3 class="text-lg font-bold text-amber-500 mb-4 text-center">هدیه ازدواج و تولد فرزند</h3>
-        <a href="https://survey.porsline.ir/s/jDDjTG7" target="_blank" class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center">
+        <button 
+          @click="handleBenefitClick('marriage')"
+          class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center"
+        >
           ثبت درخواست
-        </a>
+        </button>
       </div>
       
       <!-- Development and Learning -->
@@ -34,9 +37,30 @@
         </a>
       </div>
     </div>
+
+    <!-- Marriage and Child Birth Request Modal -->
+    <MarriageChildBirthRequestModal 
+      v-if="showMarriageChildBirthModal"
+      @close="showMarriageChildBirthModal = false"
+      @submit="handleMarriageChildBirthSubmit"
+    />
   </div>
 </template>
 
 <script setup>
-// No imports needed for this component
+import { ref } from 'vue'
+import MarriageChildBirthRequestModal from './MarriageChildBirthRequestModal.vue'
+
+const showMarriageChildBirthModal = ref(false)
+
+const handleBenefitClick = (benefit) => {
+  if (benefit === 'marriage') {
+    showMarriageChildBirthModal.value = true
+  }
+}
+
+const handleMarriageChildBirthSubmit = (benefit) => {
+  console.log('Benefit request submitted:', benefit)
+  showMarriageChildBirthModal.value = false
+}
 </script> 
