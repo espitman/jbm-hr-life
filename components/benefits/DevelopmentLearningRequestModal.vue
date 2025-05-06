@@ -1,0 +1,134 @@
+<template>
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[150]">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+      <div class="space-y-6">
+        <!-- Welcome Message -->
+        <div class="text-center space-y-2">
+          <h3 class="text-xl font-bold text-gray-900">همکار عزیزم</h3>
+          <p class="text-gray-600 leading-relaxed">
+            سلام<br>
+            از اینکه برای رشد و یادگیری خودت سرمایه گذاری می‌کنی مفتخریم. برای دریافت کمک هزینه آموزشی می‌تونی درخواستت رو ثبت کنی.
+          </p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="flex justify-between items-center mb-6">
+          <div 
+            v-for="(step, index) in steps" 
+            :key="index"
+            class="flex items-center"
+          >
+            <div 
+              class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+              :class="[
+                currentStep > index ? 'bg-amber-500 text-white' : 
+                currentStep === index ? 'bg-amber-100 text-amber-500 border-2 border-amber-500' :
+                'bg-gray-100 text-gray-400'
+              ]"
+            >
+              {{ index + 1 }}
+            </div>
+            <div 
+              v-if="index < steps.length - 1"
+              class="w-12 h-1"
+              :class="currentStep > index ? 'bg-amber-500' : 'bg-gray-200'"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Current Step Content -->
+        <div class="space-y-4">
+          <div class="flex items-center mb-4">
+            <h4 class="text-base font-medium text-gray-900">{{ steps[currentStep].title }}</h4>
+          </div>
+          <ImageUpload 
+            :dir="steps[currentStep].dir" 
+            @uploaded="handleFileUpload(steps[currentStep].key, $event)" 
+          />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between space-x-3">
+          <button 
+            v-if="currentStep > 0"
+            @click="currentStep--" 
+            class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+          >
+            مرحله قبل
+          </button>
+          <div v-else></div>
+
+          <button 
+            v-if="currentStep < steps.length - 1"
+            @click="currentStep++" 
+            :disabled="!uploadedFiles[steps[currentStep].key]"
+            class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            مرحله بعد
+          </button>
+          <button 
+            v-else
+            @click="handleSubmit" 
+            :disabled="!isFormComplete"
+            class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            ثبت درخواست
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import ImageUpload from '~/components/ImageUpload.vue'
+
+const currentStep = ref(0)
+
+const steps = [
+  {
+    title: 'تصویر تایید مکتوب مدیر واحد در ایمیل سازمانی خود را بارگذاری کنید',
+    key: 'manager_approval',
+    dir: 'development-learning/manager-approval'
+  },
+  {
+    title: 'تصویر تایید مکتوب HRBP در ایمیل سازمانی خود را بارگذاری کنید',
+    key: 'hrbp_approval',
+    dir: 'development-learning/hrbp-approval'
+  },
+  {
+    title: 'فاکتور دوره آموزشی را بارگذاری کنید',
+    key: 'course_invoice',
+    dir: 'development-learning/course-invoice'
+  },
+  {
+    title: 'رسید پرداختی خود را بارگذاری کنید',
+    key: 'payment_receipt',
+    dir: 'development-learning/payment-receipt'
+  }
+]
+
+const uploadedFiles = ref({
+  manager_approval: null,
+  hrbp_approval: null,
+  course_invoice: null,
+  payment_receipt: null
+})
+
+const isFormComplete = computed(() => {
+  return Object.values(uploadedFiles.value).every(file => file !== null)
+})
+
+const handleFileUpload = (type, url) => {
+  uploadedFiles.value[type] = url
+}
+
+const handleSubmit = () => {
+  // TODO: Implement API call when provided
+  console.log('Submitted files:', uploadedFiles.value)
+  emit('submit', uploadedFiles.value)
+}
+
+const emit = defineEmits(['close', 'submit'])
+</script> 
