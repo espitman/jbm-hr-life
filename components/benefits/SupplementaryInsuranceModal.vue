@@ -43,7 +43,7 @@
                   <div class="grid grid-cols-1 gap-4">
                     <template v-if="person.key !== 'self'">
                       <input v-model="person.firstName" class="input" placeholder="نام" />
-                      <input v-model="person.lastName" class="input" placeholder="نام خانوادگی" />
+                      <input v-if="!person.key.startsWith('child')" v-model="person.lastName" class="input" placeholder="نام خانوادگی" />
                     </template>
                     <input v-model="person.nationalCode" class="input" placeholder="کد ملی" />
                     <input v-model="person.identityNumber" class="input" placeholder="شماره شناسنامه" />
@@ -63,7 +63,7 @@
                       </template>
                     </div>
                     <input v-if="person.key === 'self'" v-model="person.iban" class="input" placeholder="شماره شبا" />
-                    <input v-model="person.fatherFirstName" class="input" placeholder="نام پدر" />
+                    <input v-if="!person.key.startsWith('child')" v-model="person.fatherFirstName" class="input" placeholder="نام پدر" />
                     <input v-if="person.key !== 'self'" v-model="person.birthDate" class="input" placeholder="تاریخ تولد (مثال: 1360/01/01)" />
                   </div>
                 </div>
@@ -72,7 +72,13 @@
           </div>
           <div class="flex justify-between mt-6">
             <button @click="step = 1" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">مرحله قبل</button>
-            <button class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors">ثبت اطلاعات</button>
+            <button class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors flex items-center justify-center gap-2" @click="handleSubmit" :disabled="isSubmitting">
+              <svg v-if="isSubmitting" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              ثبت اطلاعات
+            </button>
           </div>
         </template>
       </div>
@@ -82,6 +88,8 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 const emit = defineEmits(['close'])
 
 const step = ref(1)
@@ -149,6 +157,38 @@ const peopleList = computed(() => {
 
 const goToStep2 = () => {
   step.value = 2
+}
+
+const isSubmitting = ref(false)
+
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  try {
+    const { data: userData } = await useNuxtApp().$api.get('/api/v1/users/me')
+    await useNuxtApp().$api.post('/api/v1/requests', {
+      full_name: `${userData.first_name} ${userData.last_name}`,
+      kind: 'supplementary_insurance',
+      meta: peopleList.value.map(person => ({
+        key: person.key,
+        value: JSON.stringify({
+          firstName: person.firstName,
+          lastName: person.lastName,
+          nationalCode: person.nationalCode,
+          identityNumber: person.identityNumber,
+          gender: person.gender,
+          iban: person.iban,
+          fatherFirstName: person.fatherFirstName,
+          birthDate: person.birthDate
+        })
+      }))
+    })
+    toast.success('درخواست شما با موفقیت ثبت شد')
+    emit('close')
+  } catch (error) {
+    toast.error(error.message || 'خطا در ثبت اطلاعات')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
