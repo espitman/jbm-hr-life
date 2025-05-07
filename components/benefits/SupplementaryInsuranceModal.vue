@@ -6,7 +6,7 @@
           <div class="text-center space-y-2">
             <h3 class="text-xl font-bold text-gray-900">بیمه تکمیلی</h3>
             <p class="text-gray-600 leading-relaxed">
-              آیا می‌خواهید فرد دیگری را به لیست افراد تحت تکفل خود اضافه کنید؟
+              آیا می‌خواهید فرد دیگری را به جز خودتون رو به لیست افراد تحت تکفل خود اضافه کنید؟
             </p>
           </div>
           <div class="space-y-3">
@@ -20,7 +20,7 @@
             <input type="number" v-model.number="childCount" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500" placeholder="تعداد فرزند">
           </div>
           <div class="flex justify-end">
-            <button @click="goToStep2" class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" :disabled="selected.length === 0 || (selected.includes('child') && !childCount)">
+            <button @click="goToStep2" class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" :disabled="selected.includes('child') && !childCount">
               ادامه
             </button>
           </div>
@@ -34,12 +34,30 @@
             <div v-for="(person, idx) in peopleList" :key="person.key" class="border border-amber-200 rounded-lg p-4">
               <h4 class="font-bold text-amber-600 mb-2">{{ person.label }}</h4>
               <div class="grid grid-cols-1 gap-4">
+                <template v-if="person.key !== 'self'">
+                  <input v-model="person.firstName" class="input" placeholder="نام" />
+                  <input v-model="person.lastName" class="input" placeholder="نام خانوادگی" />
+                </template>
                 <input v-model="person.nationalCode" class="input" placeholder="کد ملی" />
                 <input v-model="person.identityNumber" class="input" placeholder="شماره شناسنامه" />
+                <div>
+                  <template v-if="person.key === 'father'">
+                    <input type="text" class="input bg-gray-100" value="مرد" disabled />
+                  </template>
+                  <template v-else-if="person.key === 'mother'">
+                    <input type="text" class="input bg-gray-100" value="زن" disabled />
+                  </template>
+                  <template v-else>
+                    <select v-model="person.gender" class="input">
+                      <option value="">جنسیت</option>
+                      <option value="male">مرد</option>
+                      <option value="female">زن</option>
+                    </select>
+                  </template>
+                </div>
+                <input v-if="person.key === 'self'" v-model="person.iban" class="input" placeholder="شماره شبا" />
                 <input v-model="person.fatherFirstName" class="input" placeholder="نام پدر" />
-                <input v-model="person.fatherLastName" class="input" placeholder="نام خانوادگی پدر" />
-                <input v-model="person.fatherNationalCode" class="input" placeholder="کد ملی پدر" />
-                <input v-model="person.fatherBirthDate" class="input" placeholder="تاریخ تولد پدر (مثال: 1360/01/01)" />
+                <input v-if="person.key !== 'self'" v-model="person.birthDate" class="input" placeholder="تاریخ تولد (مثال: 1360/01/01)" />
               </div>
             </div>
           </div>
@@ -67,8 +85,21 @@ const options = [
 const selected = ref([])
 const childCount = ref(1)
 
+const user = ref(null) // Assuming user is stored in a ref
+
 const peopleList = computed(() => {
   const list = []
+  // Always add the user as the first person
+  list.push({
+    key: 'self',
+    label: 'خود شما',
+    nationalCode: user.value?.national_code || '',
+    identityNumber: user.value?.identity_number || '',
+    fatherFirstName: user.value?.father_first_name || '',
+    iban: user.value?.iban || '',
+    gender: user.value?.gender || ''
+    // no birthDate, firstName, lastName for self
+  })
   if (selected.value.includes('spouse')) list.push({ key: 'spouse', label: 'همسر' })
   if (selected.value.includes('father')) list.push({ key: 'father', label: 'پدر' })
   if (selected.value.includes('mother')) list.push({ key: 'mother', label: 'مادر' })
@@ -77,16 +108,22 @@ const peopleList = computed(() => {
       list.push({ key: `child${i}`, label: `فرزند ${i}` })
     }
   }
-  // Add fields for each person
-  return list.map(person => ({
-    ...person,
-    nationalCode: '',
-    identityNumber: '',
-    fatherFirstName: '',
-    fatherLastName: '',
-    fatherNationalCode: '',
-    fatherBirthDate: ''
-  }))
+  // Add empty fields for dependents
+  return list.map((person, idx) => {
+    if (person.key === 'self') return person
+    if (person.key === 'father') return { ...person, gender: 'male', nationalCode: '', identityNumber: '', firstName: '', lastName: '', fatherFirstName: '', birthDate: '' }
+    if (person.key === 'mother') return { ...person, gender: 'female', nationalCode: '', identityNumber: '', firstName: '', lastName: '', fatherFirstName: '', birthDate: '' }
+    return {
+      ...person,
+      gender: '',
+      nationalCode: '',
+      identityNumber: '',
+      firstName: '',
+      lastName: '',
+      fatherFirstName: '',
+      birthDate: ''
+    }
+  })
 })
 
 const goToStep2 = () => {
