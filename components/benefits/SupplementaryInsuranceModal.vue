@@ -161,6 +161,14 @@ const goToStep2 = () => {
 
 const isSubmitting = ref(false)
 
+function toEnglishDigits(str) {
+  return String(str).replace(/[۰-۹٠-٩]/g, d =>
+    '۰۱۲۳۴۵۶۷۸۹'.indexOf(d) > -1
+      ? '0123456789'['۰۱۲۳۴۵۶۷۸۹'.indexOf(d)]
+      : '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]
+  );
+}
+
 const handleSubmit = async () => {
   isSubmitting.value = true
   try {
@@ -173,12 +181,12 @@ const handleSubmit = async () => {
         value: JSON.stringify({
           firstName: person.firstName,
           lastName: person.lastName,
-          nationalCode: person.nationalCode,
-          identityNumber: person.identityNumber,
+          nationalCode: toEnglishDigits(person.nationalCode),
+          identityNumber: toEnglishDigits(person.identityNumber),
           gender: person.gender,
-          iban: person.iban,
+          iban: toEnglishDigits(person.iban),
           fatherFirstName: person.fatherFirstName,
-          birthDate: person.birthDate
+          birthDate: toEnglishDigits(person.birthDate)
         })
       }))
     })
