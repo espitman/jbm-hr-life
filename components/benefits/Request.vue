@@ -38,9 +38,12 @@
       <!-- Supplementary Insurance -->
       <div class="border border-amber-500 rounded-lg p-4 flex flex-col items-center">
         <h3 class="text-lg font-bold text-amber-500 mb-4 text-center">بیمه تکمیلی</h3>
-        <a href="https://survey.porsline.ir/s/Fy5PfPA" target="_blank" class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center">
+        <button 
+          @click="showSupplementaryInsuranceModal = true"
+          class="bg-amber-500 text-white font-bold py-3 px-6 rounded-lg mt-auto hover:bg-amber-600 transition duration-300 w-full text-center"
+        >
           ثبت درخواست
-        </a>
+        </button>
       </div>
     </div>
 
@@ -61,6 +64,12 @@
       v-if="showTravelModal"
       @close="showTravelModal = false"
     />
+
+    <!-- Supplementary Insurance Modal -->
+    <SupplementaryInsuranceModal 
+      v-if="showSupplementaryInsuranceModal"
+      @close="showSupplementaryInsuranceModal = false"
+    />
   </div>
 </template>
 
@@ -69,10 +78,12 @@ import { ref } from 'vue'
 import MarriageChildBirthRequestModal from './MarriageChildBirthRequestModal.vue'
 import DevelopmentLearningRequestModal from './DevelopmentLearningRequestModal.vue'
 import TravelRequestModal from './TravelRequestModal.vue'
+import SupplementaryInsuranceModal from './SupplementaryInsuranceModal.vue'
 
 const showMarriageChildBirthModal = ref(false)
 const showDevelopmentLearningModal = ref(false)
 const showTravelModal = ref(false)
+const showSupplementaryInsuranceModal = ref(false)
 
 const handleBenefitClick = (benefit) => {
   if (benefit === 'marriage') {
