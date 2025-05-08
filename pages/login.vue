@@ -97,6 +97,7 @@
                 class="w-12 h-12 text-center text-xl font-bold border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200"
                 @input="(e) => handleOtpInput(e, i-1)"
                 @keydown="(e) => handleOtpKeydown(e, i-1)"
+                @paste="handlePaste"
               />
             </div>
             <input
@@ -239,27 +240,27 @@ const handleOtpKeydown = (event, index) => {
       otpDigits.value[index] = ''
     }
   }
-  
-  // Handle paste event
-  if (event.key === 'v' && (event.ctrlKey || event.metaKey)) {
-    event.preventDefault()
-    const pastedData = event.clipboardData.getData('text')
-    const numbers = pastedData.match(/\d/g)
-    if (numbers) {
-      numbers.slice(0, 6).forEach((num, i) => {
-        if (i < 6) {
-          otpDigits.value[i] = num
-          if (i < 5) {
-            setTimeout(() => {
-              const nextInput = event.target.parentElement.children[i + 1]
-              if (nextInput) {
-                nextInput.focus()
-              }
-            }, 0)
-          }
+}
+
+// Add new function to handle paste event
+const handlePaste = (event) => {
+  event.preventDefault()
+  const pastedData = event.clipboardData.getData('text')
+  const numbers = pastedData.match(/\d/g)
+  if (numbers) {
+    numbers.slice(0, 6).forEach((num, i) => {
+      if (i < 6) {
+        otpDigits.value[i] = num
+        if (i < 5) {
+          setTimeout(() => {
+            const nextInput = event.target.parentElement.children[i + 1]
+            if (nextInput) {
+              nextInput.focus()
+            }
+          }, 0)
         }
-      })
-    }
+      }
+    })
   }
 }
 
