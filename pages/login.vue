@@ -275,9 +275,15 @@ const handleEmailSubmit = async () => {
     step.value = 2
     toast.success('کد تایید به ایمیل شما ارسال شد')
   } catch (error) {
-    // Show the error message from the service if available, otherwise show default message
-    const errorMessage = error instanceof Error ? error.message : 'خطا در ارسال کد تایید'
-    toast.error(errorMessage)
+    // Check if error message is "active OTP already exists"
+    if (error.message === 'active OTP already exists') {
+      step.value = 2
+      toast.info('کد تایید قبلی هنوز معتبر است')
+    } else {
+      // Show the error message from the service if available, otherwise show default message
+      const errorMessage = error instanceof Error ? error.message : 'خطا در ارسال کد تایید'
+      toast.error(errorMessage)
+    }
   } finally {
     loading.value = false
   }
@@ -332,10 +338,16 @@ const resendOTP = async () => {
       }
     }, 0)
     
-    // TODO: Implement OTP resend logic
-    console.log('Resending OTP to:', email.value)
+    // Call requestOTP again
+    const response = await $api.auth.requestOTP(email.value)
+    toast.success('کد تایید جدید به ایمیل شما ارسال شد')
   } catch (error) {
-    console.error('Error resending OTP:', error)
+    // Check if error message is "active OTP already exists"
+    if (error.message === 'active OTP already exists') {
+      toast.info('کد تایید قبلی هنوز معتبر است')
+    } else {
+      toast.error(error.message || 'خطا در ارسال مجدد کد تایید')
+    }
   } finally {
     loading.value = false
   }
