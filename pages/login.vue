@@ -261,6 +261,13 @@ const handlePaste = (event) => {
         }
       }
     })
+    
+    // If we have exactly 6 digits, submit the form
+    if (numbers.length >= 6) {
+      setTimeout(() => {
+        handleOTPSubmit()
+      }, 100)
+    }
   }
 }
 
