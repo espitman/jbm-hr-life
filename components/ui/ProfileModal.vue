@@ -59,12 +59,33 @@
                       </div>
                     </div>
                   </div>
+                  <div class="absolute bottom-4 right-8 text-white">
+                    <h1 class="text-2xl font-bold">
+                      {{ userData?.first_name }} {{ userData?.last_name }}
+                    </h1>
+                    <p class="text-amber-100">{{ userData?.email }}</p>
+                  </div>
                 </div>
                 <div class="pt-20 pb-6 px-8">
-                  <h1 class="text-2xl font-bold text-gray-900">
-                    {{ userData?.first_name }} {{ userData?.last_name }}
-                  </h1>
-                  <p class="text-gray-600">{{ userData?.email }}</p>
+                  <!-- Confirmation Box -->
+                  <div v-if="userData?.confirmed === false" class="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                    <h3 class="text-sm font-medium text-amber-800 mb-2">تایید اطلاعات</h3>
+                    <div class="flex items-center justify-between">
+                      <p class="text-sm text-amber-700">لطفا اطلاعات خود را بررسی و تایید کنید</p>
+                      <button
+                        type="button"
+                        @click="confirmUserData"
+                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                        :disabled="isConfirming"
+                      >
+                        <svg v-if="isConfirming" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        {{ isConfirming ? 'در حال تایید...' : 'تایید' }}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -131,10 +152,6 @@
                       <label class="block text-sm font-bold text-gray-500 mb-2">تاریخ شروع همکاری</label>
                       <p class="text-sm text-gray-900">{{ $formatDateOnly(userData?.cooperation_start_date) }}</p>
                     </div>
-                    <div>
-                      <label class="block text-sm font-bold text-gray-500 mb-2">نقش</label>
-                      <p class="text-sm text-gray-900">{{ userData?.role }}</p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -175,6 +192,8 @@ const emit = defineEmits(['close', 'update'])
 const showImageUpload = ref(false)
 const { $formatDateOnly, $api } = useNuxtApp()
 
+const isConfirming = ref(false)
+
 const close = () => {
   emit('close')
 }
@@ -193,6 +212,23 @@ const handleAvatarUpload = async (url) => {
     showImageUpload.value = false
   } catch (error) {
     console.error('Error updating avatar:', error)
+  }
+}
+
+const confirmUserData = async () => {
+  try {
+    isConfirming.value = true
+    await $api.put('/api/v1/users/confirm')
+    
+    // Fetch latest user data
+    const { data: updatedUserData } = await $api.get('/api/v1/users/me')
+    
+    // Emit update with new user data
+    emit('update', updatedUserData)
+  } catch (error) {
+    console.error('Error confirming user data:', error)
+  } finally {
+    isConfirming.value = false
   }
 }
 </script> 
