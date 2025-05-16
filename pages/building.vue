@@ -119,7 +119,7 @@ const fetchDepartments = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await $api.get('/api/v1/departments')
+    const response = await $api.get('/api/v1/departments?limit=100')
     if (response.success) {
       departments.value = response.data.departments
     } else {
