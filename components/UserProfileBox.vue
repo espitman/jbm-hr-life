@@ -42,6 +42,7 @@
     :loading="loading"
     :error="error"
     @close="closeProfileModal"
+    @update="handleProfileUpdate"
   />
 </template>
 
@@ -61,6 +62,14 @@ const openProfileModal = () => {
 
 const closeProfileModal = () => {
   isProfileModalOpen.value = false
+}
+
+const handleProfileUpdate = (updatedUserData) => {
+  if (updatedUserData) {
+    userData.value = updatedUserData
+  } else {
+    fetchUserData()
+  }
 }
 
 onMounted(async () => {
