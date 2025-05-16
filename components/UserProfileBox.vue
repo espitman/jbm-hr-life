@@ -1,7 +1,7 @@
 <template>
   <div class="mt-auto bg-amber-100 border-t border-amber-200 md:border-t-0 md:border-b border-amber-200 sticky bottom-0">
     <div class="p-4">
-      <div class="flex items-center">
+      <button @click="openProfileModal" class="flex items-center transition-colors duration-200 rounded-lg">
         <div class="flex-shrink-0">
           <img
             v-if="!loading && userData"
@@ -23,6 +23,7 @@
             v-if="!loading && userData"
             to="/logout"
             class="text-sm text-amber-600 hover:text-amber-700 flex items-center mt-1"
+            @click.stop
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -30,18 +31,37 @@
             خروج از سیستم
           </NuxtLink>
         </div>
-      </div>
+      </button>
     </div>
   </div>
+
+  <!-- Profile Modal -->
+  <ProfileModal
+    :is-open="isProfileModalOpen"
+    :user-data="userData"
+    :loading="loading"
+    :error="error"
+    @close="closeProfileModal"
+  />
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAuth } from '~/composables/useAuth'
 import { useUserData } from '~/composables/useUserData'
+import ProfileModal from './ui/ProfileModal.vue'
 
 const { isAuthenticated } = useAuth()
-const { userData, loading, fetchUserData } = useUserData()
+const { userData, loading, fetchUserData, error } = useUserData()
+const isProfileModalOpen = ref(false)
+
+const openProfileModal = () => {
+  isProfileModalOpen.value = true
+}
+
+const closeProfileModal = () => {
+  isProfileModalOpen.value = false
+}
 
 onMounted(async () => {
   if (isAuthenticated.value) {
